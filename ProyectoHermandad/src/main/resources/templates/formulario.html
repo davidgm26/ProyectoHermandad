@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+	<link rel="shortcut icon" href="./img/escudo.png">
+	<link rel="stylesheet" href="estilos.css" type="text/css">
+	<meta charset="UTF-8">
+	<title>Hermandad de la estrella</title>
+
+</head>
+<!-- Para trabajar con fechas en Th, basta con usar el campo type date para recoger la fecha del formulario
+y esta se puede tratar como un campo cualquiera correspondiente al del objeto entidad, en este caso, 
+en nuestra clase alumno es el atributo fechaNacimiento del tipo LocalDate-->
+
+<body>
+	<header>
+		<div class="row">
+			<div class="col-4">
+				<img class="w-25" src="./img/escudo.png" alt="">
+			</div>
+			<div class="col-8">
+				<img class="w-100" src="./img/header.png" alt="">
+			</div>
+		</div>
+	</header>
+	<!--<form method="POST" action="#" th:action="@{/nuevo/submit}" th:object="${alumno}">
+		<input type="text" name="nombre" th:field="*{nombre}" placeholder="Nombre..." />
+		<input type="text" name="apellidos" th:field="*{apellidos}" placeholder="Apellidos..." />
+		<input type="email" name="email" th:field="*{email}" placeholder="Email..." />
+		<input type="date" name="fechaNacimiento" th:field="*{fechaNacimiento}" />
+		<input type="submit" name="enviar" value="Enviar" />
+	</form>-->
+    <form class="w-50 mx-auto">
+
+        <div class="form-group"> <!-- Full Name -->
+            <label for="full_name_id" class="control-label">Full Name</label>
+            <input type="text" class="form-control" id="full_name_id" name="full_name" placeholder="John Deer">
+        </div>    
+    
+        <div class="form-group"> <!-- Street 1 -->
+            <label for="street1_id" class="control-label">Street Address 1</label>
+            <input type="text" class="form-control" id="street1_id" name="street1" placeholder="Street address, P.O. box, company name, c/o">
+        </div>                    
+                                
+        <div class="form-group"> <!-- Street 2 -->
+            <label for="street2_id" class="control-label">Street Address 2</label>
+            <input type="text" class="form-control" id="street2_id" name="street2" placeholder="Apartment, suite, unit, building, floor, etc.">
+        </div>    
+    
+        <div class="form-group"> <!-- City-->
+            <label for="city_id" class="control-label">City</label>
+            <input type="text" class="form-control" id="city_id" name="city" placeholder="Smallville">
+        </div>                                    
+             
+        <div class="form-group"> <!-- Submit Button -->
+            <button type="submit" class="btn btn-primary">Registrar hermano</button>
+        </div>     
+        
+    </form>
+</body>
+
+</html>
