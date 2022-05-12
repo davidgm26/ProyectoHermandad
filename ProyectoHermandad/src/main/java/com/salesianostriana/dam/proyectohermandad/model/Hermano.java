@@ -27,7 +27,7 @@ import lombok.NoArgsConstructor;
 @Builder
 public class Hermano {
 
-	private String nombre, apellido, direccion, edad, fechaNacimiento, numTelefono;
+	private String nombre, apellidos,direccion, edad, fechaNacimiento, numTelefono;
 
 	private String DNI;
 	
