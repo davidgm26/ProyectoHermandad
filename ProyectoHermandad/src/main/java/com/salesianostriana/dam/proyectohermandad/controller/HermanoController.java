@@ -25,6 +25,21 @@ public class HermanoController {
 		return "index";
 	}
 
+	@GetMapping("/cristo")
+	public String mostrarPagCristo() {
+		return "cristo";
+	}
+
+	@GetMapping("/virgen")
+	public String mostrarPagVirgen() {
+		return "virgen";
+	}
+
+	@GetMapping("/juntaDeGobierno")
+	public String mostrarPagJuntaGobierno() {
+		return "juntaDeGobierno";
+	}
+
 	@GetMapping("/inicioSesion")
 	public String mostrarLogin() {
 		return "inicioSesion";
@@ -34,6 +49,20 @@ public class HermanoController {
 	public String mostrarFormulario(Model model) {
 		model.addAttribute("hermano", new Hermano());
 		return "form";
+	}
+	@GetMapping("/reglas")
+	public String mostrarReglas(){
+		return "reglas";
+	}
+	
+	@GetMapping("/musica")
+	public String mostrarMusica(){
+		return "composicionesMusicales";
+	}
+
+	@GetMapping("/recorrido")
+	public String mostrarRecorrido(){
+		return "recorrido";
 	}
 
 	@GetMapping("/admin")
