@@ -1,4 +1,4 @@
-package com.salesianostriana.dam.proyectohermandad.controller;
+package com.salesianostriana.dam.proyectohermandadestrella.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -7,8 +7,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import com.salesianostriana.dam.proyectohermandad.model.Hermano;
-import com.salesianostriana.dam.proyectohermandad.servicios.HermanoServicio;
+import com.salesianostriana.dam.proyectohermandadestrella.model.Hermano;
+import com.salesianostriana.dam.proyectohermandadestrella.servicio.HermanoServicio;
 
 @Controller
 public class HermanoController {
@@ -20,7 +20,8 @@ public class HermanoController {
 		this.hermanoServicio = hermanoServicio;
 	}
 
-	@GetMapping("/")
+	// Mappings para las paginas de relleno
+	@GetMapping({ "/index", "/" })
 	public String mostrarPagPrincipal() {
 		return "index";
 	}
@@ -40,9 +41,31 @@ public class HermanoController {
 		return "juntaDeGobierno";
 	}
 
+	@GetMapping("/reglas")
+	public String mostrarReglas() {
+		return "reglas";
+	}
+
+	@GetMapping("/musica")
+	public String mostrarMusica() {
+		return "composicionesMusicales";
+	}
+
+	@GetMapping("/recorrido")
+	public String mostrarRecorrido() {
+		return "recorrido";
+	}
+
+	// Mappings sesión iniciada
 	@GetMapping("/inicioSesion")
 	public String mostrarLogin() {
 		return "inicioSesion";
+	}
+
+	@GetMapping("/admin")
+	public String listarTodos(Model model) {
+		model.addAttribute("lista", hermanoServicio.findAll());
+		return "listadoHermanos";
 	}
 
 	@GetMapping("/nuevo")
@@ -50,37 +73,10 @@ public class HermanoController {
 		model.addAttribute("hermano", new Hermano());
 		return "form";
 	}
-	@GetMapping("/reglas")
-	public String mostrarReglas(){
-		return "reglas";
-	}
-	
-	@GetMapping("/musica")
-	public String mostrarMusica(){
-		return "composicionesMusicales";
-	}
-
-	@GetMapping("/recorrido")
-	public String mostrarRecorrido(){
-		return "recorrido";
-	}
-
-	@GetMapping("/admin")
-	public String mostrarPagPrincipalAdmin() {
-		return "indexSesion";
-	}
-
-	@GetMapping("/listarHermanos")
-	public String listarTodos(Model model) {
-		model.addAttribute("lista", hermanoServicio.findAll());
-		return "listadoHermanos";
-	}
 
 	@PostMapping("/nuevo/submit")
-	public String procesarFormulario(@ModelAttribute("hermano") Hermano h) {
-		hermanoServicio.add(h);
-		hermanoServicio.save(h);
-		return "redirect:/listarHermanos";
+	public String procesaFormulario(@ModelAttribute("hermano") Hermano hermano) {
+		hermanoServicio.save(hermano);
+		return "redirect:/admin";
 	}
-
 }

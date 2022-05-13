@@ -8,10 +8,10 @@
 		<version>2.6.7</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.salesianostriana</groupId>
-	<artifactId>ProyectoHermandad</artifactId>
+	<groupId>com.salesianostriana.dam</groupId>
+	<artifactId>proyectohermandadestrella</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>ProyectoHermandad</name>
+	<name>ProyectoHermandadEstrella</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>
 		<java.version>11</java.version>

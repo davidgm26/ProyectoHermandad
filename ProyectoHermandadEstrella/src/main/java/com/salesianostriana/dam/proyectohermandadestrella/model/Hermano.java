@@ -1,7 +1,4 @@
-/**
- * 
- */
-package com.salesianostriana.dam.proyectohermandad.model;
+package com.salesianostriana.dam.proyectohermandadestrella.model;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

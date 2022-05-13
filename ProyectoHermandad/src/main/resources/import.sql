@@ -1,1 +1,0 @@
-INSERT INTO HERMANO ()VALUES(NEXTVAL('hibernate_sequence'),nombre,apellidos);

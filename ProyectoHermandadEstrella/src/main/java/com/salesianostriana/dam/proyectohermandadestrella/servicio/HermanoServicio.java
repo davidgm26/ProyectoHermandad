@@ -1,12 +1,12 @@
-package com.salesianostriana.dam.proyectohermandad.servicios;
+package com.salesianostriana.dam.proyectohermandadestrella.servicio;
 
 import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import com.salesianostriana.dam.proyectohermandad.model.Hermano;
-import com.salesianostriana.dam.proyectohermandad.repositorio.HermanoRepositorio;
-import com.salesianostriana.dam.proyectohermandad.servicios.base.BaseService;
+import com.salesianostriana.dam.proyectohermandadestrella.model.Hermano;
+import com.salesianostriana.dam.proyectohermandadestrella.repositorio.HermanoRepositorio;
+import com.salesianostriana.dam.proyectohermandadestrella.servicio.base.BaseService;
 
 @Service
 public class HermanoServicio extends BaseService<Hermano, Long, HermanoRepositorio> {

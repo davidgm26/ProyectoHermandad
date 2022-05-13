@@ -10,8 +10,8 @@
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css"
 		th:href="@{https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css}">
-	<link rel="shortcut icon" href="static/img/escudo.png" th:href="@{static/img/escudo.png}">
-	<link rel="stylesheet" href="static/css/estilos.css" type="text/css" th:href="@{static/css/estilos.css}">
+	<link rel="shortcut icon" href="static/img/escudo.png" th:href="@{img/escudo.png}">
+	<link rel="stylesheet" href="static/css/estilos.css" type="text/css" th:href="@{css/estilos.css}">
 </head>
 
 
@@ -28,16 +28,16 @@
 					<th>Apellidos</th>
 					<th>DNI</th>
 					<th>Teléfono</th>
-					<th>Fecha nacimiento</th>
+					<th>ID</th>
 				</tr>
 			</thead>
 			<tbody>
-				<tr class="tabla" th:each="hermano : ${hermano}">
+				<tr class="tabla" th:each="hermano : ${hermanos}">
 					<td th:text="${hermano.nombre}">Nombre</td>
 					<td th:text="${hermano.apellidos}">Nombre</td>
 					<td th:text="${hermano.DNI}">Nombre</td>
-					<td th:text="${hermano.telefono}">Nombre</td>
-					<td th:text="${#temporals.format(hermano.fechaNacimiento)}">Nombre</td>
+					<td th:text="${hermano.numTelefono}">Nombre</td>
+					<td th:text="${hermano.id}">Nombre</td>
 				</tr>
 			</tbody>
 		</table>

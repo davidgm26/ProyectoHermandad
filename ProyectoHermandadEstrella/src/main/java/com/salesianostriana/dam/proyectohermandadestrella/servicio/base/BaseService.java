@@ -1,4 +1,4 @@
-package com.salesianostriana.dam.proyectohermandad.servicios.base;
+package com.salesianostriana.dam.proyectohermandadestrella.servicio.base;
 
 import java.util.List;
 
