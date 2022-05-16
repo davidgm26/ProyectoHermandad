@@ -1,5 +1,7 @@
 package com.salesianostriana.dam.proyectohermandadestrella.model;
 
+import java.time.LocalDate;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -12,7 +14,7 @@ import lombok.NoArgsConstructor;
 /**
  * @author garcia.madav20
  * 
- *         Esta clase será la que nos va a ayudar a la hora de crear hermanos
+ *         Esta clase será la que nos va a ayudar a la hora de crear los productos
  *         dentro de la aplicación para ello vamos a guardar los datos básicos
  *         que debe tener un hermano.
  *
@@ -22,15 +24,15 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Entity
 @Builder
-public class Hermano {
-
-	private String nombre, apellidos,direccion, edad, fechaNacimiento, numTelefono;
-
-	private String DNI;
+public class Producto {
 	
-	private int numHermano;
 	@Id
 	@GeneratedValue
 	private Long id;
+	
+	private int pvp;
+		
+	private String descripcion,nombreHermano,imagen;
 
+	private LocalDate fechaDeEntrada;
 }

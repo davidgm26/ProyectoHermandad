@@ -24,28 +24,31 @@
 		</div>
 	</header>
 	<div class="container mt-3">
+		<p>Bienvenido</p>
+	</div>
+	<div class="container mt-3">
 		<h2>Nómina de Hermanos</h2>
 		<table class="table tablaHermanos">
 			<thead>
 				<tr>
 					<th>Nombre</th>
-					<th>Apellidos</th>
+					<th>descripcion</th>
 					<th>DNI</th>
-					<th>Teléfono</th>
-					<th>Fecha nacimiento</th>
+					<th>precio</th>
+					<th>Fecha Entrada</th>
 				</tr>
 			</thead>
 			<tbody>
-				<tr class="tabla" th:each="hermano : ${hermano}">
-					<td th:text="${hermano.nombre}">Nombre</td>
-					<td th:text="${hermano.apellidos}">Nombre</td>
-					<td th:text="${hermano.DNI}">Nombre</td>
-					<td th:text="${hermano.telefono}">Nombre</td>
-					<td th:text="${#temporals.format(hermano.fechaNacimiento)}">Nombre</td>
+				<tr class="tabla" th:each="producto : ${producto}">
+					<td th:text="${producto.nombre}">Nombre</td>
+					<td th:text="${producto.descripcion}">Nombre</td>
+					<td th:text="${producto.DNI}">Nombre</td>
+					<td th:="${#numbers.formatCurrency(producto.pvp)}">Nombre</td>
+					<td th:text="${#temporals.format(producto.fechaDeEntrada)}">Nombre</td>
 				</tr>
 			</tbody>
 		</table>
-		<a href="#" th:href="@{/nuevo}">Insertar un nuevo hermano</a>
+		<a href="./form.html" th:href="@{/nuevo}">Insertar un nuevo producto</a>
 		<br /><br />
 </body>
 

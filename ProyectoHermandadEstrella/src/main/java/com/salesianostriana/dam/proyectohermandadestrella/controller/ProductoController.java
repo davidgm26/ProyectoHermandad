@@ -7,17 +7,17 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import com.salesianostriana.dam.proyectohermandadestrella.model.Hermano;
-import com.salesianostriana.dam.proyectohermandadestrella.servicio.HermanoServicio;
+import com.salesianostriana.dam.proyectohermandadestrella.model.Producto;
+import com.salesianostriana.dam.proyectohermandadestrella.servicio.ProductoServicio;
 
 @Controller
-public class HermanoController {
+public class ProductoController {
 
 	@Autowired
-	private HermanoServicio hermanoServicio;
+	private ProductoServicio ProductoServicio;
 
-	public HermanoController(HermanoServicio hermanoServicio) {
-		this.hermanoServicio = hermanoServicio;
+	public ProductoController(ProductoServicio ProductoServicio) {
+		this.ProductoServicio = ProductoServicio;
 	}
 
 	// Mappings para las paginas de relleno
@@ -64,19 +64,19 @@ public class HermanoController {
 
 	@GetMapping("/admin")
 	public String listarTodos(Model model) {
-		model.addAttribute("lista", hermanoServicio.findAll());
-		return "listadoHermanos";
+		model.addAttribute("lista", ProductoServicio.findAll());
+		return "listadoProductos";
 	}
 
 	@GetMapping("/nuevo")
 	public String mostrarFormulario(Model model) {
-		model.addAttribute("hermano", new Hermano());
-		return "form";
+		model.addAttribute("Producto", new Producto());
+		return "inicioSesion";
 	}
 
 	@PostMapping("/nuevo/submit")
-	public String procesaFormulario(@ModelAttribute("hermano") Hermano hermano) {
-		hermanoServicio.save(hermano);
+	public String procesaFormulario(@ModelAttribute("Producto") Producto Producto) {
+		ProductoServicio.save(Producto);
 		return "redirect:/admin";
 	}
 }
