@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="https://www.thymeleaf.org">
+
+<head>
+	<title>Hermandad de la estrella</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+		th:href="@{https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css}">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css"
+		th:href="@{https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css}">
+	<link rel="shortcut icon" href="static/img/escudo.png" th:href="@{static/img/escudo.png}">
+	<link rel="stylesheet" href="/css/estilos.css" type="text/css" th:href="@{/css/estilos.css}">
+</head>
+
+
+<body>
+	<header th:replace="~{fragmentos/encabezado::encabezado}"> </header>
+	<div class="container bg-white border p-5 rounded w-50 mt-5" id="registroProductos">
+		<h2 class="mx-auto texto">Añadir producto</h2>
+		<form method="POST" action="#" th:action="@{/nuevo/submit}" th:object="${producto}">
+			<table>
+				<tr>
+					<td><input type="hidden" th:field="*{id}" id="id" /></td>
+				</tr>
+				<tr>
+					<td><label for="nombre">Nombre</label></td>
+					<td><input type="text" name="nombre" th:field="*{nombre}" /></td>
+				</tr>
+				<tr>
+					<td><label for="descripcion">Descripcion</label></td>
+					<td><textarea rows="4" th:field="*{descripcion}"></textarea></td>
+				</tr>
+				<tr>
+					<td><label for="pvp">Precio Unitario</label></td>
+					<td><input type="number" th:field="*{pvp}" /></td>
+				</tr>
+
+				<tr>
+					<td><label for="fechaDeEntrada" class="form-label">Indique
+							la fecha de alta del producto</label></td>
+					<td><input type="date" class="form-control" id="fechaDeEntrada" name="fechaDeEntrada"
+							th:field="*{fechaDeEntrada}"></td>
+				</tr>
+				<tr>
+					<td><input class="btn-danger" type="submit" name="enviar" value="Enviar" /></td>
+				</tr>
+			</table>
+		</form>
+	</div>
+</body>
+
+</html>
