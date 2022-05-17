@@ -14,10 +14,10 @@ import com.salesianostriana.dam.proyectohermandadestrella.servicio.ProductoServi
 public class ProductoController {
 
 	@Autowired
-	private ProductoServicio ProductoServicio;
+	private ProductoServicio productoServicio;
 
-	public ProductoController(ProductoServicio ProductoServicio) {
-		this.ProductoServicio = ProductoServicio;
+	public ProductoController(ProductoServicio productoServicio) {
+		this.productoServicio = productoServicio;
 	}
 
 	// Mappings para las paginas de relleno
@@ -64,19 +64,19 @@ public class ProductoController {
 
 	@GetMapping("/admin")
 	public String listarTodos(Model model) {
-		model.addAttribute("lista", ProductoServicio.findAll());
-		return "listadoProductos";
+		model.addAttribute("productos", productoServicio.findAll());
+		return "indexSesion";
 	}
 
 	@GetMapping("/nuevo")
 	public String mostrarFormulario(Model model) {
-		model.addAttribute("Producto", new Producto());
-		return "inicioSesion";
+		model.addAttribute("producto", new Producto());
+		return "form";
 	}
 
 	@PostMapping("/nuevo/submit")
-	public String procesaFormulario(@ModelAttribute("Producto") Producto Producto) {
-		ProductoServicio.save(Producto);
+	public String procesaFormulario(@ModelAttribute("producto") Producto producto) {
+		productoServicio.save(producto);
 		return "redirect:/admin";
 	}
 }

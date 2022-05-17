@@ -16,7 +16,7 @@ import lombok.NoArgsConstructor;
  * 
  *         Esta clase será la que nos va a ayudar a la hora de crear los productos
  *         dentro de la aplicación para ello vamos a guardar los datos básicos
- *         que debe tener un hermano.
+ *         que debe tener un producto.
  *
  */
 @Data
@@ -30,9 +30,10 @@ public class Producto {
 	@GeneratedValue
 	private Long id;
 	
-	private int pvp;
+	private double pvp;
 		
-	private String descripcion,nombreHermano,imagen;
+	private String nombre,descripcion;
 
 	private LocalDate fechaDeEntrada;
 }
+	
