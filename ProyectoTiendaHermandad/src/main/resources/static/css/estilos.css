@@ -37,3 +37,6 @@ blockquote {
 	overflow: auto;
 	clear: both;
   }
+  .tablaHermanos tbody td img{
+	width: 20%;
+}

@@ -26,9 +26,9 @@ public class Producto {
 	
 	private double pvp;
 		
-	private String nombre,descripcion;
+	private String nombre,descripcion,imagen;
 	
-	@DateTimeFormat(pattern = "dd-MM-yyyy")
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate fechaDeEntrada;
 }
 	

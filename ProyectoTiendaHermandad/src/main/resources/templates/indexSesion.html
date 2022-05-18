@@ -17,33 +17,59 @@
 
 <body>
 	<header th:replace="~{fragmentos/encabezado::encabezado}"> </header>
-	<div class="container mt-3">
-	</div>
+	<div class="container mt-3"></div>
 	<div class="container mt-3">
 		<h2 class="texto">Listado de Productos</h2>
-		<a  class="btn btn-primary" href="form.html" th:href="@{/nuevo}">Insertar un nuevo producto</a>
+		<a class="btn btn-primary" href="form.html" th:href="@{/nuevo}">Insertar
+			un nuevo producto</a>
 		<table class="table tablaHermanos">
 			<thead>
 				<tr>
+					<th></th>
 					<th>Nombre</th>
-					<th>descripcion</th>
-					<th>precio</th>
-					<th>Fecha Entrada</th>
+					<th>Descripción</th>
+					<th>Precio Unitario</th>
+					<th>Fecha de Alta</th>
 				</tr>
 			</thead>
 			<tbody>
 				<tr class="tabla" th:each="producto : ${productos}">
-					<td></td>
+					<td><img
+						th:src="${not (#strings.isEmpty(producto.imagen))} 
+									  ? ${producto.imagen} : 'https://upload.wikimedia.org/wikipedia/commons/d/da/Imagen_no_disponible.svg'"
+						class="img-responsive icono-categoria w-25" alt="imagen" /></td>
 					<td th:text="${producto.nombre}">Nombre</td>
 					<td th:text="${producto.descripcion}">Nombre</td>
 					<td th:text="${#numbers.formatCurrency(producto.pvp)}">Nombre</td>
-					<td th:field="${#temporals.format(producto.fechaDeEntrada)}">Nombre</td>
+					<td th:text="${#temporals.format(producto.fechaDeEntrada)}">Nombre</td>
+					<td class="operaciones"><a href="#" class="btn btn-primary">Editar</a>
+						<button type="button" class="btn btn-danger" data-toggle="modal"
+							th:href="@{/borrarProducto/{id}(id=${producto.id})}"
+							data-target="#delete-modal">Borrar</button></td>
 				</tr>
 			</tbody>
 		</table>
 	</div>
-	<br />
-	<br />
+	<!--<div class="modal fade" id="delete-modal" tabindex="-1" role="dialog">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h4 class="modal-title">Borrar producto</h4>
+				</div>
+				<div class="modal-body">
+					<p>¿Está usted seguro de borrar este producto?</p>
+					<button type="button" class="btn btn-default" data-dismiss="modal">No</button>
+					<a href="#" class="btn btn-danger">Sí</a>
+				</div>
+			</div>
+
+		</div>
+	</div>-->
+
 </body>
 
 </html>
