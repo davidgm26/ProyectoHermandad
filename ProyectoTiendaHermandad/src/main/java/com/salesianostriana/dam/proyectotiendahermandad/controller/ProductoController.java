@@ -21,54 +21,20 @@ public class ProductoController {
 		this.productoServicio = productoServicio;
 	}
 
-	// Mappings para las paginas de relleno
-	@GetMapping({ "/index", "/" })
-	public String mostrarPagPrincipal() {
-		return "index";
-	}
-
-	@GetMapping("/cristo")
-	public String mostrarPagCristo() {
-		return "cristo";
-	}
-
-	@GetMapping("/virgen")
-	public String mostrarPagVirgen() {
-		return "virgen";
-	}
-
-	@GetMapping("/juntaDeGobierno")
-	public String mostrarPagJuntaGobierno() {
-		return "juntaDeGobierno";
-	}
-
-	@GetMapping("/reglas")
-	public String mostrarReglas() {
-		return "reglas";
-	}
-
-	@GetMapping("/musica")
-	public String mostrarMusica() {
-		return "composicionesMusicales";
-	}
-
-	@GetMapping("/recorrido")
-	public String mostrarRecorrido() {
-		return "recorrido";
-	}
-
 	// Mappings sesión iniciada
 	
+		@GetMapping("/admin")
+	public String listarTodos(Model model) {
+		model.addAttribute("productos", productoServicio.findAll());
+		return "indexSesion";
+	}
+		
 	@GetMapping("/inicioSesion")
 	public String mostrarLogin() {
 		return "inicioSesion";
 	}
 
-	@GetMapping("/admin")
-	public String listarTodos(Model model) {
-		model.addAttribute("productos", productoServicio.findAll());
-		return "indexSesion";
-	}
+
 
 	@GetMapping("/nuevo")
 	public String mostrarFormulario(Model model) {
@@ -85,9 +51,24 @@ public class ProductoController {
 	
     @GetMapping ("/borrarProducto/{id}")
     public String productoACarrito (@PathVariable("id") Long id, Model model) {
-    	productoServicio.delete(productoServicio.findById(id));
+    	productoServicio.deleteById(id);
     return "redirect:/admin";
     }
+    
+	@GetMapping("/editar/{id}")
+	public String editarProducto(@PathVariable("id") Long id, Model model) {
+
+		Producto producto = productoServicio.findById(id);
+
+		if (producto != null) {
+			model.addAttribute("producto", producto);
+			return "form";
+		} else {
+			return "redirect:/admin";
+		}
+
+	}
+	
 	
 
 }

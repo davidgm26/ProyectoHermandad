@@ -1,4 +1,5 @@
 <html xmlns:th="https://www.thymeleaf.org">
+
 <head>
 
 <title>Hermandad de la estrella</title>
@@ -42,34 +43,44 @@
 					<td th:text="${producto.descripcion}">Nombre</td>
 					<td th:text="${#numbers.formatCurrency(producto.pvp)}">Nombre</td>
 					<td th:text="${#temporals.format(producto.fechaDeEntrada)}">Nombre</td>
-					<td class="operaciones"><a href="#" class="btn btn-primary">Editar</a>
-						<button type="button" class="btn btn-danger" data-toggle="modal"
-							th:href="@{/borrarProducto/{id}(id=${producto.id})}"
-							data-target="#delete-modal">Borrar</button></td>
+					<td class="operaciones"><a href="#"
+								th:href="@{/editar/{id}(id=${producto.id})}"
+								class="btn btn-primary">Editar</a></td>
+					<td><button type="button" class="btn btn-danger"
+							data-bs-toggle="modal"
+							th:attr="data-bs-target='#myModal'+${producto.id}">Eliminar</button></td>
+					<!-- The Modal -->
+					<div class="modal" id="myModal" th:id="'myModal'+${producto.id}">
+						<div class="modal-dialog">
+							<div class="modal-content">
+
+								<!-- Modal Header -->
+								<div class="modal-header">
+									<h4 class="modal-title">Modal Heading</h4>
+									<button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+								</div>
+
+								<!-- Modal body -->
+								<div class="modal-body">¿Esta seguro que desea eliminar
+									este producto?</div>
+
+								<!-- Modal footer -->
+								<div class="modal-footer">
+									<a class="btn btn-danger"
+										th:href="@{/borrarProducto/{id}(id=${producto.id})}">Eliminar</a>
+									<a class="btn btn-secundary" th:href="@{/admin}">Volver</a>
+								</div>
+
+							</div>
+						</div>
+					</div>
 				</tr>
 			</tbody>
 		</table>
 	</div>
-	<!--<div class="modal fade" id="delete-modal" tabindex="-1" role="dialog">
-		<div class="modal-dialog" role="document">
-			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal"
-						aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
-					<h4 class="modal-title">Borrar producto</h4>
-				</div>
-				<div class="modal-body">
-					<p>¿Está usted seguro de borrar este producto?</p>
-					<button type="button" class="btn btn-default" data-dismiss="modal">No</button>
-					<a href="#" class="btn btn-danger">Sí</a>
-				</div>
-			</div>
-
-		</div>
-	</div>-->
 
 </body>
 
 </html>
+
+<!--th:href="@{/borrarProducto/{id}(id=${producto.id})}"-->
