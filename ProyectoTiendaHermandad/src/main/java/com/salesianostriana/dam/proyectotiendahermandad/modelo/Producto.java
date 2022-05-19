@@ -30,5 +30,7 @@ public class Producto {
 	
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate fechaDeEntrada;
+
+	private int unidadesStock;
 }
 	

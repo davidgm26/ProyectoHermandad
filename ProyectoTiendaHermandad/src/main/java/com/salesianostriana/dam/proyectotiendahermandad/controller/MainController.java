@@ -41,4 +41,12 @@ public class MainController {
 	public String mostrarRecorrido() {
 		return "recorrido";
 	}
+	
+	
+	@GetMapping("/inicioSesion")
+	public String mostrarLogin() {
+		return "inicioSesion";
+	}
+	
+	
 }

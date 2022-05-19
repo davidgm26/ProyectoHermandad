@@ -15,7 +15,7 @@ nav{
 .lateral{
 	background-color: #2f4053
 }
-.tablaHermanos tbody tr:hover{
+.tablaHermanos tbody tr td:hover{
 	background-color: wheat;
 }
 .tabla{

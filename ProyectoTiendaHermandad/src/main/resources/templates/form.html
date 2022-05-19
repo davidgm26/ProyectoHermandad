@@ -17,6 +17,8 @@
 
 <body>
 	<header th:replace="~{fragmentos/encabezado::encabezado}"> </header>
+
+
 	<div class="container bg-white border p-5 rounded w-50 mt-5" id="registroProductos">
 		<h2 class="mx-auto texto">Añadir producto</h2>
 		<form method="POST" action="#" th:action="@{/nuevo/submit}" th:object="${producto}">
@@ -32,10 +34,15 @@
 					<div class="form-outline">
 						<input type="number" step="0.01" class="form-control" th:field="*{pvp}" /> <label
 							class="form-label" for="pvp">Precio
-							Unitario</label> <input type="hidden" th:field="*{id}" id="id" />
-
+							Unitario</label>
+						<input type="hidden" th:field="*{id}" id="id" />
 					</div>
 				</div>
+			</div>
+			<!--Unidades Stock-->
+			<div class="form-outline mb-4">
+				<input type="number" step="1" class="form-control" th:field="*{unidadesStock}"/>
+				<label class="form-label" for="unidadesStock">UnidadesEnStock</label> 
 			</div>
 			<!--Descripcion-->
 			<div class="form-outline mb-4">
@@ -53,15 +60,12 @@
 					<label for="fechaDeEntrada" class="form-label">Indique
 					la fecha de alta del producto</label>
 			</div>
-			<!--<div class="form-outline">
-				<input type="date" class="form-control" id="fechaDeEntrada" name="fechaDeEntrada"
-					th:field="*{fechaDeEntrada}">
-			</div>-->
 			<!--Enviar-->
 			<button class="btn btn-danger btn-block mb-4" type="submit" name="enviar" value="Enviar">Añadir
 				producto</button>
 		</form>
 
+		<a class="btn btn-primary mx-auto" th:href="@{/admin}">Volver</a>
 		<!--Formulario que peta-->
 
 

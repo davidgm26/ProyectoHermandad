@@ -23,12 +23,7 @@ public class ProductoController {
 
 	// Mappings sesión iniciada
 	
-		@GetMapping("/admin")
-	public String listarTodos(Model model) {
-		model.addAttribute("productos", productoServicio.findAll());
-		return "indexSesion";
-	}
-		
+	
 	@GetMapping("/inicioSesion")
 	public String mostrarLogin() {
 		return "inicioSesion";
