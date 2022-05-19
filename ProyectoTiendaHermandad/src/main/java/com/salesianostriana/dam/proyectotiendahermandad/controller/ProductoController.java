@@ -23,13 +23,6 @@ public class ProductoController {
 
 	// Mappings sesión iniciada
 	
-	
-	@GetMapping("/inicioSesion")
-	public String mostrarLogin() {
-		return "inicioSesion";
-	}
-
-
 
 	@GetMapping("/nuevo")
 	public String mostrarFormulario(Model model) {
