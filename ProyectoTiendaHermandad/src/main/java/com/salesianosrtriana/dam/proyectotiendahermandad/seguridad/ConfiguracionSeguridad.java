@@ -1,18 +1,25 @@
 package com.salesianosrtriana.dam.proyectotiendahermandad.seguridad;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.provisioning.InMemoryUserDetailsManager;
+
+import com.salesianostriana.dam.proyectotiendahermandad.repositorio.UserRepo;
+
+
 @Configuration
-/*@EnableWebSecurity*/
-public class ConfiguracionSeguridad /*extends WebSecurityConfigurerAdapter*/{
-}/*
-	private List<Usuario>usuarios;
+@EnableWebSecurity
+public class ConfiguracionSeguridad extends WebSecurityConfigurerAdapter{
 	
     @Autowired
-    private UsuarioRepo usuarioRepo;
+    private UserRepo usuarioRepo;
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
@@ -29,8 +36,9 @@ public class ConfiguracionSeguridad /*extends WebSecurityConfigurerAdapter*/{
             .antMatchers("/private/**").hasAnyRole("USER", "ADMIN")
             .antMatchers("/admin/**").hasRole("ADMIN")
             .anyRequest().permitAll()
-            .and().exceptionHandling().accessDeniedPage("/error")
-            .and().formLogin().loginPage("/").loginProcessingUrl("/login").failureUrl("/login-error").permitAll()
+            .and().exceptionHandling().accessDeniedPage("/")
+            .and().formLogin().defaultSuccessUrl("/")
+            .and().formLogin().loginPage("/index").loginProcessingUrl("/").failureUrl("/login-error").permitAll()
             .and().logout().logoutUrl("/logout").logoutSuccessUrl("/").permitAll();
 
     }
@@ -41,7 +49,8 @@ public class ConfiguracionSeguridad /*extends WebSecurityConfigurerAdapter*/{
 
         InMemoryUserDetailsManager userDetailsManager = new InMemoryUserDetailsManager();
 
-        usuarios.getUsuarios()
+
+        usuarioRepo.getUsuarios()
                 .stream()
                 .map(u -> {
                     return User
@@ -53,9 +62,9 @@ public class ConfiguracionSeguridad /*extends WebSecurityConfigurerAdapter*/{
                 })
                 .forEach(userDetailsManager::createUser);
 
-
+        
         return userDetailsManager;
 
 
     }
-}*/
+}
