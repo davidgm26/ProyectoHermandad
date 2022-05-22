@@ -1,4 +1,4 @@
-package com.salesianosrtriana.dam.proyectotiendahermandad.seguridad;
+package com.salesianostriana.dam.proyectotiendahermandad.seguridad;
 /*
 import java.util.List;
 
