@@ -42,11 +42,11 @@ public class MainController {
 		return "recorrido";
 	}
 	
-	
+	/*
 	@GetMapping("/inicioSesion")
 	public String mostrarLogin() {
 		return "inicioSesion";
 	}
-	
+	*/
 	
 }
