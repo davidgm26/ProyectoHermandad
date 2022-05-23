@@ -19,38 +19,33 @@ import com.salesianostriana.dam.proyectotiendahermandad.repositorio.UserRepo;
 public class ConfiguracionSeguridad extends WebSecurityConfigurerAdapter{
 	
     @Autowired
-    private UserRepo usuarioRepo;
+    private UserRepo usuarios;
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(userDetailsService());
     }
- 
-    
-
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.csrf().disable()
-            .authorizeRequests()
-            .antMatchers("/private/**").hasAnyRole("USER", "ADMIN")
-            .antMatchers("/admin/**").hasRole("ADMIN")
-            .anyRequest().permitAll()
-            .and().exceptionHandling().accessDeniedPage("/")
-            .and().formLogin().defaultSuccessUrl("/")
-            .and().formLogin().loginPage("/index").loginProcessingUrl("/").failureUrl("/login-error").permitAll()
-            .and().logout().logoutUrl("/logout").logoutSuccessUrl("/").permitAll();
+        http
+                .authorizeRequests()
+                .antMatchers("/private/**").hasAnyRole("USER", "ADMIN")
+                .antMatchers("/admin/**").hasRole("ADMIN")
+                .anyRequest().permitAll()
+                .and().exceptionHandling().accessDeniedPage("/error")
+                .and().formLogin()
+                .and().logout().logoutSuccessUrl("/");
 
     }
-    
+
     @Bean
     @Override
     public UserDetailsService userDetailsService() {
 
         InMemoryUserDetailsManager userDetailsManager = new InMemoryUserDetailsManager();
 
-
-        usuarioRepo.getUsuarios()
+        usuarios.getUsuarios()
                 .stream()
                 .map(u -> {
                     return User
@@ -62,7 +57,7 @@ public class ConfiguracionSeguridad extends WebSecurityConfigurerAdapter{
                 })
                 .forEach(userDetailsManager::createUser);
 
-        
+
         return userDetailsManager;
 
 

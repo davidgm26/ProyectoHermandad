@@ -20,7 +20,9 @@ public class UserRepo{
 	}
 
 	public Optional<Usuario> findUserByUsername(String username) {
-		return usuarios.stream().filter(u -> u.getUsername().equals(username)).findFirst();
+		return usuarios.stream()
+				.filter(u -> u.getUsername().equals(username))
+				.findFirst();
 	}
 
 	@PostConstruct

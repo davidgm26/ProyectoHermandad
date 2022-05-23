@@ -7,11 +7,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class MainController {
     
 
-	@GetMapping({ "/index", "/" })
+/*	@GetMapping({ "/index", "/" })
 	public String mostrarPagPrincipal() {
 		return "index";
 	}
-
+*/
 	@GetMapping("/cristo")
 	public String mostrarPagCristo() {
 		return "cristo";
