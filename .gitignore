@@ -19,7 +19,7 @@ ProyectoTiendaHermandad/db/
 ### Eclipse ###
 
 .metadata
-bin/
+bin/ermi
 tmp/
 *.tmp
 *.bak
