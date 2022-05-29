@@ -1,7 +1,5 @@
 package com.salesianostriana.dam.proyectotiendahermandad.modelo;
 
-import java.time.LocalDate;
-
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -12,12 +10,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Builder
 public class Usuario {
-	
-	private String username, password, role;
-	private String nombre, apellidos;
-	private LocalDate fechaNacimiento;
-	
-	
 
+	private String username,role,password,nombre;
+	
 }
-
