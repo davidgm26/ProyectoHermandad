@@ -11,11 +11,11 @@ import org.springframework.stereotype.Repository;
 import com.salesianostriana.dam.proyectotiendahermandad.modelo.Usuario;
 
 @Repository
-public class UsuarioRepo {
+public class UserRepo{
 
 	private List<Usuario> usuarios;
 
-	public List<Usuario>getUsuarios() {
+	public List<Usuario> getUsuarios() {
 		return Collections.unmodifiableList(usuarios);
 	}
 
@@ -24,31 +24,26 @@ public class UsuarioRepo {
 				.filter(u -> u.getUsername().equals(username))
 				.findFirst();
 	}
-	
+
 	@PostConstruct
-	public void init() {
-		usuarios = List.of(
-				Usuario.builder()
-					.username("user")
-					.password("1234")
-					.role("USER")
-					.nombre("Usuario Basico")
-					.build()
-				,
-				Usuario.builder()
-				.username("admin")
-				.password("admin")
-				.role("ADMIN")
-				.nombre("Usuario Administrador")
-				.build()
-				
-				
-				);
-				
+	public void inir() {
+	usuarios=List.of(Usuario.builder()
+			.username("user")
+			.password("user1234")
+			.role("USER")
+			.nombre("Usuario Basico")
+			.build()
+			
+			,
+			
+			Usuario.builder()
+			.username("admin")
+			.password("admin")
+			.role("ADMIN")
+			.nombre("Usuario administrador")
+			.build()
+			
+			);
+
 	}
-	
-	
-
 }
-
-
