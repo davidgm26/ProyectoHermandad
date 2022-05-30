@@ -1,5 +1,5 @@
 /.metadata/
-ProyectoTiendaHermandad/db/
+ProyectoTiendaHermandad/db/*
 
 /target/
 !.mvn/wrapper/maven-wrapper.jar
