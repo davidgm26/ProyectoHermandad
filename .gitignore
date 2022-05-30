@@ -4,6 +4,7 @@ ProyectoTiendaHermandad/db/
 /target/
 !.mvn/wrapper/maven-wrapper.jar
 
+.vscode/settings.json
 ### STS ###
 .apt_generated
 .classpath
