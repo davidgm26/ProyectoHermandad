@@ -40,3 +40,13 @@ blockquote {
   .tablaHermanos tbody td img{
 	width: 20%;
 }
+
+#imgCristo{
+	width: 25%;
+}
+
+@media screen and (max-width: 414px) {
+	#imgCristo{
+		width: 100%;
+	}
+}
