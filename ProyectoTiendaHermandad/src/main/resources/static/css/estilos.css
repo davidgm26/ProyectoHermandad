@@ -40,3 +40,20 @@ blockquote {
   .tablaHermanos tbody td img{
 	width: 20%;
 }
+
+#imgCristo{
+	width: 25%;
+}
+
+@media screen and (max-width: 414px) {
+	#imgCristo{
+		width: 100%;
+	}
+}
+.duro{
+	font-size: 400;
+	font-weight: bold;
+}
+.duro2{
+	font-weight: lighter;
+}
