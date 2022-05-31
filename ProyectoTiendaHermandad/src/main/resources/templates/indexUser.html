@@ -24,22 +24,16 @@
 			<div class="container-fluid row mx-auto bg-white">
 				<div class="container-fluid bg-white border p-5 rounded mt-5 float-start row col-lg-3 col-sm-12 mx-auto"
 					th:each="producto : ${productos}">
-	
 					<img th:src="${not (#strings.isEmpty(producto.imagen))} 
 									  ? ${producto.imagen} : 'https://upload.wikimedia.org/wikipedia/commons/d/da/Imagen_no_disponible.svg'"
 						class="img-responsive icono-categoria col-12" alt="imagen" />
 					<p class="w-100" th:text="${producto.nombre}">Nombre</p>
 					<p class="w-100" th:text="${#numbers.formatCurrency(producto.pvp)}">Nombre</p>
-	
 					<a href="" class="btn-primary btn rounded">Comprar</a>
 				</div>
 			</div>
 		</main>
 	</div>
-
-
-
-</html>
 </body>
 
 </html>
