@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es" xmlns:th="https://www.thymeleaf.org">
+<html lang="es" xmlns:th="https://www.thymeleaf.org" class="lateral">
 
 <head>
 	<title>Hermandad de la estrella</title>
@@ -14,11 +14,11 @@
 	<link rel="stylesheet" href="/css/estilos.css" type="text/css" th:href="@{/css/estilos.css}">
 </head>
 
-<body>
-	<div class="container-fluid row w-100 lateral mx-0 p-0">
-		<header th:replace="~{fragmentos/encabezado::encabezado}">
+<body class="lateral">
+	<div class="container-fluid lateral">
+		<header class="w-100" th:replace="~{fragmentos/encabezado::encabezado}">
 		</header>
-		<nav th:replace="~{fragmentos/navBarUsuario::menuUsuario}">
+		<nav class="w-100" th:replace="~{fragmentos/navBar::menu}">
 		</nav>
 		<main class="mx-auto w-75">
 			<div class="container-fluid row mx-auto bg-white">
@@ -200,8 +200,11 @@
 				</article>
 			</div>
 		</main>
-	</div>
 
+		<footer class="w-100" th:replace="~{fragmentos/footer::footer}">
+
+		</footer>
+	</div>
 </body>
 
 </html>
