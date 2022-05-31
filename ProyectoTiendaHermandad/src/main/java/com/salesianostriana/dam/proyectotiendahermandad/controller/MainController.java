@@ -3,6 +3,11 @@ package com.salesianostriana.dam.proyectotiendahermandad.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
+/**
+ * Esta clase será el controlador para todo lo relacionado con las vistas de acceso público 
+ * @author garcia.madav20
+ *
+ */
 @Controller
 public class MainController {
     

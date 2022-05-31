@@ -1,7 +1,5 @@
 package com.salesianostriana.dam.proyectotiendahermandad.seguridad;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -13,7 +11,6 @@ import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 
-import com.salesianostriana.dam.proyectotiendahermandad.modelo.Usuario;
 import com.salesianostriana.dam.proyectotiendahermandad.repositorio.UsuarioRepo;
 
 @Configuration
@@ -30,17 +27,17 @@ public class ConfiguracionSeguridad extends WebSecurityConfigurerAdapter{
   
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http
-                .csrf().disable()
-                .authorizeRequests()
-                .antMatchers("/private/**").hasAnyRole("USER", "ADMIN")
-                .antMatchers("/admin/**", "/gestion/**").hasRole("ADMIN")
-                .anyRequest().permitAll()
-                .and().exceptionHandling().accessDeniedPage("/error")
-                .and().formLogin().loginPage("/").loginProcessingUrl("/login")
-                		.defaultSuccessUrl("/private")
-                		.failureUrl("/login-error").permitAll()
-                .and().logout().logoutUrl("/logout").logoutSuccessUrl("/").permitAll();
+    	  http
+          .csrf().disable()
+          .authorizeRequests()
+          .antMatchers("/").hasAnyRole("ADMIN")
+          .antMatchers("/").hasRole("ADMIN")
+          .anyRequest().permitAll()
+          .and().exceptionHandling().accessDeniedPage("/")
+          .and().formLogin().loginPage("/").loginProcessingUrl("/login")
+          .defaultSuccessUrl("/")
+          .failureUrl("/").permitAll()
+          .and().logout().logoutUrl("/").logoutSuccessUrl("/").permitAll();
 
     }
       
