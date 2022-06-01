@@ -12,42 +12,160 @@
 		th:href="@{https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css}">
 	<link rel="shortcut icon" href="static/img/escudo.png" th:href="@{static/img/escudo.png}">
 	<link rel="stylesheet" href="/css/estilos.css" type="text/css" th:href="@{/css/estilos.css}">
+	<script>
+
+		document.getElementById("nombre").addEventListener("blur", comprobarNombre);
+		document.getElementById("pvp").addEventListener("blur", comprobarPrecio);
+
+		function revisarFormulario() {
+
+			let resultado = false;
+
+			resultado = comprobarNombre() &&
+				comprobarPrecio() &&
+				comprobarDescripcion()&&
+				comprobarStock();
+
+			formulario.enviar.className = resultado ? "btn btn-success mb-2" : "btn btn-danger mb-2";
+
+			return resultado; //lo tengo a false para que nunca envíe el formulario, cuando esto entrara en producción, habría que poner return resultado;
+		}
+
+		function comprobarNombre() {
+
+			let regex = /^[a-zA-Z0-9\_\-]{4,50}$/; // Letras, numeros, guion y guion_bajo
+			let nombre = document.getElementById("nombre");
+
+			let resultado = nombre.value != "";
+
+			if (resultado) {
+				nombre.nextElementSibling.hidden = true;
+			} else {
+				nombre.nextElementSibling.hidden = false;
+			}
+
+			cambiarApariencia(nombre, resultado)
+
+			return resultado;
+		}
+
+		function comprobarDescripcion() {
+
+			let regex = /^[a-zA-Z0-9\_\-]{4,50}$/; // Letras, numeros, guion y guion_bajo
+
+			let descripcion = formulario.descripcion;
+
+			let resultado = descripcion.value != "";
+
+			if (resultado) {
+				descripcion.nextElementSibling.hidden = true;
+			} else {
+				descripcion.nextElementSibling.hidden = false;
+			}
+
+			cambiarApariencia(descripcion, resultado)
+
+			return resultado;
+		}
+
+
+		function comprobarPrecio() {
+
+			let precio = formulario.pvp;
+			let resultado = pvp.value != "" && !isNaN(precio.value) && precio.value > 0;
+
+			if (resultado) {
+				pvp.nextElementSibling.hidden = true;
+			} else {
+				pvp.nextElementSibling.hidden = false;
+			}
+
+			cambiarApariencia(pvp, resultado)
+
+			return resultado;
+
+		}
+
+		function comprobarStock() {
+
+			let unidadesStock = formulario.unidadesStock;
+			let resultado = unidadesStock.value != "" && !isNaN(unidadesStock.value) && unidadesStock.value > 0;
+
+			if (resultado) {
+				unidadesStock.nextElementSibling.hidden = true;
+			} else {
+				unidadesStock.nextElementSibling.hidden = false;
+			}
+
+			cambiarApariencia(unidadesStock, resultado)
+
+			return resultado;
+		}
+
+
+
+
+		function cambiarApariencia(campo, estado) {
+			if (estado) {
+				campo.classList.remove("border-danger");
+				campo.classList.add("border-success");
+				campo.parentNode.nextElementSibling.style.visibility = 'hidden';
+				//parentNode es el nodo HTML padre que contiene a un nodo. NextElementSibling es el siguiente elemento hermano. 
+				//por tanto, al desplazarme por el árbol estoy accediendo al siguiente hermano al nodo padre 
+				//(ver el código HTML para comprender el recorrido que estamos haciendo)
+			}
+			else {
+				campo.classList.remove("border-success");
+				campo.classList.add("border-danger");
+				campo.parentNode.nextElementSibling.style.visibility = 'visible';
+			}
+
+		}
+	</script>
+	<style type="text/css">
+		.mensajeError {
+			visibility: hidden;
+		}
+	</style>
 </head>
-
-
 <body>
 	<header th:replace="~{fragmentos/encabezado::encabezado}"></header>
-
-
 	<div class="container bg-white border p-5 rounded w-50 mt-5" id="registroProductos">
 		<h2 class="mx-auto texto">Añadir producto</h2>
-		<form method="POST" action="#" th:action="@{/nuevo/submit}" th:object="${producto}">
+		<form method="POST" action="#" th:action="@{/nuevo/submit}" th:object="${producto}"
+			onsubmit="return revisarFormulario()" id="formulario" name="formulario">
 			<!--Primera fila-->
 			<div class="row mb-4">
 				<div class="col">
 					<div class="form-outline">
-						<input type="text" name="nombre" class="form-control" th:field="*{nombre}" /> <label
-							class="form-label" for="nombre">Nombre</label>
+						<input type="text" name="nombre" class="form-control" th:field="*{nombre}" />
+						<div class="errorForm text-danger" id="errorPvp"></div>
+						<label class="form-label" for="nombre">Nombre</label>
 					</div>
+
+					<div class="mensajeError text-danger" id="errorNombre">Introduzca un nombre para el producto</div>
+
 				</div>
 				<div class="col">
 					<div class="form-outline">
-						<input type="number" step="0.01" class="form-control" th:field="*{pvp}" /> <label
-							class="form-label" for="pvp">Precio
-							Unitario</label>
+						<input type="number" step="0.01" class="form-control" th:field="*{pvp}" />
+						<label class="form-label" for="pvp">Precio Unitario</label>
 						<input type="hidden" th:field="*{id}" id="id" />
 					</div>
+					<div class="mensajeError text-danger" id="errorPvp">Introduzca un valor superior a 0</div>
 				</div>
 			</div>
 			<!--Unidades Stock-->
 			<div class="form-outline mb-4">
-				<input type="number" step="1" class="form-control" th:field="*{unidadesStock}"/>
-				<label class="form-label" for="unidadesStock">UnidadesEnStock</label> 
+				<input type="number" step="1" class="form-control" th:field="*{unidadesStock}" />
+				<label class="form-label" for="unidadesStock">UnidadesEnStock</label>
 			</div>
 			<!--Descripcion-->
 			<div class="form-outline mb-4">
-				<textarea class="form-control" id="form6Example7" rows="4" th:field="*{descripcion}"></textarea>
+				<textarea class="form-control" id="descripcion" rows="4" th:field="*{descripcion}"></textarea>
 				<label class="form-label" for="descripcion">Descripcion</label>
+			</div>
+			<div class="mensajeError text-danger" id="errorPvp">Introduzca una pequeña descripción del producto.
 			</div>
 			<div class="form-outline">
 				<input type="text" name="imagen" class="form-control" th:field="*{imagen}" /> <label class="form-label"
@@ -56,8 +174,8 @@
 			</div>
 			<br>
 			<div class="form-outline">
-					<input type="date" name="fechaDeEntrada" th:field="*{fechaDeEntrada}" />
-					<label for="fechaDeEntrada" class="form-label">Indique
+				<input type="date" name="fechaDeEntrada" th:field="*{fechaDeEntrada}" />
+				<label for="fechaDeEntrada" class="form-label">Indique
 					la fecha de alta del producto</label>
 			</div>
 			<!--Enviar-->
@@ -66,38 +184,6 @@
 		</form>
 
 		<a class="btn btn-primary mx-auto" th:href="@{/admin}">Volver</a>
-		<!--Formulario que peta-->
-
-
-		<!--<form method="POST" action="#" th:action="@{/nuevo/submit}" th:object="${producto}">
-			<table class="table">
-				<tr>
-					<td><input type="hidden" th:field="*{id}" id="id" /></td>
-				</tr>
-				<tr>
-					<td><label for="nombre">Nombre</label></td>
-					<td><input type="text" name="nombre" th:field="*{nombre}" /></td>
-				</tr>
-				<tr>
-					<td><label for="descripcion">Descripcion</label></td>
-					<td><textarea rows="4" th:field="*{descripcion}"></textarea></td>
-				</tr>
-				<tr>
-					<td><label for="pvp">Precio Unitario</label></td>
-					<td><input type="number" th:field="*{pvp}" /></td>
-				</tr>
-
-				<tr>
-					<td><label for="fechaDeEntrada" class="form-label">Indique
-							la fecha de alta del producto</label></td>
-					<td><input type="date" class="form-control" id="fechaDeEntrada" name="fechaDeEntrada"
-							th:field="*{fechaDeEntrada}"></td>
-				</tr>
-				<tr>
-					<td><input class="btn-danger" type="submit" name="enviar" value="Enviar" /></td>
-				</tr>
-			</table>
-		</form>-->
 	</div>
 </body>
 
