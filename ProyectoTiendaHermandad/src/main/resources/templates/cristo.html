@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es" xmlns:th="https://www.thymeleaf.org">
+<html lang="es" xmlns:th="https://www.thymeleaf.org" class="lateral">
 
 <head>
 	<title>Hermandad de la estrella</title>
@@ -14,16 +14,16 @@
 	<link rel="stylesheet" href="/css/estilos.css" type="text/css" th:href="@{/css/estilos.css}">
 </head>
 
-<body>
-	<div class="container-fluid row w-100 lateral mx-0 p-0">
-		<header th:replace="~{fragmentos/encabezado::encabezado}">
+<body class="lateral">
+	<div class="container-fluid lateral">
+		<header class="w-100" th:replace="~{fragmentos/encabezado::encabezado}">
 		</header>
-		<nav th:replace="~{fragmentos/navBarUsuario::menuUsuario}">
+		<nav class="w-100" th:replace="~{fragmentos/navBar::menu}">
 		</nav>
 		<main class="mx-auto w-75">
 			<div class="container-fluid row mx-auto bg-white">
 				<article class="letraPag">
-					<img src="/img/cristo.jpg" class="rounded float-start w-25 p-3" alt="">
+					<img src="/img/cristo.jpg" class="rounded float-start p-3" alt="" id="imgCristo">
 					(…) Y pues, esta Santísima Señora gozó el privilegio de ser concebida sin culpa original, precedido
 					de
 					los méritos de la Pasión, Cruz y Penas de su Santísimo Hijo, Jesucristo Nuestro Señor, previstos por
@@ -79,9 +79,6 @@
 						Cruz,
 						que Iafundo en Triana Diego Granado y Mosquera elaño de 1644”
 					</blockquote>
-
-
-
 
 					A las 13 horas se ha terminado de descifrar el documento, colocado en el interior de la Imagen de
 					Nuestro Padre Jesús de las Penas, en esta ocasión hemos sido testigos 25 personas, apuntadas con sus
@@ -203,8 +200,11 @@
 				</article>
 			</div>
 		</main>
-	</div>
 
+		<footer class="w-100" th:replace="~{fragmentos/footer::footer}">
+
+		</footer>
+	</div>
 </body>
 
 </html>
