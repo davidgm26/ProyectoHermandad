@@ -123,3 +123,10 @@ blockquote {
 .duro2{
 	font-weight: lighter;
 }
+
+.mensajeError{
+	visibility: hidden;
+}
+.error{
+	border: 3px solid #bb2929;
+}
