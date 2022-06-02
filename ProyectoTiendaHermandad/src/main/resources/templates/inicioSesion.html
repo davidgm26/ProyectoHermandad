@@ -20,12 +20,13 @@
 	th:href="@{/css/estilos.css}">
 </head>
 <body>
-	<header th:replace="~{fragmentos/encabezado::encabezado}"> </header>
+	<header th:replace="~{fragmentos/encabezado::encabezado}"></header>
 	<div class="container bg-white border p-5 rounded w-50 mt-5"
 		id="cajaInicio">
 		<h1 class="h2 text-center mb-4">Inicio de Sesión</h1>
-		<p th:if="${loginError}" class="error">Error en el nombre de usuario y/o contraseña</p>
-		<form action="../index.html" class="mx-auto" id="formulario"
+		<p th:if="${loginError}" class="error">Error en el nombre de
+			usuario y/o contraseña</p>
+		<form action="" th:action="@{/login}" class="mx-auto" id="formulario"
 			method="post">
 			<div class="form-floating">
 
@@ -42,9 +43,10 @@
 					for="password">Contraseña</label>
 			</div>
 			<br> <input type="submit" value="Iniciar sesión" name="enviar"
-				id="enviarInicio" class="btn btn-primary w-100"
-				>
+				id="enviarInicio" class="btn btn-primary w-100">
 		</form>
+		<p th:if="${loginError}" class="error">Error en el nombre de
+			usuario y/o contraseña</p>
 	</div>
 </body>
 </html>

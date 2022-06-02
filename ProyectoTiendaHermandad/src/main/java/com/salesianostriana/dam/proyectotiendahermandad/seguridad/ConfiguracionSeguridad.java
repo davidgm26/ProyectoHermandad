@@ -20,7 +20,7 @@ public class ConfiguracionSeguridad extends WebSecurityConfigurerAdapter{
     @Autowired
     private UsuarioRepo usuarioRepo;
     
-    @Override
+    @Override //Este sirve para ver como se encuentra el usuario a la hora de autenticar el logueo.
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(userDetailsService());
     }
@@ -31,17 +31,16 @@ public class ConfiguracionSeguridad extends WebSecurityConfigurerAdapter{
           .csrf().disable()
           .authorizeRequests()
           .antMatchers("/").hasAnyRole("ADMIN")
-          .antMatchers("/").hasRole("ADMIN")
+          .antMatchers("/admin").hasRole("ADMIN")
           .anyRequest().permitAll()
           .and().exceptionHandling().accessDeniedPage("/")
           .and().formLogin().loginPage("/login").loginProcessingUrl("/login")
-          .defaultSuccessUrl("/")
+          .defaultSuccessUrl("/index")
           .failureUrl("/").permitAll()
-          .and().logout().logoutUrl("/").logoutSuccessUrl("/").permitAll();
+          .and().logout().logoutUrl("/index").logoutSuccessUrl("/").permitAll();
 
     }
       
-    
     @Bean
     @Override
     public UserDetailsService userDetailsService() {
