@@ -25,22 +25,26 @@ public class ConfiguracionSeguridad extends WebSecurityConfigurerAdapter{
         auth.userDetailsService(userDetailsService());
     }
   
+    /**
+     * Método que controla a que páginas se va a dar acceso según el rol del usuario
+     */
     @Override
     protected void configure(HttpSecurity http) throws Exception {
     	  http
-          .csrf().disable()
-          .authorizeRequests()
-          .antMatchers("/").hasAnyRole("ADMIN")
-          .antMatchers("/admin").hasRole("ADMIN")
-          .anyRequest().permitAll()
+          .csrf().disable()//Esta se deja para poder hacer el logout con un enlace y ya
+          .authorizeRequests() //Las peticiones necesarias
+          .antMatchers("/user/**").hasRole("USER") //
+          .antMatchers("/admin/**").hasRole("ADMIN")//Aquí se define el controlador al que pueden acceder según el rol
+         //El (/xxx/**) sirve para poder tener acceso a todos los controladores de ese rol
+          .anyRequest().permitAll()//Esto es para poder usar los archivos de css,js, img...
+          //En los controladores del public,poner /public/xxxx/ y agregar nuevas lineas aquí          
           .and().exceptionHandling().accessDeniedPage("/")
-          .and().formLogin().loginPage("/login").loginProcessingUrl("/login")
-          .defaultSuccessUrl("/index")
-          .failureUrl("/").permitAll()
-          .and().logout().logoutUrl("/index").logoutSuccessUrl("/").permitAll();
+          .and().formLogin().loginPage("/inicioSesion").loginProcessingUrl("/login")
+          		//default Succes handler
+          		.failureUrl("/login-error").permitAll()
+          .and().logout().logoutUrl("/logout").logoutSuccessUrl("/").permitAll();
 
-    }
-      
+}
     @Bean
     @Override
     public UserDetailsService userDetailsService() {
@@ -52,7 +56,7 @@ public class ConfiguracionSeguridad extends WebSecurityConfigurerAdapter{
                 .map(u -> {
                     return User
                             .withUsername(u.getUsername())
-                            .password("{noop}"+ u.getPassword())
+                            .password("{noop}"+ u.getPassword())//noop es para decir si se guarda encriptada o no, en este caso sin encriptar
                             .roles(u.getRole())
                             .build();
 

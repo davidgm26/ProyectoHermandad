@@ -13,37 +13,37 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class MainController {
 
-	@GetMapping({ "/index", "/" })
+	@GetMapping({ "/public/index", "/" })
 	public String mostrarPagPrincipal() {
 		return "index";
 	}
 
-	@GetMapping("/cristo")
+	@GetMapping("/public/cristo")
 	public String mostrarPagCristo() {
 		return "cristo";
 	}
 
-	@GetMapping("/virgen")
+	@GetMapping("/public/virgen")
 	public String mostrarPagVirgen() {
 		return "virgen";
 	}
 
-	@GetMapping("/juntaDeGobierno")
+	@GetMapping("/public/juntaDeGobierno")
 	public String mostrarPagJuntaGobierno() {
 		return "juntaDeGobierno";
 	}
 
-	@GetMapping("/reglas")
+	@GetMapping("/public/reglas")
 	public String mostrarReglas() {
 		return "reglas";
 	}
 
-	@GetMapping("/musica")
+	@GetMapping("/public/musica")
 	public String mostrarMusica() {
 		return "composicionesMusicales";
 	}
 
-	@GetMapping("/recorrido")
+	@GetMapping("/public/recorrido")
 	public String mostrarRecorrido() {
 		return "recorrido";
 	}
