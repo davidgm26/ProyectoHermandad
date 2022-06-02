@@ -16,6 +16,9 @@
 
 		document.getElementById("nombre").addEventListener("blur", comprobarNombre);
 		document.getElementById("pvp").addEventListener("blur", comprobarPrecio);
+		document.getElementById("descripcion").addEventListener("blur", comprobarDescripcion);
+		document.getElementById("unidadesStock").addEventListener("blur", comprobarStock);
+
 
 		function revisarFormulario() {
 
@@ -137,6 +140,7 @@
 			<!--Primera fila-->
 			<div class="row mb-4">
 				<div class="col">
+					<!--Nombre del producto-->
 					<div class="form-outline">
 						<input type="text" name="nombre" class="form-control" th:field="*{nombre}" />
 						<div class="errorForm text-danger" id="errorPvp"></div>
@@ -147,6 +151,7 @@
 
 				</div>
 				<div class="col">
+					<!--Precio unidad-->
 					<div class="form-outline">
 						<input type="number" step="0.01" class="form-control" th:field="*{pvp}" />
 						<label class="form-label" for="pvp">Precio Unitario</label>
@@ -157,13 +162,14 @@
 			</div>
 			<!--Unidades Stock-->
 			<div class="form-outline mb-4">
-				<input type="number" step="1" class="form-control" th:field="*{unidadesStock}" />
+				<input type="number" step="1" class="form-control" th:field="*{unidadesStock}"/>
 				<label class="form-label" for="unidadesStock">UnidadesEnStock</label>
 			</div>
+			<div class="mensajeError text-danger" id="errorPvp">Introduzca un valor superior a 0</div>
 			<!--Descripcion-->
 			<div class="form-outline mb-4">
-				<textarea class="form-control" id="descripcion" rows="4" th:field="*{descripcion}"></textarea>
-				<label class="form-label" for="descripcion">Descripcion</label>
+				<textarea class="form-control" id="descripcion" rows="4" th:field="*{descripcion}" maxlength="150"></textarea>
+				<label class="form-label" for="descripcion">Descripcion (Máximo 150 caracteres)</label>
 			</div>
 			<div class="mensajeError text-danger" id="errorPvp">Introduzca una pequeña descripción del producto.
 			</div>
