@@ -1,33 +1,37 @@
 package com.salesianostriana.dam.proyectotiendahermandad.modelo;
 
+import java.time.LocalDate;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.OneToMany;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+
+@Entity
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Entity
 @Builder
-public class LineaVenta {
-
+public class Venta {
+	
 	@Id
 	@GeneratedValue
-	private long id;
+	private Long id;
 	
-	private Producto p;
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	private LocalDate fechaDeVenta;
+	
+	private double total;
+	
+	@OneToMany (mappedBy = "venta")
+	private  LineaVenta lineaVenta;
 
-	private int ud;
-	
-	private double total; 
-	
-	@OneToOne
-	private Venta venta;
-	
 }
