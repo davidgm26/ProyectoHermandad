@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es" xmlns:th="https://www.thymeleaf.org">
+<html lang="es" xmlns:th="https://www.thymeleaf.org" class="lateral">
 
 <head>
 	<title>Hermandad de la estrella</title>
@@ -14,14 +14,62 @@
 	<link rel="stylesheet" href="/css/estilos.css" type="text/css" th:href="@{/css/estilos.css}">
 </head>
 
+<body class="lateral ">
+	<div class="container-fluid lateral">
+	  <header class="w-100" th:replace="~{fragmentos/encabezado::encabezado}">
+	  </header>
+	  <nav class="w-100" th:replace="~{fragmentos/navBar::menu}">
+	  </nav>
+	  <main class="mx-auto w-75 lateral letraPag">
+		<div class="container-fluid row mx-auto bg-white">
+			<div class="embed-responsive embed-responsive-16by9">
+				<iframe width="560" height="315" src="https://www.youtube.com/embed/lR6ReDhmyJc"
+					title="YouTube video player" frameborder="0"
+					allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+					allowfullscreen class="w-50 mx-auto p-3 d-block"></iframe>
+			</div>
+			<p>&nbsp;</p>
+			<h2>Recorrido</h2>
+			<hr>
+			<p>&nbsp;</p>
+			<h3 class="duro2">Itinerario</h3>
+			<p>
+				Salida (17,30.), San Jacinto, Plaza del Altozano, Puente de Isabel II, Reyes Católicos, Puerta de
+				Triana, San Pablo, Plaza de la Magdalena, Rioja, Velázquez, O'Donnell, CARRERA OFICIAL (20,20h.),
+				Plaza del Triunfo, Fray Ceferino González, Almirantazgo, Arco del Postigo, Dos de Mayo, Arfe,
+				Adriano, Pastor y Landero, Reyes Católicos, Puente de Isabel II, Plaza del Altozano y San Jacinto,
+				Entrada (03,15 h. palio)</p>
 
-<body>
-	<header th:replace="~{fragmentos/encabezado::encabezado}">
+			<p>&nbsp;</p>
+			<p>&nbsp;</p>
 
-	</header>
-	<nav th:replace="~{fragmentos/navBar::menu}">
-	    </nav>
+			<table>
+				<tr class="duro2">
+					<td colspan="3">Distancias</td>
+					<td>Tiempos (Cruz de guía)</td>
+				<tr>
+				</tr>
+				<tr>
+					<td colspan="3">Desde Salida hasta la Campana:&nbsp;1.370 metros</td>
+					<td>&nbsp;Salida hasta la Campana:&nbsp;2 horas y 50 minutos</td>
+				</tr>
+				<tr>
+					<td colspan="3">Desde Salida hasta S.I. Catedral:&nbsp;2.211 metros</td>
+					<td>&nbsp;Salida hasta S.I. Catedral:&nbsp;4 horas</td>
+				</tr>
+				<tr>
+					<td colspan="3">Desde Salida hasta la entrada:&nbsp;3.877 metros</td>
+					<td>&nbsp;Catedral hasta la entrada:&nbsp;3 horas y 15 minutos</td>
+				</tr>
+			</table>
 
-    
-</body>
+			<p>&nbsp;</p>
+			<p>&nbsp;</p>
+
+		</div>
+	</main>
+	  <footer class="w-100" th:replace="~{fragmentos/footer::footer}">
+	  </footer>
+	</div>
+  </body>
 </html>

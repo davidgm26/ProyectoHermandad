@@ -1,29 +1,136 @@
 <!DOCTYPE html>
-<html lang="es" xmlns:th="https://www.thymeleaf.org">
+<html lang="es" xmlns:th="https://www.thymeleaf.org" class="lateral">
 
 <head>
-<title>Hermandad de la estrella</title>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link
-	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
-	rel="stylesheet"
-	th:href="@{https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css}">
-<script
-	src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-<link rel="stylesheet"
-	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css"
-	th:href="@{https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css}">
-<link rel="shortcut icon" href="static/img/escudo.png"
-	th:href="@{img/escudo.png}">
-<link rel="stylesheet" href="/css/estilos.css" type="text/css"
-	th:href="@{/css/estilos.css}">
+	<title>Hermandad de la estrella</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+		th:href="@{https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css}">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css"
+		th:href="@{https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css}">
+	<link rel="shortcut icon" href="static/img/escudo.png" th:href="@{img/escudo.png}">
+	<link rel="stylesheet" href="/css/estilos.css" type="text/css" th:href="@{/css/estilos.css}">
 </head>
 
+<body class="lateral">
+	<div class="container-fluid lateral">
+	  <header class="w-100" th:replace="~{fragmentos/encabezado::encabezado}">
+	  </header>
+	  <nav class="w-100" th:replace="~{fragmentos/navBar::menu}">
+	  </nav>
+	  <main class="mx-auto w-75 letraPag">
+		<div class="container-fluid row mx-auto bg-white">
+			<img src="/img/junta.jpg" class="col-12 w-75 mx-auto p-2 rounded" alt="">
+			<p class="w-100">La actual Junta de Gobierno, elegida en el Cabildo General de Elecciones celebrado el
+				29 de junio de 2021, tomó posesión de sus cargos el día 17 de julio.</p>
 
-<body>
-	<header th:replace="~{fragmentos/encabezado::encabezado}"> </header>
-	<nav th:replace="~{fragmentos/navBar::menu}"></nav>
-</body>
-
+			<div class="container-fluid bg-white p-5 rounded mt-5 float-start row col-lg-4 col-sm-12 mx-auto">
+				<img src="/img/director espiritual(1).png" alt="">
+				<p class="w-100 .text-secondary text-uppercase duro">Director espiritual</p>
+				<p class="w-100">Fray Fco. Javier Jaén Toscano</p>
+			</div>
+			<div class="container-fluid bg-white p-5 rounded mt-5 float-start row col-lg-4 col-sm-12 mx-auto">
+				<img src="/img/Hermano Mayor (2).jpg" alt="">
+				<p class="w-100 .text-secondary text-uppercase duro">Hermano Mayor</p>
+				<p class="w-100">D. Carlos Martín Vázquez</p>
+			</div>
+			<div class="container-fluid bg-white p-5 rounded mt-5 float-start row col-lg-4 col-sm-12 mx-auto">
+				<img src="/img/Teniente Hermano Mayor (3).jpg" alt="">
+				<p class="w-100 .text-secondary text-uppercase duro">Teniente Hermano Mayor</p>
+				<p class="w-100">D. Jesús Gil Pineda</p>
+			</div>
+			<div class="container-fluid bg-white p-5 rounded mt-5 float-start row col-lg-4 col-sm-12 mx-auto">
+				<img src="/img/Consiliario 1.jpg" alt="">
+				<p class="w-100 .text-secondary text-uppercase duro">Consiliario I</p>
+				<p class="w-100">D. Francisco Javier Tey García</p>
+			</div>
+			<div class="container-fluid bg-white p-5 rounded mt-5 float-start row col-lg-4 col-sm-12 mx-auto">
+				<img src="/img/Consiliario 2.jpg" alt="">
+				<p class="w-100 .text-secondary text-uppercase duro">Consiliario II</p>
+				<p class="w-100">D. Luis Manuel Gil Calvo</p>
+			</div>
+			<div class="container-fluid bg-white p-5 rounded mt-5 float-start row col-lg-4 col-sm-12 mx-auto">
+				<img src="/img/Consiliario 3.jpg" alt="">
+				<p class="w-100 .text-secondary text-uppercase duro">Consiliario III</p>
+				<p class="w-100">D. José Joaquín López Díaz</p>
+			</div>
+			<div class="container-fluid bg-white p-5 rounded mt-5 float-start row col-lg-4 col-sm-12 mx-auto">
+				<img src="/img/Consiliario 4.jpg" alt="">
+				<p class="w-100 .text-secondary text-uppercase duro">Consiliario IV</p>
+				<p class="w-100">D. Manuel Vacas Romero </p>
+			</div>
+			<div class="container-fluid bg-white p-5 rounded mt-5 float-start row col-lg-4 col-sm-12 mx-auto">
+				<img src="/img/Consiliario 5.jpg" alt="">
+				<p class="w-100 .text-secondary text-uppercase duro">Consiliario V</p>
+				<p class="w-100">D. Manuel Vacas Romero </p>
+			</div>
+			<div class="container-fluid bg-white p-5 rounded mt-5 float-start row col-lg-4 col-sm-12 mx-auto">
+				<img src="/img/Mayordomo 1.jpg" alt="">
+				<p class="w-100 .text-secondary text-uppercase duro">Mayordomo I</p>
+				<p class="w-100">D. José Luis Garrudo García</p>
+			</div>
+			<div class="container-fluid bg-white p-5 rounded mt-5 float-start row col-lg-4 col-sm-12 mx-auto">
+				<img src="/img/Mayordomo 2.jpg" alt="">
+				<p class="w-100 .text-secondary text-uppercase duro">Mayordomo II</p>
+				<p class="w-100">D. Ángel Gallardo Crujera</p>
+			</div>
+			<div class="container-fluid bg-white p-5 rounded mt-5 float-start row col-lg-4 col-sm-12 mx-auto">
+				<img src="/img/Secretaria I.jpg" alt="">
+				<p class="w-100 .text-secondary text-uppercase duro">Secretaria I</p>
+				<p class="w-100">Dª. Ana María Jaén Sámano</p>
+			</div>
+			<div class="container-fluid bg-white p-5 rounded mt-5 float-start row col-lg-4 col-sm-12 mx-auto">
+				<img src="/img/Secretaria II.jpg" alt="">
+				<p class="w-100 .text-secondary text-uppercase duro">Secretaria II</p>
+				<p class="w-100">Dª. María del Pilar Arincón Fernández</p>
+			</div>
+			<div class="container-fluid bg-white p-5 rounded mt-5 float-start row col-lg-4 col-sm-12 mx-auto">
+				<img src="/img/Prioste 1.jpg" alt="">
+				<p class="w-100 .text-secondary text-uppercase duro">Prioste I</p>
+				<p class="w-100">D. Francisco José Redondo Brenes</p>
+			</div>
+			<div class="container-fluid bg-white p-5 rounded mt-5 float-start row col-lg-4 col-sm-12 mx-auto">
+				<img src="/img/Prioste 2.jpg" alt="">
+				<p class="w-100 .text-secondary text-uppercase duro">Prioste II</p>
+				<p class="w-100">D. Antonio González Muñoz</p>
+			</div>
+			<div class="container-fluid bg-white p-5 rounded mt-5 float-start row col-lg-4 col-sm-12 mx-auto">
+				<img src="/img/Fiscal I.jpg" alt="">
+				<p class="w-100 .text-secondary text-uppercase duro">Fiscal I</p>
+				<p class="w-100">D. Manuel González Guerrero</p>
+			</div>
+			<div class="container-fluid bg-white p-5 rounded mt-5 float-start row col-lg-4 col-sm-12 mx-auto">
+				<img src="/img/Fiscal 2.jpg" alt="">
+				<p class="w-100 .text-secondary text-uppercase duro">Fiscal II</p>
+				<p class="w-100">D. Francisco Javier Fernández Sánchez</p>
+			</div>
+			<div class="container-fluid bg-white p-5 rounded mt-5 float-start row col-lg-4 col-sm-12 mx-auto">
+				<img src="/img/DMG.jpg" alt="">
+				<p class="w-100 .text-secondary text-uppercase duro">Diputado Mayor de Gobierno</p>
+				<p class="w-100">D. Sergio García Real</p>
+			</div>
+			<div class="container-fluid bg-white p-5 rounded mt-5 float-start row col-lg-4 col-sm-12 mx-auto">
+				<img src="/img/Cultos.jpg" alt="">
+				<p class="w-100 .text-secondary text-uppercase duro">Diputado de Cultos</p>
+				<p class="w-100">D. Alfonso Sanféliz Charro</p>
+			</div>
+			<div class="container-fluid bg-white p-5 rounded mt-5 float-start row col-lg-4 col-sm-12 mx-auto">
+				<img src="/img/caridad.jpg" alt="">
+				<p class="w-100 .text-secondary text-uppercase duro">dipùtado de caridad</p>
+				<p class="w-100">D. José Antonio Cortada Tenorio</p>
+			</div>
+			<div class="container-fluid bg-white p-5 rounded mt-5 float-start row col-lg-4 col-sm-12 mx-auto">
+				<img src="/img/formacion.jpg" alt="">
+				<p class="w-100 .text-secondary text-uppercase duro">Diputada de formación</p>
+				<p class="w-100">D. Magdalena Cano Muñoz</p>
+			</div>
+		</div>
+	</main>
+	  <footer class="w-100" th:replace="~{fragmentos/footer::footer}">
+  
+	  </footer>
+	</div>
+  </body>
 </html>

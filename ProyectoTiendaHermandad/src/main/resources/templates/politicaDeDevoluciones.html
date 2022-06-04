@@ -14,12 +14,36 @@
 	<link rel="stylesheet" href="/css/estilos.css" type="text/css" th:href="@{/css/estilos.css}">
 </head>
 
-
 <body>
 	<header th:replace="~{fragmentos/encabezado::encabezado}">
-
 	</header>
-	<nav th:replace="~{fragmentos/navBar::menu}">
-	    </nav>
+	<nav th:replace="~{fragmentos/navBar::menuUsuario}">
+	</nav>
+	<div class="row">
+		<div class="col-md-2 lateral">
+			<!--Columna lateral izquierda-->
+		</div>
+		<div class="col-md-8">
+			<!--Columna Central-->
+			<div class="container bg-white border p-5 rounded w-25 mt-5 float-start" th:each="producto : ${productos}">
+
+				<img th:src="${not (#strings.isEmpty(producto.imagen))} 
+									  ? ${producto.imagen} : 'https://upload.wikimedia.org/wikipedia/commons/d/da/Imagen_no_disponible.svg'"
+					class="img-responsive icono-categoria w-100" alt="imagen" />
+				<p th:text="${producto.nombre}">Nombre</p>
+				<p th:text="${#numbers.formatCurrency(producto.pvp)}">Nombre</p>
+
+				<a href="" class="btn-primary btn rounded">Comprar</a>
+			</div>
+		</div>
+		<div class="col-md-2 lateral">
+			<!--Columna lateral derecha-->
+		</div>
+	</div>
+
+
+
+</html>
 </body>
+
 </html>
