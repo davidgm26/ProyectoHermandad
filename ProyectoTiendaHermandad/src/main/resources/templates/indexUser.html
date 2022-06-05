@@ -29,7 +29,7 @@
 						class="img-responsive icono-categoria col-12" alt="imagen" />
 					<p class="w-100" th:text="${producto.nombre}">Nombre</p>
 					<p class="w-100" th:text="${#numbers.formatCurrency(producto.pvp)}">Nombre</p>
-					<a href="" class="btn-primary btn rounded">Comprar</a>
+					<a href="" th:href="@{/productoACarrito/{id}}" class="btn-primary btn rounded ">Comprar</a>
 				</div>
 			</div>
 		</main>

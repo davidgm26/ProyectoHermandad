@@ -3,17 +3,17 @@ package com.salesianostriana.dam.proyectotiendahermandad.modelo;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToOne;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+@Entity
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Entity
 @Builder
 public class LineaVenta {
 
@@ -21,13 +21,16 @@ public class LineaVenta {
 	@GeneratedValue
 	private long id;
 	
-	private Producto p;
+	@ManyToOne
+	private Producto producto;
+	
+	private String nombre;
 
 	private int ud;
 	
-	private double total; 
+	private double subTotal; 
 	
-	@OneToOne
+	@ManyToOne
 	private Venta venta;
 	
 }

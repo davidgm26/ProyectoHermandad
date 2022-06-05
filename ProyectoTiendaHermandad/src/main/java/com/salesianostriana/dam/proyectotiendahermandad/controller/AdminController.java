@@ -85,7 +85,7 @@ public class AdminController {
 	 *         los productos)
 	 */
 	@GetMapping("/admin/borrarProducto/{id}")
-	public String productoACarrito(@PathVariable("id") Long id, Model model) {
+	public String borrarProducto(@PathVariable("id") Long id, Model model) {
 		productoServicio.deleteById(id);
 		return "redirect:/admin";
 	}
