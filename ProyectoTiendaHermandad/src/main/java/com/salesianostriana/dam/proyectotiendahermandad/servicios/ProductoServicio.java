@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 
 import com.salesianostriana.dam.proyectotiendahermandad.modelo.Producto;
 import com.salesianostriana.dam.proyectotiendahermandad.repositorio.ProductoRepositorio;
-import com.salesianostriana.dam.proyectotiendahermandad.servicio.base.BaseService;
 
 @Service
 public class ProductoServicio extends BaseService<Producto, Long, ProductoRepositorio> {
