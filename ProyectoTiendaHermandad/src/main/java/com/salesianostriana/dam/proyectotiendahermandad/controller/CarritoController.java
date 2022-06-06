@@ -34,7 +34,7 @@ public class CarritoController {
     @GetMapping ("/carrito")
     public String showCarrito (Model model) {
     	
-    	if (model.addAttribute("products",carritoServicio.obtenerProductosCarrito()) == null)
+    	if (model.addAttribute("productos",carritoServicio.obtenerProductosCarrito()) == null)
     		return "redirect:/user/indexUsuario";
     	return "carrito";
     }
@@ -69,13 +69,13 @@ public class CarritoController {
     	return 0.0;
     }
     
-    /*
-    @GetMapping("")
+    
+    @GetMapping("checkout")
     public void checkout(){
-    	  	
+    	  	carritoServicio.checkout();
     
     }
-    */
+    
 }
 	
 	

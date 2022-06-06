@@ -40,9 +40,11 @@ public class ConfiguracionSeguridad extends WebSecurityConfigurerAdapter{
           //En los controladores del public,poner /public/xxxx/ y agregar nuevas lineas aquí          
           .and().exceptionHandling().accessDeniedPage("/")
           .and().formLogin().loginPage("/inicioSesion").loginProcessingUrl("/login")
+          
           		//default Succes handler
-          		.failureUrl("/login-error").permitAll()
-          .and().logout().logoutUrl("/logout").logoutSuccessUrl("/").permitAll();
+          .failureUrl("/login-error").permitAll()
+          .and().logout().logoutUrl("/logout").logoutSuccessUrl("/").permitAll()
+          .and().headers().frameOptions().disable();
 
 }
     @Bean

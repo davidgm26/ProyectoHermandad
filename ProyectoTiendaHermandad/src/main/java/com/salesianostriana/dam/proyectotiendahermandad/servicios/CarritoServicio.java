@@ -1,5 +1,7 @@
 package com.salesianostriana.dam.proyectotiendahermandad.servicios;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
@@ -24,8 +26,10 @@ public class CarritoServicio {
 
 	@Autowired
 	private VentaServicio ventaServicio;
-
+	
 	@Autowired
+	private LineaVentaServicio lineaVentaServicio;
+
 	private Map<Producto, Integer> productos = new HashMap<>();
 
 	public CarritoServicio(ProductoRepositorio productoRepositorio) {
@@ -76,28 +80,33 @@ public class CarritoServicio {
 	 * NotEnoughProductsInStockException) y gestionarlo
 	 */
 
-	public double calcularTotalVenta() {
+	public void checkout() {
 		Venta v = new Venta();
+		v.setFechaDeVenta(LocalDate.now());
+		LineaVenta lv;
 		double total = 0;
-		ventaServicio.save(v);
-
+		//ventaServicio.save(v);
 		for (Map.Entry<Producto, Integer> lineaVenta : productos.entrySet()) {
-			LineaVenta.builder()
-				.nombre(lineaVenta.getKey().getNombre())
-				.ud(lineaVenta.getValue())
-				.subTotal(lineaVenta.getKey().getPvp()*lineaVenta.getValue())
-				.build().aniadirAVenta(v);
 			
-			total+=lineaVenta.getKey().getPvp()*lineaVenta.getValue();
+				 LineaVenta.builder()
+						   .nombre(lineaVenta.getKey().getNombre())
+					       .ud(lineaVenta.getValue())
+	         		       .subTotal(lineaVenta.getKey().getPvp()*lineaVenta.getValue())
+				           .build().aniadirAVenta(v);
+
+		}
+		
+		if (!productos.isEmpty()) {
+			ventaServicio.save(v);
+		}
+		productoRepositorio.flush();
+		productos.clear();
 
 		}
 	
-		return total;
-		//Comprobar Stock
-		// Guardar lineas de venta
-		// Vaciar carrito 
-	}
-	
+}
+
+	/*
 	public double calcularDescuento () {
 		double total=0;
 			if (calcularTotalVenta()<50) {
@@ -120,5 +129,5 @@ public class CarritoServicio {
 		}
 		return total;
 	}
-	
-}
+*/	
+

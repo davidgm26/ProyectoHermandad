@@ -42,5 +42,10 @@ public class LineaVenta {
 		venta.getLineaVenta().remove(this);
 		this.venta = null;
 	}
+
+	public static LineaVentaBuilder builder() {
+
+		return null;
+	}
 	
 }

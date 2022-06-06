@@ -29,11 +29,11 @@
 						class="img-responsive icono-categoria col-12" alt="imagen" />
 					<div class="card-body">
 						<p class="w-100 fw-bold letraPag text-uppercase" th:text="${producto.nombre}">Nombre</p>
-						<p class="w-100" th:text="${#numbers.formatCurrency(producto.pvp)}">Nombre</p>
+						<p class="w-100" th:text="${producto.descripcion}">Nombre</p>
 					</div>
 					<div class="card-footer">
 						<p class="w-100" th:text="${#numbers.formatCurrency(producto.pvp)}">Nombre</p>
-						<a href="" th:href="@{/productoACarrito/{id}}" class="btn-primary btn rounded ">Comprar</a>
+						<a href="" th:href="@{/productoACarrito/{id}(id=${producto.id})}" class="btn-primary btn rounded ">Comprar</a>
 					</div>
 				</div>
 			</div>
