@@ -9,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import lombok.AllArgsConstructor;
@@ -41,6 +42,7 @@ public class Producto {
 	@EqualsAndHashCode.Exclude
 	@ToString.Exclude
 	@OneToMany(mappedBy = "producto",fetch = FetchType.EAGER)
+	@Autowired
 	private List<LineaVenta> lineasVenta;
 
 

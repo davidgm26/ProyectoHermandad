@@ -1,6 +1,7 @@
 package com.salesianostriana.dam.proyectotiendahermandad.modelo;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -18,6 +19,7 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
+
 @Entity
 @Data
 @NoArgsConstructor
@@ -34,9 +36,10 @@ public class Venta {
 	
 	private double total;
 	
+	@Builder.Default
 	@EqualsAndHashCode.Exclude
 	@ToString.Exclude
 	@OneToMany (mappedBy = "venta",fetch = FetchType.EAGER)
-	private  List<LineaVenta> lineaVenta;
+	private  List<LineaVenta> lineaVenta = new ArrayList<LineaVenta>();
 
 }

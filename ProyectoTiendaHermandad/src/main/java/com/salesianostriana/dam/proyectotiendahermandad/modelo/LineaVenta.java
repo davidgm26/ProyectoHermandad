@@ -33,4 +33,14 @@ public class LineaVenta {
 	@ManyToOne
 	private Venta venta;
 	
+	public void aniadirAVenta(Venta venta) {
+		this.venta = venta;
+		venta.getLineaVenta().add(this);
+	}
+	
+	public void borrarDeUnaVenta(Venta venta) {
+		venta.getLineaVenta().remove(this);
+		this.venta = null;
+	}
+	
 }

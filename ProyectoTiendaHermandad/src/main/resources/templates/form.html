@@ -76,7 +76,7 @@ function comprobarDescripcion() {
 function comprobarPrecio() {
 
     let precio = formulario.pvp;
-    let resultado = pvp.value != "" && !isNaN(precio.value) && precio.value > 0;
+    let resultado = pvp.value != "" && !isNaN(precio.value) && precio.value >= 0;
 
     if (resultado) {
         pvp.nextElementSibling.hidden = true;

@@ -19,10 +19,12 @@ import com.salesianostriana.dam.proyectotiendahermandad.repositorio.ProductoRepo
 @Scope(value = WebApplicationContext.SCOPE_SESSION, proxyMode = ScopedProxyMode.TARGET_CLASS)
 public class CarritoServicio {
 
-
-
 	@Autowired
 	private ProductoRepositorio productoRepositorio;
+
+	@Autowired
+	private VentaServicio ventaServicio;
+
 	@Autowired
 	private Map<Producto, Integer> productos = new HashMap<>();
 
@@ -73,10 +75,50 @@ public class CarritoServicio {
 	 * pedido, pedido, etc. Se podría tener una excepción propia (del estilo
 	 * NotEnoughProductsInStockException) y gestionarlo
 	 */
-/*
-	public void checkout() {
 
-		List<LineaVenta> lineasVenta = new ArrayList<LineaVenta>();
-		Venta v = Venta.builder().build();
-	}*/
+	public double calcularTotalVenta() {
+		Venta v = new Venta();
+		double total = 0;
+		ventaServicio.save(v);
+
+		for (Map.Entry<Producto, Integer> lineaVenta : productos.entrySet()) {
+			LineaVenta.builder()
+				.nombre(lineaVenta.getKey().getNombre())
+				.ud(lineaVenta.getValue())
+				.subTotal(lineaVenta.getKey().getPvp()*lineaVenta.getValue())
+				.build().aniadirAVenta(v);
+			
+			total+=lineaVenta.getKey().getPvp()*lineaVenta.getValue();
+
+		}
+	
+		return total;
+		//Comprobar Stock
+		// Guardar lineas de venta
+		// Vaciar carrito 
+	}
+	
+	public double calcularDescuento () {
+		double total=0;
+			if (calcularTotalVenta()<50) {
+			
+		} else if(calcularTotalVenta()>50){
+			
+			total=calcularTotalVenta()-10;
+			
+		} else if(calcularTotalVenta()>100) {
+			
+			total=calcularTotalVenta()-20;
+			
+		} else if(calcularTotalVenta()>150) {
+			
+			total=calcularTotalVenta()-30;
+			
+		} else if(calcularTotalVenta()>200) {
+			
+			total=calcularTotalVenta()-50;
+		}
+		return total;
+	}
+	
 }
