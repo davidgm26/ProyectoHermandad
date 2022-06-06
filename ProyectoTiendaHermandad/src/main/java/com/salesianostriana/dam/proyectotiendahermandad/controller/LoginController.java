@@ -9,6 +9,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class LoginController {
 
+    @GetMapping("/login")
+    public String login() {
+        return "index.html";
+    }	
 	
     @GetMapping("/login-error")
     public String loginError(Model model) {
@@ -19,7 +23,7 @@ public class LoginController {
 /*	@GetMapping("/inicioSesion")
 	public String privateIndex(Model model, @AuthenticationPrincipal UserDetails user) {
 		
-		model.addAttribute("usuario", user.getUsername());
+		model.addAttribute("usuario");
 		
 		return "inicioSesion";
 	}

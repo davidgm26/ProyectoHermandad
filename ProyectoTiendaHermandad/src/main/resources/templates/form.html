@@ -153,40 +153,64 @@
 				<div class="col">
 					<!--Precio unidad-->
 					<div class="form-outline">
+<<<<<<< HEAD
+						<input type="number" step="0.01" class="form-control"
+							th:field="*{pvp}" /> <label class="form-label" for="pvp">Precio
+							Unitario</label> <input type="hidden" th:field="*{id}" id="id" />
+=======
 						<input type="number" step="0.01" class="form-control" th:field="*{pvp}" />
 						<label class="form-label" for="pvp">Precio Unitario</label>
 						<input type="hidden" th:field="*{id}" id="id" />
+>>>>>>> 01a7a01401142f5d6566e8e96a2c1be6d60a9868
 					</div>
 					<div class="mensajeError text-danger" id="errorPvp">Introduzca un valor superior a 0</div>
 				</div>
 			</div>
 			<!--Unidades Stock-->
 			<div class="form-outline mb-4">
+<<<<<<< HEAD
+				<input type="number" step="1" class="form-control"
+					th:field="*{unidadesStock}" /> <label class="form-label"
+					for="unidadesStock">UnidadesEnStock</label>
+=======
 				<input type="number" step="1" class="form-control" th:field="*{unidadesStock}"/>
 				<label class="form-label" for="unidadesStock">UnidadesEnStock</label>
+>>>>>>> 01a7a01401142f5d6566e8e96a2c1be6d60a9868
 			</div>
 			<div class="mensajeError text-danger" id="errorPvp">Introduzca un valor superior a 0</div>
 			<!--Descripcion-->
 			<div class="form-outline mb-4">
+<<<<<<< HEAD
+				<textarea class="form-control" id="form6Example7" rows="4"
+					th:field="*{descripcion}"></textarea>
+				<label class="form-label" for="descripcion">Descripcion</label>
+=======
 				<textarea class="form-control" id="descripcion" rows="4" th:field="*{descripcion}" maxlength="150"></textarea>
 				<label class="form-label" for="descripcion">Descripcion (Máximo 150 caracteres)</label>
 			</div>
 			<div class="mensajeError text-danger" id="errorPvp">Introduzca una pequeña descripción del producto.
+>>>>>>> 01a7a01401142f5d6566e8e96a2c1be6d60a9868
 			</div>
 			<div class="form-outline">
-				<input type="text" name="imagen" class="form-control" th:field="*{imagen}" /> <label class="form-label"
-					for="imagen">URL
+				<input type="text" name="imagen" class="form-control"
+					th:field="*{imagen}" /> <label class="form-label" for="imagen">URL
 					Imagen</label>
 			</div>
 			<br>
 			<div class="form-outline">
+<<<<<<< HEAD
+				<input type="date" name="fechaDeEntrada"
+					th:field="*{fechaDeEntrada}" /> <label for="fechaDeEntrada"
+					class="form-label">Indique la fecha de alta del producto</label>
+=======
 				<input type="date" name="fechaDeEntrada" th:field="*{fechaDeEntrada}" />
 				<label for="fechaDeEntrada" class="form-label">Indique
 					la fecha de alta del producto</label>
+>>>>>>> 01a7a01401142f5d6566e8e96a2c1be6d60a9868
 			</div>
 			<!--Enviar-->
-			<button class="btn btn-danger btn-block mb-4" type="submit" name="enviar" value="Enviar">Añadir
-				producto</button>
+			<button class="btn btn-danger btn-block mb-4" type="submit"
+				name="enviar" value="Enviar">Añadir producto</button>
 		</form>
 
 		<a class="btn btn-primary mx-auto" th:href="@{/admin}">Volver</a>

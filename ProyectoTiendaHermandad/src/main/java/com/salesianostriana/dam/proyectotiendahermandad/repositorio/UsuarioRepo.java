@@ -15,7 +15,7 @@ public class UsuarioRepo {
 
 	private List<Usuario> usuarios;
 
-	public List<Usuario>getUsuarios() {
+	public List<Usuario> getUsuarios() {
 		return Collections.unmodifiableList(usuarios);
 	}
 
@@ -46,9 +46,5 @@ public class UsuarioRepo {
 				);
 				
 	}
-	
-	
-
 }
-
-
+	
