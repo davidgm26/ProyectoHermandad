@@ -19,7 +19,7 @@
 		<header class="w-100" th:replace="~{fragmentos/encabezado::encabezado}">
 		</header>
 		<h2 class="texto">Listado de Productos</h2>
-		<a class="btn btn-primary" href="form.html" th:href="@{/nuevo}">Insertar
+		<a class="btn btn-primary" href="form.html" th:href="@{/admin/nuevo}">Insertar
 			un nuevo producto</a>
 		<table class="table tablaHermanos w-100">
 			<thead>
@@ -33,7 +33,7 @@
 					<th>Unidades en Stock</th>
 				</tr>
 			</thead>
-			<tbody>
+			<tbody class="anchoCelda">
 				<tr class="tabla" th:each="producto : ${productos}">
 					<td th:text="${producto.id}">Id</td>
 					<td><img th:src="${not (#strings.isEmpty(producto.imagen))} 
@@ -44,7 +44,7 @@
 					<td th:text="${#numbers.formatCurrency(producto.pvp)}">Nombre</td>
 					<td th:text="${#temporals.format(producto.fechaDeEntrada)}">Nombre</td>
 					<td th:text="${producto.unidadesStock}">Nombre</td>
-					<td class="operaciones"><a href="#" th:href="@{/editar/{id}(id=${producto.id})}"
+					<td class="operaciones"><a href="#" th:href="@{/admin/editar/{id}(id=${producto.id})}"
 							class="btn btn-primary">Editar</a></td>
 					<td><button type="button" class="btn btn-danger" data-bs-toggle="modal"
 							th:attr="data-bs-target='#myModal'+${producto.id}">Eliminar</button></td>
@@ -66,7 +66,7 @@
 								<!-- Modal footer -->
 								<div class="modal-footer">
 									<a class="btn btn-danger"
-										th:href="@{/borrarProducto/{id}(id=${producto.id})}">Eliminar</a>
+										th:href="@{/admin/borrarProducto/{id}(id=${producto.id})}">Eliminar</a>
 									<a class="btn btn-secundary" th:href="@{/admin}">Volver</a>
 								</div>
 

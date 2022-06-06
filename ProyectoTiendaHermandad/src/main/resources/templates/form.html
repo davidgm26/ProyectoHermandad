@@ -11,131 +11,123 @@
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css"
 		th:href="@{https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css}">
 	<link rel="shortcut icon" href="static/img/escudo.png" th:href="@{static/img/escudo.png}">
-	<link rel="stylesheet" href="/css/estilos.css" type="text/css" th:href="@{/css/estilos.css}">
+	<link rel="stylesheet" href="../static/css/estilos.css" type="text/css" th:href="@{/css/estilos.css}">
+	<!--<script type="text/javascript" src="../static/js/js.js" th:src="@{/js/js.js}" defer></script>-->
+	
 	<script>
-
-		document.getElementById("nombre").addEventListener("blur", comprobarNombre);
-		document.getElementById("pvp").addEventListener("blur", comprobarPrecio);
-		document.getElementById("descripcion").addEventListener("blur", comprobarDescripcion);
-		document.getElementById("unidadesStock").addEventListener("blur", comprobarStock);
-
-
-		function revisarFormulario() {
-
-			let resultado = false;
-
-			resultado = comprobarNombre() &&
-				comprobarPrecio() &&
-				comprobarDescripcion()&&
-				comprobarStock();
-
-			formulario.enviar.className = resultado ? "btn btn-success mb-2" : "btn btn-danger mb-2";
-
-			return resultado; //lo tengo a false para que nunca envíe el formulario, cuando esto entrara en producción, habría que poner return resultado;
-		}
-
-		function comprobarNombre() {
-
-			let regex = /^[a-zA-Z0-9\_\-]{4,50}$/; // Letras, numeros, guion y guion_bajo
-			let nombre = document.getElementById("nombre");
-
-			let resultado = nombre.value != "";
-
-			if (resultado) {
-				nombre.nextElementSibling.hidden = true;
-			} else {
-				nombre.nextElementSibling.hidden = false;
-			}
-
-			cambiarApariencia(nombre, resultado)
-
-			return resultado;
-		}
-
-		function comprobarDescripcion() {
-
-			let regex = /^[a-zA-Z0-9\_\-]{4,50}$/; // Letras, numeros, guion y guion_bajo
-
-			let descripcion = formulario.descripcion;
-
-			let resultado = descripcion.value != "";
-
-			if (resultado) {
-				descripcion.nextElementSibling.hidden = true;
-			} else {
-				descripcion.nextElementSibling.hidden = false;
-			}
-
-			cambiarApariencia(descripcion, resultado)
-
-			return resultado;
-		}
+	document.getElementById("nombre").addEventListener("blur", comprobarNombre);
+	document.getElementById("pvp").addEventListener("blur", comprobarPrecio);
+	document.getElementById("descripcion").addEventListener("blur", comprobarDescripcion);
+	document.getElementById("unidadesStock").addEventListener("blur", comprobarStock);
 
 
-		function comprobarPrecio() {
+function revisarFormulario() {
 
-			let precio = formulario.pvp;
-			let resultado = pvp.value != "" && !isNaN(precio.value) && precio.value > 0;
+    let resultado = false;
 
-			if (resultado) {
-				pvp.nextElementSibling.hidden = true;
-			} else {
-				pvp.nextElementSibling.hidden = false;
-			}
+    resultado = comprobarNombre() &&
+        comprobarPrecio() &&
+        comprobarDescripcion() &&
+        comprobarStock();
 
-			cambiarApariencia(pvp, resultado)
+    formulario.enviar.className = resultado ? "btn btn-success mb-2" : "btn btn-danger mb-2";
 
-			return resultado;
+    return resultado;
+}
 
-		}
+function comprobarNombre() {
 
-		function comprobarStock() {
+    let regex = /^[a-zA-Z0-9\_\-]{4,50}$/; // Letras, numeros, guion y guion_bajo
+    let nombre = document.getElementById("nombre");
 
-			let unidadesStock = formulario.unidadesStock;
-			let resultado = unidadesStock.value != "" && !isNaN(unidadesStock.value) && unidadesStock.value > 0;
+    let resultado = nombre.value != "";
 
-			if (resultado) {
-				unidadesStock.nextElementSibling.hidden = true;
-			} else {
-				unidadesStock.nextElementSibling.hidden = false;
-			}
+    if (resultado) {
+        nombre.nextElementSibling.hidden = true;
+    } else {
+        nombre.nextElementSibling.hidden = false;
+    }
 
-			cambiarApariencia(unidadesStock, resultado)
+    cambiarApariencia(nombre, resultado)
 
-			return resultado;
-		}
+    return resultado;
+}
+
+function comprobarDescripcion() {
+
+    let regex = /^[a-zA-Z0-9\_\-]{4,50}$/; // Letras, numeros, guion y guion_bajo
+
+    let descripcion = formulario.descripcion;
+
+    let resultado = descripcion.value != "";
+
+    if (resultado) {
+        descripcion.nextElementSibling.hidden = true;
+    } else {
+        descripcion.nextElementSibling.hidden = false;
+    }
+
+    cambiarApariencia(descripcion, resultado)
+
+    return resultado;
+}
 
 
+function comprobarPrecio() {
+
+    let precio = formulario.pvp;
+    let resultado = pvp.value != "" && !isNaN(precio.value) && precio.value > 0;
+
+    if (resultado) {
+        pvp.nextElementSibling.hidden = true;
+    } else {
+        pvp.nextElementSibling.hidden = false;
+    }
+
+    cambiarApariencia(pvp, resultado)
+
+    return resultado;
+
+}
+
+function comprobarStock() {
+
+    let unidadesStock = formulario.unidadesStock;
+    let resultado = unidadesStock.value != "" && !isNaN(unidadesStock.value) && unidadesStock.value > 0;
+
+    if (resultado) {
+        unidadesStock.nextElementSibling.hidden = true;
+    } else {
+        unidadesStock.nextElementSibling.hidden = false;
+    }
+
+    cambiarApariencia(unidadesStock, resultado)
+
+    return resultado;
+}
 
 
-		function cambiarApariencia(campo, estado) {
-			if (estado) {
-				campo.classList.remove("border-danger");
-				campo.classList.add("border-success");
-				campo.parentNode.nextElementSibling.style.visibility = 'hidden';
-				//parentNode es el nodo HTML padre que contiene a un nodo. NextElementSibling es el siguiente elemento hermano. 
-				//por tanto, al desplazarme por el árbol estoy accediendo al siguiente hermano al nodo padre 
-				//(ver el código HTML para comprender el recorrido que estamos haciendo)
-			}
-			else {
-				campo.classList.remove("border-success");
-				campo.classList.add("border-danger");
-				campo.parentNode.nextElementSibling.style.visibility = 'visible';
-			}
+function cambiarApariencia(campo, estado) {
+    if (estado) {
+        campo.classList.remove("border-danger");
+        campo.classList.add("border-success");
+        campo.parentNode.nextElementSibling.style.visibility = 'hidden';
+    }
+    else {
+        campo.classList.remove("border-success");
+        campo.classList.add("border-danger");
+        campo.parentNode.nextElementSibling.style.visibility = 'visible';
+    }
 
-		}
+}
+
 	</script>
-	<style type="text/css">
-		.mensajeError {
-			visibility: hidden;
-		}
-	</style>
 </head>
 <body>
 	<header th:replace="~{fragmentos/encabezado::encabezado}"></header>
 	<div class="container bg-white border p-5 rounded w-50 mt-5" id="registroProductos">
 		<h2 class="mx-auto texto">Añadir producto</h2>
-		<form method="POST" action="#" th:action="@{/nuevo/submit}" th:object="${producto}"
+		<form method="POST" action="#" th:action="@{/admin/nuevo/submit}" th:object="${producto}"
 			onsubmit="return revisarFormulario()" id="formulario" name="formulario">
 			<!--Primera fila-->
 			<div class="row mb-4">
@@ -153,64 +145,40 @@
 				<div class="col">
 					<!--Precio unidad-->
 					<div class="form-outline">
-<<<<<<< HEAD
-						<input type="number" step="0.01" class="form-control"
-							th:field="*{pvp}" /> <label class="form-label" for="pvp">Precio
-							Unitario</label> <input type="hidden" th:field="*{id}" id="id" />
-=======
 						<input type="number" step="0.01" class="form-control" th:field="*{pvp}" />
 						<label class="form-label" for="pvp">Precio Unitario</label>
 						<input type="hidden" th:field="*{id}" id="id" />
->>>>>>> 01a7a01401142f5d6566e8e96a2c1be6d60a9868
 					</div>
 					<div class="mensajeError text-danger" id="errorPvp">Introduzca un valor superior a 0</div>
 				</div>
 			</div>
 			<!--Unidades Stock-->
 			<div class="form-outline mb-4">
-<<<<<<< HEAD
-				<input type="number" step="1" class="form-control"
-					th:field="*{unidadesStock}" /> <label class="form-label"
-					for="unidadesStock">UnidadesEnStock</label>
-=======
 				<input type="number" step="1" class="form-control" th:field="*{unidadesStock}"/>
 				<label class="form-label" for="unidadesStock">UnidadesEnStock</label>
->>>>>>> 01a7a01401142f5d6566e8e96a2c1be6d60a9868
 			</div>
 			<div class="mensajeError text-danger" id="errorPvp">Introduzca un valor superior a 0</div>
 			<!--Descripcion-->
 			<div class="form-outline mb-4">
-<<<<<<< HEAD
-				<textarea class="form-control" id="form6Example7" rows="4"
-					th:field="*{descripcion}"></textarea>
-				<label class="form-label" for="descripcion">Descripcion</label>
-=======
 				<textarea class="form-control" id="descripcion" rows="4" th:field="*{descripcion}" maxlength="150"></textarea>
 				<label class="form-label" for="descripcion">Descripcion (Máximo 150 caracteres)</label>
 			</div>
 			<div class="mensajeError text-danger" id="errorPvp">Introduzca una pequeña descripción del producto.
->>>>>>> 01a7a01401142f5d6566e8e96a2c1be6d60a9868
 			</div>
 			<div class="form-outline">
-				<input type="text" name="imagen" class="form-control"
-					th:field="*{imagen}" /> <label class="form-label" for="imagen">URL
+				<input type="text" name="imagen" class="form-control" th:field="*{imagen}" /> <label class="form-label"
+					for="imagen">URL
 					Imagen</label>
 			</div>
 			<br>
 			<div class="form-outline">
-<<<<<<< HEAD
-				<input type="date" name="fechaDeEntrada"
-					th:field="*{fechaDeEntrada}" /> <label for="fechaDeEntrada"
-					class="form-label">Indique la fecha de alta del producto</label>
-=======
 				<input type="date" name="fechaDeEntrada" th:field="*{fechaDeEntrada}" />
 				<label for="fechaDeEntrada" class="form-label">Indique
 					la fecha de alta del producto</label>
->>>>>>> 01a7a01401142f5d6566e8e96a2c1be6d60a9868
 			</div>
 			<!--Enviar-->
-			<button class="btn btn-danger btn-block mb-4" type="submit"
-				name="enviar" value="Enviar">Añadir producto</button>
+			<button class="btn btn-danger btn-block mb-4" type="submit" name="enviar" value="Enviar">Añadir
+				producto</button>
 		</form>
 
 		<a class="btn btn-primary mx-auto" th:href="@{/admin}">Volver</a>

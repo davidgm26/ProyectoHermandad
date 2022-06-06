@@ -11,7 +11,7 @@
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css"
 		th:href="@{https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css}">
 	<link rel="shortcut icon" href="static/img/escudo.png" th:href="@{img/escudo.png}">
-	<link rel="stylesheet" href="/css/estilos.css" type="text/css" th:href="@{/css/estilos.css}">
+	<link rel="stylesheet" href="../static/css/estilos.css" type="text/css" th:href="@{/css/estilos.css}">
 </head>
 
 <body class="w-100">
@@ -27,7 +27,7 @@
 					<img th:src="${not (#strings.isEmpty(producto.imagen))} 
 									  ? ${producto.imagen} : 'https://upload.wikimedia.org/wikipedia/commons/d/da/Imagen_no_disponible.svg'"
 						class="img-responsive icono-categoria col-12" alt="imagen" />
-					<p class="w-100" th:text="${producto.nombre}">Nombre</p>
+					<p class="w-100 fw-bold letraPag text-uppercase" th:text="${producto.nombre}">Nombre</p>
 					<p class="w-100" th:text="${#numbers.formatCurrency(producto.pvp)}">Nombre</p>
 					<a href="" th:href="@{/productoACarrito/{id}}" class="btn-primary btn rounded ">Comprar</a>
 				</div>

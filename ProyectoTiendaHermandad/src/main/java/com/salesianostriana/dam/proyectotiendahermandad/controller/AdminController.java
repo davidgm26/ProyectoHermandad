@@ -41,7 +41,7 @@ public class AdminController {
 	 * /admin/lo que sea
 	 */
 
-	@GetMapping("/admin/producto")
+	@GetMapping({"/admin/producto","/admin"})
 	public String listarTodos(Model model) {
 		model.addAttribute("productos", productoServicio.findAll());
 		return "indexSesion";

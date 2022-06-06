@@ -130,3 +130,7 @@ blockquote {
 .error{
 	border: 3px solid #bb2929;
 }
+.anchoCelda tr td{
+	max-width: 400px;
+	max-height: 200px;
+}

@@ -73,10 +73,10 @@ public class CarritoServicio {
 	 * pedido, pedido, etc. Se podría tener una excepción propia (del estilo
 	 * NotEnoughProductsInStockException) y gestionarlo
 	 */
-
+/*
 	public void checkout() {
 
 		List<LineaVenta> lineasVenta = new ArrayList<LineaVenta>();
 		Venta v = Venta.builder().build();
-	}
+	}*/
 }
