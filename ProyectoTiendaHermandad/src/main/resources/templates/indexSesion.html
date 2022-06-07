@@ -14,71 +14,79 @@
 </head>
 
 
-<body>
+<body class="lateral">
 	<div class="container-fluid">
 		<header class="w-100" th:replace="~{fragmentos/encabezado::encabezado}">
 		</header>
-		<h2 class="texto">Listado de Productos</h2>
-		<a class="btn btn-primary" href="form.html" th:href="@{/admin/nuevo}">Insertar
-			un nuevo producto</a>
-		<table class="table tablaHermanos w-100">
-			<thead>
-				<tr>
-					<th>Id</th>
-					<th></th>
-					<th>Nombre</th>
-					<th>Descripción</th>
-					<th>Precio Unitario</th>
-					<th>Fecha de Alta</th>
-					<th>Unidades en Stock</th>
-				</tr>
-			</thead>
-			<tbody class="anchoCelda">
-				<tr class="tabla" th:each="producto : ${productos}">
-					<td th:text="${producto.id}">Id</td>
-					<td><img th:src="${not (#strings.isEmpty(producto.imagen))} 
+		<nav th:replace="~{fragmentos/navBarUsuario::menuUsuario}">
+		</nav>
+		<main  class="w-75 bg-white mx-auto rounded p-4">
+			<h2 class="texto">Listado de Productos</h2>
+			<a class="btn btn-primary" href="form.html" th:href="@{/admin/nuevo}">Insertar
+				un nuevo producto</a>
+			<div class="table-responsive">
+				<table class="table tablaHermanos w-100">
+					<thead>
+						<tr>
+							<th>Id</th>
+							<th></th>
+							<th>Nombre</th>
+							<th>Descripción</th>
+							<th>Precio Unitario</th>
+							<th>Fecha de Alta</th>
+							<th>Unidades en Stock</th>
+						</tr>
+					</thead>
+					<tbody class="anchoCelda">
+						<tr class="tabla" th:each="producto : ${productos}">
+							<td th:text="${producto.id}">Id</td>
+							<td><img th:src="${not (#strings.isEmpty(producto.imagen))} 
 									  ? ${producto.imagen} : 'https://upload.wikimedia.org/wikipedia/commons/d/da/Imagen_no_disponible.svg'"
-							class="img-responsive icono-categoria w-25" alt="imagen" /></td>
-					<td th:text="${producto.nombre}">Nombre</td>
-					<td th:text="${producto.descripcion}">Nombre</td>
-					<td th:text="${#numbers.formatCurrency(producto.pvp)}">Nombre</td>
-					<td th:text="${#temporals.format(producto.fechaDeEntrada)}">Nombre</td>
-					<td th:text="${producto.unidadesStock}">Nombre</td>
-					<td class="operaciones"><a href="#" th:href="@{/admin/editar/{id}(id=${producto.id})}"
-							class="btn btn-primary">Editar</a></td>
-					<td><button type="button" class="btn btn-danger" data-bs-toggle="modal"
-							th:attr="data-bs-target='#myModal'+${producto.id}">Eliminar</button></td>
-					<!-- The Modal -->
-					<div class="modal" id="myModal" th:id="'myModal'+${producto.id}">
-						<div class="modal-dialog">
-							<div class="modal-content">
+									class="img-responsive icono-categoria w-25" alt="imagen" /></td>
+							<td th:text="${producto.nombre}">Nombre</td>
+							<td th:text="${producto.descripcion}">Nombre</td>
+							<td th:text="${#numbers.formatCurrency(producto.pvp)}">Nombre</td>
+							<td th:text="${#temporals.format(producto.fechaDeEntrada)}">Nombre</td>
+							<td th:text="${producto.unidadesStock}">Nombre</td>
+							<td class="operaciones"><a href="#" th:href="@{/admin/editar/{id}(id=${producto.id})}"
+									class="btn btn-primary">Editar</a></td>
+							<td><button type="button" class="btn btn-danger" data-bs-toggle="modal"
+									th:attr="data-bs-target='#myModal'+${producto.id}">Eliminar</button></td>
+							<!-- The Modal -->
+							<div class="modal" id="myModal" th:id="'myModal'+${producto.id}">
+								<div class="modal-dialog">
+									<div class="modal-content">
 
-								<!-- Modal Header -->
-								<div class="modal-header">
-									<h4 class="modal-title">Modal Heading</h4>
-									<button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+										<!-- Modal Header -->
+										<div class="modal-header">
+											<h4 class="modal-title">Modal Heading</h4>
+											<button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+										</div>
+
+										<!-- Modal body -->
+										<div class="modal-body">¿Esta seguro que desea eliminar
+											este producto?</div>
+
+										<!-- Modal footer -->
+										<div class="modal-footer">
+											<a class="btn btn-danger"
+												th:href="@{/admin/borrarProducto/{id}(id=${producto.id})}">Eliminar</a>
+											<a class="btn btn-secundary" th:href="@{/admin}">Volver</a>
+										</div>
+
+									</div>
 								</div>
-
-								<!-- Modal body -->
-								<div class="modal-body">¿Esta seguro que desea eliminar
-									este producto?</div>
-
-								<!-- Modal footer -->
-								<div class="modal-footer">
-									<a class="btn btn-danger"
-										th:href="@{/admin/borrarProducto/{id}(id=${producto.id})}">Eliminar</a>
-									<a class="btn btn-secundary" th:href="@{/admin}">Volver</a>
-								</div>
-
 							</div>
-						</div>
-					</div>
-				</tr>
-			</tbody>
-		</table>
-		<br>
-	</div>
-</body>
+						</tr>
+					</tbody>
+				</table>
+			</div>
 
+			<br>
+		</main>
+	</div>
+	<footer class="w-100" th:replace="~{fragmentos/footer::footer}">
+    </footer>
+</body>
 
 </html>

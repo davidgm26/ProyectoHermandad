@@ -24,14 +24,14 @@ public class LineaVenta {
 	@ManyToOne
 	private Producto producto;
 	
-	private String nombre;
-
 	private int ud;
 	
 	private double subTotal; 
 	
 	@ManyToOne
 	private Venta venta;
+	
+	//Helper Venta
 	
 	public void aniadirAVenta(Venta venta) {
 		this.venta = venta;
@@ -42,10 +42,16 @@ public class LineaVenta {
 		venta.getLineaVenta().remove(this);
 		this.venta = null;
 	}
-
-	public static LineaVentaBuilder builder() {
-
-		return null;
+	
+	//Helper Producto
+	
+	public void aniadirALineaVenta(Producto p) {
+		this.producto= p;
+		venta.getLineaVenta().add(this);
 	}
 	
+	public void borrarDeUnaLineaVenta(Producto p) {
+		p.getLineasVenta().remove(this);
+		this.producto = null;
+	}
 }

@@ -6,7 +6,7 @@ import com.salesianostriana.dam.proyectotiendahermandad.modelo.LineaVenta;
 import com.salesianostriana.dam.proyectotiendahermandad.repositorio.LineaVentaRepositorio;
 
 @Service
-public class LineaVentaServicio extends BaseService<LineaVenta, Long, LineaVentaRepositorio>{
+public class LineaVentaServicio extends BaseService <LineaVenta, Long, LineaVentaRepositorio>{
 
 	
 	

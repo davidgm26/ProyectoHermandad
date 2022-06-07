@@ -9,7 +9,7 @@ import com.salesianostriana.dam.proyectotiendahermandad.modelo.Producto;
 import com.salesianostriana.dam.proyectotiendahermandad.repositorio.ProductoRepositorio;
 
 @Service
-public class ProductoServicio extends BaseService<Producto, Long, ProductoRepositorio> {
+public class ProductoServicio extends BaseService <Producto, Long, ProductoRepositorio> {
 
 	@Autowired
 	private ProductoRepositorio ProductoRepositorio;

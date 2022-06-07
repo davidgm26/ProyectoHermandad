@@ -8,10 +8,12 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import com.salesianostriana.dam.proyectotiendahermandad.modelo.Producto;
 import com.salesianostriana.dam.proyectotiendahermandad.servicios.CarritoServicio;
 import com.salesianostriana.dam.proyectotiendahermandad.servicios.ProductoServicio;
+import com.salesianostriana.dam.proyectotiendahermandad.servicios.VentaServicio;
 
 @Controller
 public class CarritoController {
@@ -21,11 +23,12 @@ public class CarritoController {
 	@Autowired
 	private CarritoServicio carritoServicio;
 	
+	
 	@Autowired
 	private ProductoServicio productoServicio;
 	
 	
-    	public CarritoController(CarritoServicio carritoServicio, ProductoServicio productoServicio) {
+    	public CarritoController(CarritoServicio carritoServicio, ProductoServicio productoServicio,VentaServicio ventaServicio) {
 		super();
 		this.carritoServicio = carritoServicio;
 		this.productoServicio = productoServicio;
@@ -43,13 +46,12 @@ public class CarritoController {
     public String productoACarrito (@PathVariable("id") Long id, Model model) {
     	
     	carritoServicio.aniadirProducto(productoServicio.findById(id));
-    	    		 	
-    	return "redirect:/carrito";
+    	
+    	    	return "redirect:/user/indexUsuario";
     }
     
     @GetMapping("/borrarProducto/{id}")
     public String removeProductFromCart(@PathVariable("id") Long id) {
-        
     	carritoServicio.borrarProducto(productoServicio.findById(id));
         return "redirect:/carrito";
     }
@@ -63,6 +65,9 @@ public class CarritoController {
         	for (Producto p: carrito.keySet()) {
         		total+=p.getPvp()*carrito.get(p);
         	}
+        	
+        	total=carritoServicio.calcularDescuento(total);
+        	
         	return total;
     	}
     	
@@ -70,10 +75,16 @@ public class CarritoController {
     }
     
     
-    @GetMapping("checkout")
-    public void checkout(){
+    @PostMapping("/checkout")
+    public String checkout(){
     	  	carritoServicio.checkout();
+    return "redirect:/user/indexUsuario";
+    }
     
+    @GetMapping ("/borrarTodo")
+    public String borrarCarritoCompleto() {
+    	carritoServicio.borrarCarritoCompleto();
+    	return "redirect:/carrito";
     }
     
 }

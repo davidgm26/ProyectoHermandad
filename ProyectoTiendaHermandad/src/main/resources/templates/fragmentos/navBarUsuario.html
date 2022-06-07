@@ -2,57 +2,60 @@
 <html lang="es" xmlns:th="https://www.thymeleaf.org">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document</title>
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-sm lateral navbar-dark" th:fragment="menuUsuario">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="./index.html" th:href="@{/}">Inicio</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="collapsibleNavbar">
-                <ul class="navbar-nav">
-                    <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" role="button"
-                            data-bs-toggle="dropdown">Hermandad</a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="juntaDeGobierno.html"
-                                    th:href="@{/public/juntaDeGobierno}">Junta de gobierno</a></li>
-                        </ul>
-                    </li>
-                    <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" role="button"
-                            data-bs-toggle="dropdown">Titulares</a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="./cristo.html" th:href="@{/public/cristo}">Nuestro
-                                    Padre Jesús de las Penas</a></li>
-                            <li><a class="dropdown-item" href="./virgen.html" th:href="@{/public/virgen}">María
-                                    Santísima de la Estrella</a></li>
-                        </ul>
-                    </li>
-                    <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" role="button"
-                            data-bs-toggle="dropdown">Cofradía</a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="./recorrido.html"
-                                    th:href="@{/public/recorrido}">Recorrido</a></li>
-                            <li><a class="dropdown-item" href="./composicionesMusicales.html"
-                                    th:href="@{/public/musica}">Composiciones musicales</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="../carrito.html" th:href="@{/carrito}">Carrito</a>
-                    </li>
-                </ul>
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="inicioSesion.html" th:href="@{/inicioSesion}"><i
-                                class="bi bi-box-arrow-in-right"></i> Iniciar sesión</a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+	<nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+		<div class="container-fluid">
+			<a class="navbar-brand" href="javascript:void(0)">Logo</a>
+			<button class="navbar-toggler" type="button"
+				data-bs-toggle="collapse" data-bs-target="#mynavbar">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="mynavbar">
+				<ul class="navbar-nav me-auto">
+					<li class="nav-item"><a class="nav-link"
+						href="../indexUser.html" th:href="@{/user/indexUsuario}">Productos</a>
+					</li>
+					<li class="nav-item"><a class="nav-link"
+						href="javascript:void(0)">Link</a></li>
+					<li class="nav-item"><a class="nav-link"
+						href="javascript:void(0)">Link</a></li>
+				</ul>
+				<form class="d-flex">
+					<input class="form-control me-2" type="text" placeholder="Search">
+					<button class="btn btn-primary" type="button">Search</button>
+				</form>
+			</div>
+		</div>
+	</nav>
+	<nav class="navbar navbar-expand-sm lateral navbar-dark"
+		th:fragment="menuUsuario">
+		<div class="container-fluid">
+			<div class="collapse navbar-collapse" id="collapsibleNavbar">
+				<ul class="navbar-nav">
+					<li class="nav-item dropdown"><a
+						class="nav-link dropdown-toggle" href="#" role="button"
+						data-bs-toggle="dropdown">Menú usuario</a>
+						<ul class="dropdown-menu">
+							<li><a class="dropdown-item" href="../indexUser.html"
+								th:href="@{/user/indexUsuario}">Productos</a></li>
+							<li><a class="dropdown-item" href="../carrito.html"
+								th:href="@{/carrito}">carrito</a></li>
+						</ul></li>
+				</ul>
+				<ul class="navbar-nav ms-auto">
+					<li class="nav-item"><a class="nav-link" href="../index.html"
+						th:href="@{/logout}"><i class="bi bi-box-arrow-in-right"></i>Cerrar
+							sesión</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
 </body>
 
 </html>

@@ -1,7 +1,6 @@
 package com.salesianostriana.dam.proyectotiendahermandad.servicios;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
@@ -71,63 +70,71 @@ public class CarritoServicio {
 		return Collections.unmodifiableMap(productos);
 	}
 
-	/**
-	 * Se debería tener un método para revisar si hay suficiente cantidad de
-	 * productos en el stock (si se gestiona el stock) no desarrollada en este
-	 * ejemplo, puesto que no se gestiona ni el stock ni cantidad de producto es
-	 * atributo de la clase POJO Producto, esto debería estar gestionado en línea de
-	 * pedido, pedido, etc. Se podría tener una excepción propia (del estilo
-	 * NotEnoughProductsInStockException) y gestionarlo
-	 */
-
 	public void checkout() {
 		Venta v = new Venta();
 		v.setFechaDeVenta(LocalDate.now());
 		LineaVenta lv;
 		double total = 0;
-		//ventaServicio.save(v);
+
+		if (!productos.isEmpty()) {
+					ventaServicio.save(v);
 		for (Map.Entry<Producto, Integer> lineaVenta : productos.entrySet()) {
 			
-				 LineaVenta.builder()
-						   .nombre(lineaVenta.getKey().getNombre())
-					       .ud(lineaVenta.getValue())
+				lv =  LineaVenta.builder()
+						   .producto(lineaVenta.getKey())
+						   .ud(lineaVenta.getValue())
 	         		       .subTotal(lineaVenta.getKey().getPvp()*lineaVenta.getValue())
-				           .build().aniadirAVenta(v);
-
+				           .build();
+				
+				
+				lv.aniadirAVenta(v);
+				
+				
+				lineaVentaServicio.save(lv);
+				
+				
+				
+		total+=(lineaVenta.getKey().getPvp()*lineaVenta.getValue());
+		
 		}
 		
-		if (!productos.isEmpty()) {
+			total=calcularDescuento(total);
+			v.setTotal(total);
 			ventaServicio.save(v);
+			productos.clear();
+		
 		}
-		productoRepositorio.flush();
+		
 		productos.clear();
 
+	}	
+		public void borrarCarritoCompleto() {
+			productos.clear();
 		}
 	
-}
-
-	/*
-	public double calcularDescuento () {
-		double total=0;
-			if (calcularTotalVenta()<50) {
+	public double calcularDescuento (double total) {
+		
+		if (total < 50 ) {
 			
-		} else if(calcularTotalVenta()>50){
 			
-			total=calcularTotalVenta()-10;
+		} else if(total>= 50 && total <100){
 			
-		} else if(calcularTotalVenta()>100) {
+			total-=10;
 			
-			total=calcularTotalVenta()-20;
+		} else if(total>= 100 && total <150) {
 			
-		} else if(calcularTotalVenta()>150) {
+			total-=20;
 			
-			total=calcularTotalVenta()-30;
+		} else if(total>= 150 && total<200) {
 			
-		} else if(calcularTotalVenta()>200) {
+			total-=30;
 			
-			total=calcularTotalVenta()-50;
+		} else if(total>= 200) {
+			
+			total-=50;
 		}
 		return total;
+	
 	}
-*/	
+}
 

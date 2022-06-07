@@ -20,13 +20,12 @@
 		</header>
 		<nav th:replace="~{fragmentos/navBarUsuario::menuUsuario}">
 		</nav>
-		<main class="row text-center">
-			<div class="col-lg-3 col-md-3 mb-4"> </div>
-			<div class="col-lg-3 col-md-6 mb-4" th:each="producto: ${productos}">
+		<main class="row text-center mx-auto w-75 bg-white rounded">
+			<div class="col-lg-3 col-md-6 col-12 mb-4" th:each="producto: ${productos}">
 				<div class="card h-100">
 					<img th:src="${not (#strings.isEmpty(producto.imagen))} 
 									  ? ${producto.imagen} : 'https://upload.wikimedia.org/wikipedia/commons/d/da/Imagen_no_disponible.svg'"
-						class="img-responsive icono-categoria col-12" alt="imagen" />
+						class="img-responsive icono-categoria col-lg-12 col-md-12 col-12" alt="imagen" />
 					<div class="card-body">
 						<p class="w-100 fw-bold letraPag text-uppercase" th:text="${producto.nombre}">Nombre</p>
 						<p class="w-100" th:text="${producto.descripcion}">Nombre</p>
@@ -37,23 +36,7 @@
 					</div>
 				</div>
 			</div>
-
 		</main>
-		<!--
-
-		<main class="mx-auto w-75">
-			<div class="container-fluid row mx-auto bg-white">
-				<div class="container-fluid bg-white border p-5 rounded mt-5 float-start row col-lg-3 col-sm-12 mx-auto"
-					th:each="producto : ${productos}">
-					<img th:src="${not (#strings.isEmpty(producto.imagen))} 
-									  ? ${producto.imagen} : 'https://upload.wikimedia.org/wikipedia/commons/d/da/Imagen_no_disponible.svg'"
-						class="img-responsive icono-categoria col-12" alt="imagen" />
-					<p class="w-100 fw-bold letraPag text-uppercase" th:text="${producto.nombre}">Nombre</p>
-					<p class="w-100" th:text="${#numbers.formatCurrency(producto.pvp)}">Nombre</p>
-					<a href="" th:href="@{/productoACarrito/{id}}" class="btn-primary btn rounded ">Comprar</a>
-				</div>
-			</div>
-		</main>-->
 	</div>
 </body>
 
