@@ -1,5 +1,6 @@
 /.metadata/
 ProyectoTiendaHermandad/db/*
+/.vscode/
 
 /target/
 !.mvn/wrapper/maven-wrapper.jar
