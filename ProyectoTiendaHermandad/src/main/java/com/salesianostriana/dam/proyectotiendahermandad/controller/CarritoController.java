@@ -66,12 +66,16 @@ public class CarritoController {
         		total+=p.getPvp()*carrito.get(p);
         	}
         	
-        	total=carritoServicio.calcularDescuento(total);
         	
         	return total;
     	}
     	
     	return 0.0;
+    }
+    
+    @ModelAttribute("total_carritodescuento")
+    public Double totalCarritoDescuento() {
+    return carritoServicio.calcularDescuento(totalCarrito());
     }
     
     

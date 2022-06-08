@@ -1,3 +1,4 @@
+//document.getElementById("formulario").addEventListener("submit",revisarFormulario);
 document.getElementById("nombre").addEventListener("blur", comprobarNombre);
 document.getElementById("pvp").addEventListener("blur", comprobarPrecio);
 document.getElementById("descripcion").addEventListener("blur", comprobarDescripcion);

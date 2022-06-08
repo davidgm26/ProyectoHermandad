@@ -10,8 +10,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Entity
 @Data
+@Entity
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
@@ -30,6 +30,8 @@ public class LineaVenta {
 	
 	@ManyToOne
 	private Venta venta;
+	
+	
 	
 	//Helper Venta
 	
@@ -54,4 +56,5 @@ public class LineaVenta {
 		p.getLineasVenta().remove(this);
 		this.producto = null;
 	}
+
 }

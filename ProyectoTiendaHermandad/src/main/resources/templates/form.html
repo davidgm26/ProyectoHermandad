@@ -12,13 +12,16 @@
 		th:href="@{https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css}">
 	<link rel="shortcut icon" href="static/img/escudo.png" th:href="@{static/img/escudo.png}">
 	<link rel="stylesheet" href="../static/css/estilos.css" type="text/css" th:href="@{/css/estilos.css}">
-	<!--<script type="text/javascript" src="../static/js/js.js" th:src="@{/js/js.js}" defer></script>-->
-	
-	<script>
-	document.getElementById("nombre").addEventListener("blur", comprobarNombre);
-	document.getElementById("pvp").addEventListener("blur", comprobarPrecio);
-	document.getElementById("descripcion").addEventListener("blur", comprobarDescripcion);
-	document.getElementById("unidadesStock").addEventListener("blur", comprobarStock);
+	<script type="text/javascript" src="../static/js/js.js" th:src="@{/js/js.js}" defer></script>
+
+	<!--<script>
+	window.onload= function(){
+		//document.getElementById("formulario").addEventListener("submit",revisarFormulario);
+		document.getElementById("nombre").addEventListener("blur", comprobarNombre);
+		document.getElementById("pvp").addEventListener("blur", comprobarPrecio);
+		document.getElementById("descripcion").addEventListener("blur", comprobarDescripcion);
+		document.getElementById("unidadesStock").addEventListener("blur", comprobarStock);
+	};
 
 
 function revisarFormulario() {
@@ -121,14 +124,17 @@ function cambiarApariencia(campo, estado) {
 
 }
 
-	</script>
+	</script>-->
 </head>
 <body>
 	<header th:replace="~{fragmentos/encabezado::encabezado}"></header>
 	<div class="container bg-white border p-5 rounded w-50 mt-5" id="registroProductos">
 		<h2 class="mx-auto texto">Añadir producto</h2>
+		<!--El "onsubmit="return revisarFormulario()"" lo he puesto porque como vimos en clase el formulario no hacía el JavaScript 
+		    a la hora de enviar el formulario entonces Rafa me dijo que lo pusiera así que comentara el script de arriba y que avisara por aquí
+			el script que usa esta en la carpeta resources/static/js-->
 		<form method="POST" action="#" th:action="@{/admin/nuevo/submit}" th:object="${producto}"
-			onsubmit="return revisarFormulario()" id="formulario" name="formulario">
+			 id="formulario" name="formulario" onsubmit="return revisarFormulario()">
 			<!--Primera fila-->
 			<div class="row mb-4">
 				<div class="col">

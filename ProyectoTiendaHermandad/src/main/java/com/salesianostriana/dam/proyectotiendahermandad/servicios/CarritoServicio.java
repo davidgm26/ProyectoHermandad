@@ -15,7 +15,6 @@ import com.salesianostriana.dam.proyectotiendahermandad.modelo.LineaVenta;
 import com.salesianostriana.dam.proyectotiendahermandad.modelo.Producto;
 import com.salesianostriana.dam.proyectotiendahermandad.modelo.Venta;
 import com.salesianostriana.dam.proyectotiendahermandad.repositorio.ProductoRepositorio;
-
 @Service
 @Scope(value = WebApplicationContext.SCOPE_SESSION, proxyMode = ScopedProxyMode.TARGET_CLASS)
 public class CarritoServicio {
@@ -137,4 +136,3 @@ public class CarritoServicio {
 	
 	}
 }
-

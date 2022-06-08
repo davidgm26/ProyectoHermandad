@@ -28,31 +28,32 @@
                 <div class="mx-auto float-end">
                     <a class="btn btn-primary" href="carrito.html" th:href="@{/user/indexUsuario}">Volver</a>
                     <button type="button" class="btn btn-danger" data-bs-toggle="modal"
-                                    th:attr="data-bs-target='#myModal1'">Borrar todo</button></td>
+                        th:attr="data-bs-target='#myModal1'">Borrar todo</button></td>
 
-                            <!-- The Modal -->
-                            <div class="modal" id="myModal1" th:id="'myModal1'">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
+                    <!-- The Modal -->
+                    <div class="modal" id="myModal1" th:id="'myModal1'">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
 
-                                        <!-- Modal Header -->
-                                        <div class="modal-header">
-                                            <h4 class="modal-title">Modal Heading</h4>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                                        </div>
-
-                                        <!-- Modal body -->
-                                        <div class="modal-body">¿Esta seguro que desea limpiar el carrito?</div>
-
-                                         <!-- Modal footer -->
-                                        <div class="modal-footer">
-                                            <a class="btn btn-danger" href="carrito.html" th:href="@{/borrarTodo}">Borrar todo</a>
-                                            <a class="btn btn-primary" th:href="@{/carrito}">Volver</a>
-                                        </div>
-
-                                    </div>
+                                <!-- Modal Header -->
+                                <div class="modal-header">
+                                    <h4 class="modal-title">Modal Heading</h4>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                                 </div>
+
+                                <!-- Modal body -->
+                                <div class="modal-body">¿Esta seguro que desea limpiar el carrito?</div>
+
+                                <!-- Modal footer -->
+                                <div class="modal-footer">
+                                    <a class="btn btn-danger" href="carrito.html" th:href="@{/borrarTodo}">Borrar
+                                        todo</a>
+                                    <a class="btn btn-primary" th:href="@{/carrito}">Volver</a>
+                                </div>
+
                             </div>
+                        </div>
+                    </div>
                 </div>
             </form>
             <div class="table-responsive">
@@ -94,7 +95,7 @@
                                         <div class="modal-body">¿Esta seguro que desea eliminar
                                             este producto?</div>
 
-                                         <!-- Modal footer -->
+                                        <!-- Modal footer -->
                                         <div class="modal-footer">
                                             <a class="btn btn-danger"
                                                 th:href="@{/borrarProducto/{id}(id=${producto.key.id})}">Eliminar</a>
@@ -108,19 +109,29 @@
                         <tr>
                             <td></td>
                             <td></td>
-                            <td th:switch="${total_carrito}">
-                                <span th:case="${total_carrito >= 50 AND  total_carrito < 100}"><p>Se le aplica un descuento de 10€</p> </span>
-                                <span th:case="${total_carrito >= 100 AND total_carrito < 150}"><p>Se le aplica un descuento de 20 €</p></span>
-                                <span th:case="${total_carrito >= 150 AND total_carrito < 200}"><p>Se le aplica un descuento de 30 €</p></span>
-                                <span th:case="${total_carrito >= 200}"><p>Se le aplica un descuento de 50 €</p></span>
-                                <span th:case="*"><p>No se aplican descuentos</p></span>
-                            </td>
+                            <td></td>
+                            <td></td>
                             <td>
-                                <h3>Total</h3>
+                                <h4>Total</h4>
                             </td>
                             <td class="text-right">
-                                <h3><strong th:text="${#numbers.formatCurrency(total_carrito)}">100€</strong></h3>
+                                <h4><strong th:text="${#numbers.formatCurrency(total_carrito)}">100€</strong></h4>
                             </td>
+                        </tr>
+                        <th:block th:if="${total_carritodescuento > 50}">
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td>
+                                    <h4>Total con descuento</h4>
+                                </td>
+                                <td>
+                                    <h4><strong th:text="${#numbers.formatCurrency(total_carritodescuento)}">100</strong></h4>
+                                </td>
+                        </th:block>
+                        </td>
                         </tr>
                     </tbody>
                 </table>

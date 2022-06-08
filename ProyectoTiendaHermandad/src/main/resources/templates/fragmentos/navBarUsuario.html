@@ -54,6 +54,12 @@
 							sesión</a></li>
 				</ul>
 			</div>
+			<form action="#" th:action="@{search}" th:object="${searchForm}" method="POST">
+				<input type="text" name="nombre" placeholder="Buscar Por Nombre" th:field="*{search}" style="margin-left: 5%; padding: 4px;" />
+				<button class="btn- btn-danger" type="submit"  style="padding: 4px;">
+					<span class="glyphicon glyphicon-search"></span>
+				</button>
+				</form>
 		</div>
 	</nav>
 </body>

@@ -19,9 +19,8 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
-
-@Entity
 @Data
+@Entity
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
@@ -42,4 +41,7 @@ public class Venta {
 	@OneToMany (mappedBy = "venta",fetch = FetchType.EAGER)
 	private  List<LineaVenta> lineaVenta = new ArrayList<LineaVenta>();
 
+	
+	
+	
 }
