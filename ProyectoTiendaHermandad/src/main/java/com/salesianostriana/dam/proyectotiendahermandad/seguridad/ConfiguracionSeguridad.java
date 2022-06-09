@@ -10,6 +10,8 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
+import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
+import org.springframework.security.web.authentication.SimpleUrlAuthenticationSuccessHandler;
 
 import com.salesianostriana.dam.proyectotiendahermandad.repositorio.UsuarioRepo;
 
@@ -40,6 +42,7 @@ public class ConfiguracionSeguridad extends WebSecurityConfigurerAdapter{
           //En los controladores del public,poner /public/xxxx/ y agregar nuevas lineas aquí          
           .and().exceptionHandling().accessDeniedPage("/")
           .and().formLogin().loginPage("/inicioSesion").loginProcessingUrl("/login")
+          .successHandler(myAuthenticationSuccessHandler())
           
           		//default Succes handler
           .failureUrl("/login-error").permitAll()
@@ -69,5 +72,10 @@ public class ConfiguracionSeguridad extends WebSecurityConfigurerAdapter{
         return userDetailsManager;
 
 
+    }
+    
+    @Bean
+    public AuthenticationSuccessHandler myAuthenticationSuccessHandler(){
+        return new MySimpleURLAuthenticationSuccesHandler();
     }
 }
