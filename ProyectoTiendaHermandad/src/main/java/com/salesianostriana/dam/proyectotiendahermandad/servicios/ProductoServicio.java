@@ -74,5 +74,8 @@ public class ProductoServicio extends BaseService <Producto, Long, ProductoRepos
 	public Producto findById(long id) {
 		return ProductoRepositorio.findById(id).orElse(null);
 	}
-
+	
+	public List<Producto> findByNombre(String nombre) {
+		return ProductoRepositorio.findByNombreContainingIgnoreCase(nombre);
+	}
 }
