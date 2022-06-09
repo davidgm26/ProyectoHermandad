@@ -6,4 +6,5 @@ import com.salesianostriana.dam.proyectotiendahermandad.modelo.LineaVenta;
 
 public interface LineaVentaRepositorio extends JpaRepository<LineaVenta, Long>{
 
+	
 }

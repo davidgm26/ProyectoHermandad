@@ -64,7 +64,6 @@
                             <th>Precio Unitario</th>
                             <th>Cantidad</th>
                             <th></th>
-                            <th></th>
                             <th>Subtotal</th>
 
                         </tr>
@@ -73,8 +72,7 @@
                         <tr class="tabla" th:each="producto : ${productos}">
                             <td th:text="${producto.key.nombre}">Nombre</td>
                             <td th:text="${producto.key.pvp}">Nombre</td>
-                            <td th:text="${producto.value}">Nombre</td>
-                            <td></td>
+                            <td th:text="${producto.value}">Nombre</td> 
                             <td></td>
                             <td th:text="${producto.value*producto.key.pvp}">Nombre</td>
                             <td><button type="button" class="btn btn-danger" data-bs-toggle="modal"

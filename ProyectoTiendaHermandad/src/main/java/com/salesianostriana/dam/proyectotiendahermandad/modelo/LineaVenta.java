@@ -45,16 +45,6 @@ public class LineaVenta {
 		this.venta = null;
 	}
 	
-	//Helper Producto
-	
-	public void aniadirALineaVenta(Producto p) {
-		this.producto= p;
-		venta.getLineaVenta().add(this);
-	}
-	
-	public void borrarDeUnaLineaVenta(Producto p) {
-		p.getLineasVenta().remove(this);
-		this.producto = null;
-	}
+
 
 }

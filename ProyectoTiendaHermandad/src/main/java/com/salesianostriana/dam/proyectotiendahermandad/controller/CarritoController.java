@@ -78,6 +78,10 @@ public class CarritoController {
     return carritoServicio.calcularDescuento(totalCarrito());
     }
     
+    @ModelAttribute("mediaVenta")
+    public Double calcularMediaVenta() {
+    return carritoServicio.calcularMediaUnaVenta(totalCarritoDescuento());
+    } 
     
     @PostMapping("/checkout")
     public String checkout(){

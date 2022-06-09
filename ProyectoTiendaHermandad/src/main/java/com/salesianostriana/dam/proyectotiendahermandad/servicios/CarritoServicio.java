@@ -99,6 +99,7 @@ public class CarritoServicio {
 		
 			total=calcularDescuento(total);
 			v.setTotal(total);
+			v.setMedia(calcularMediaUnaVenta(total));
 			ventaServicio.save(v);
 			productos.clear();
 		
@@ -135,4 +136,10 @@ public class CarritoServicio {
 		return total;
 	
 	}
+	
+	public double calcularMediaUnaVenta(double total){
+		return total/productos.size();
+	}
+	
+
 }

@@ -9,7 +9,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.salesianostriana.dam.proyectotiendahermandad.modelo.Producto;
+import com.salesianostriana.dam.proyectotiendahermandad.servicios.LineaVentaServicio;
 import com.salesianostriana.dam.proyectotiendahermandad.servicios.ProductoServicio;
+import com.salesianostriana.dam.proyectotiendahermandad.servicios.VentaServicio;
 
 /**
  * Esta clase será el controlador para todo lo relacionado con el usuario
@@ -24,6 +26,13 @@ public class AdminController {
 
 	@Autowired
 	private ProductoServicio productoServicio;
+	
+	@Autowired
+	private VentaServicio ventaServicio;
+	
+	@Autowired
+	private LineaVentaServicio lineaventaServicio;
+
 
 	public AdminController(ProductoServicio productoServicio) {
 		this.productoServicio = productoServicio;
@@ -103,4 +112,23 @@ public class AdminController {
 		}
 
 	}
+	
+	@GetMapping("/admin/historicoVenta")
+	public String listarTodas(Model model) {
+		model.addAttribute("ventas", ventaServicio.findAll());
+		return "historicoVentas";
+	}
+	
+	@GetMapping("/admin/borrarVenta/{id}")
+	public String borrarVenta(@PathVariable("id") Long id, Model model) {
+		ventaServicio.deleteById(id);
+		return "redirect:/admin/historicoVenta";
+	}
+	
+	@GetMapping("/admin/historicoVenta/detallesVenta/{id}")
+	public String listarLineasUnaVenta(@PathVariable("id") Long id ,Model model) {
+		model.addAttribute("lineasVenta",ventaServicio.findById(id).getLineaVenta());
+		return "detalleVenta";
+	}
+
 }
