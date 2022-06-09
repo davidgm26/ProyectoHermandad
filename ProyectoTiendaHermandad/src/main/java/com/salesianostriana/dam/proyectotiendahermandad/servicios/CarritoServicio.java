@@ -15,6 +15,7 @@ import com.salesianostriana.dam.proyectotiendahermandad.modelo.LineaVenta;
 import com.salesianostriana.dam.proyectotiendahermandad.modelo.Producto;
 import com.salesianostriana.dam.proyectotiendahermandad.modelo.Venta;
 import com.salesianostriana.dam.proyectotiendahermandad.repositorio.ProductoRepositorio;
+
 @Service
 @Scope(value = WebApplicationContext.SCOPE_SESSION, proxyMode = ScopedProxyMode.TARGET_CLASS)
 public class CarritoServicio {
@@ -24,7 +25,7 @@ public class CarritoServicio {
 
 	@Autowired
 	private VentaServicio ventaServicio;
-	
+
 	@Autowired
 	private LineaVentaServicio lineaVentaServicio;
 
@@ -76,70 +77,64 @@ public class CarritoServicio {
 		double total = 0;
 
 		if (!productos.isEmpty()) {
-					ventaServicio.save(v);
-		for (Map.Entry<Producto, Integer> lineaVenta : productos.entrySet()) {
-			
-				lv =  LineaVenta.builder()
-						   .producto(lineaVenta.getKey())
-						   .ud(lineaVenta.getValue())
-	         		       .subTotal(lineaVenta.getKey().getPvp()*lineaVenta.getValue())
-				           .build();
-				
-				
+			ventaServicio.save(v);
+			for (Map.Entry<Producto, Integer> lineaVenta : productos.entrySet()) {
+
+				lv = LineaVenta.builder().producto(lineaVenta.getKey()).ud(lineaVenta.getValue())
+						.subTotal(lineaVenta.getKey().getPvp() * lineaVenta.getValue()).build();
+
 				lv.aniadirAVenta(v);
-				
-				
+
+				lineaVenta.getKey().setUnidadesStock(lineaVenta.getKey().getUnidadesStock() - 1);
+
 				lineaVentaServicio.save(lv);
-				
-				
-				
-		total+=(lineaVenta.getKey().getPvp()*lineaVenta.getValue());
-		
-		}
-		
-			total=calcularDescuento(total);
+
+				total += (lineaVenta.getKey().getPvp() * lineaVenta.getValue());
+
+			}
+
+			total = calcularDescuento(total);
 			v.setTotal(total);
 			v.setMedia(calcularMediaUnaVenta(total));
 			ventaServicio.save(v);
 			productos.clear();
-		
+
 		}
-		
+
 		productos.clear();
 
-	}	
-		public void borrarCarritoCompleto() {
-			productos.clear();
-		}
-	
-	public double calcularDescuento (double total) {
-		
-		if (total < 50 ) {
-			
-			
-		} else if(total>= 50 && total <100){
-			
-			total-=10;
-			
-		} else if(total>= 100 && total <150) {
-			
-			total-=20;
-			
-		} else if(total>= 150 && total<200) {
-			
-			total-=30;
-			
-		} else if(total>= 200) {
-			
-			total-=50;
+	}
+
+	public void borrarCarritoCompleto() {
+		productos.clear();
+	}
+
+	public double calcularDescuento(double total) {
+
+		if (total < 50) {
+
+		} else if (total >= 50 && total < 100) {
+
+			total -= 10;
+
+		} else if (total >= 100 && total < 150) {
+
+			total -= 20;
+
+		} else if (total >= 150 && total < 200) {
+
+			total -= 30;
+
+		} else if (total >= 200) {
+
+			total -= 50;
 		}
 		return total;
-	
+
 	}
-	
-	public double calcularMediaUnaVenta(double total){
-		return total/productos.size();
+
+	public double calcularMediaUnaVenta(double total) {
+		return total / productos.size();
 	}
-	
 
 }

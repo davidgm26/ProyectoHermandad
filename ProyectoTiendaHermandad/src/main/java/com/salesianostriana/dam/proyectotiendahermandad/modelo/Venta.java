@@ -10,6 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import org.hibernate.annotations.CascadeType;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import lombok.AllArgsConstructor;
@@ -37,7 +38,7 @@ public class Venta {
 	@Builder.Default
 	@EqualsAndHashCode.Exclude
 	@ToString.Exclude
-	@OneToMany (mappedBy = "venta",fetch = FetchType.EAGER)
+	@OneToMany (mappedBy = "venta",fetch = FetchType.EAGER, cascade=javax.persistence.CascadeType.REMOVE, orphanRemoval = true)
 	private  List<LineaVenta> lineaVenta = new ArrayList<LineaVenta>();
 	
 	private double media;
