@@ -75,7 +75,8 @@ public class CarritoController {
     
     @ModelAttribute("total_carritodescuento")
     public Double totalCarritoDescuento() {
-    return carritoServicio.calcularDescuento(totalCarrito());
+    	
+    return carritoServicio.calcularDescuento(carritoServicio.precioEspecialCorrecion(totalCarrito()));
     }
     
     @ModelAttribute("mediaVenta")

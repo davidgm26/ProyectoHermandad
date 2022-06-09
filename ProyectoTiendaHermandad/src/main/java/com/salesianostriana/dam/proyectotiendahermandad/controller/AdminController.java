@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.salesianostriana.dam.proyectotiendahermandad.modelo.Producto;
 import com.salesianostriana.dam.proyectotiendahermandad.servicios.LineaVentaServicio;
@@ -22,6 +23,7 @@ import com.salesianostriana.dam.proyectotiendahermandad.servicios.VentaServicio;
  */
 
 @Controller
+@RequestMapping("/admin")
 public class AdminController {
 
 	@Autowired
@@ -49,8 +51,9 @@ public class AdminController {
 	 * Los mappings deben de tener el rol al que pertenecen delante es decir ->
 	 * /admin/lo que sea
 	 */
+	
 
-	@GetMapping({"/admin/producto","/admin"})
+	@GetMapping("/producto")
 	public String listarTodos(Model model) {
 		model.addAttribute("productos", productoServicio.findAll());
 		return "indexSesion";
@@ -63,7 +66,7 @@ public class AdminController {
 	 * @param model
 	 * @return HTML del formulario
 	 */
-	@GetMapping("/admin/nuevo")
+	@GetMapping("/nuevo")
 	public String mostrarFormulario(Model model) {
 		model.addAttribute("producto", new Producto());
 		return "form";
@@ -77,7 +80,7 @@ public class AdminController {
 	 * @return Nos redirige a la pagina principal del administrador (tabla con todos
 	 *         los productos)
 	 */
-	@PostMapping("/admin/nuevo/submit")
+	@PostMapping("/nuevo/submit")
 	public String procesaFormulario(@ModelAttribute("producto") Producto producto, Model model) {
 		model.addAttribute("producto", producto);
 		productoServicio.save(producto);
@@ -93,13 +96,13 @@ public class AdminController {
 	 * @return Nos redirige a la pagina principal del administrador (tabla con todos
 	 *         los productos)
 	 */
-	@GetMapping("/admin/borrarProducto/{id}")
+	@GetMapping("/borrarProducto/{id}")
 	public String borrarProducto(@PathVariable("id") Long id, Model model) {
 		productoServicio.deleteById(id);
 		return "redirect:/admin";
 	}
 
-	@GetMapping("/admin/editar/{id}")
+	@GetMapping("/editar/{id}")
 	public String editarProducto(@PathVariable("id") Long id, Model model) {
 
 		Producto producto = productoServicio.findById(id);
@@ -113,19 +116,19 @@ public class AdminController {
 
 	}
 	
-	@GetMapping("/admin/historicoVenta")
+	@GetMapping("/historicoVenta")
 	public String listarTodas(Model model) {
 		model.addAttribute("ventas", ventaServicio.findAll());
 		return "historicoVentas";
 	}
 	
-	@GetMapping("/admin/borrarVenta/{id}")
+	@GetMapping("/borrarVenta/{id}")
 	public String borrarVenta(@PathVariable("id") Long id, Model model) {
 		ventaServicio.deleteById(id);
 		return "redirect:/admin/historicoVenta";
 	}
 	
-	@GetMapping("/admin/historicoVenta/detallesVenta/{id}")
+	@GetMapping("/historicoVenta/detallesVenta/{id}")
 	public String listarLineasUnaVenta(@PathVariable("id") Long id ,Model model) {
 		model.addAttribute("lineasVenta",ventaServicio.findById(id).getLineaVenta());
 		return "detalleVenta";
