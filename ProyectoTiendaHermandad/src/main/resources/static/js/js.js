@@ -12,7 +12,8 @@ function revisarFormulario() {
     resultado = comprobarNombre() &&
         comprobarPrecio() &&
         comprobarDescripcion() &&
-        comprobarStock();
+        comprobarStock() &&
+        evaluarFecha();
 
     formulario.enviar.className = resultado ? "btn btn-success mb-2" : "btn btn-danger mb-2";
 
@@ -88,6 +89,20 @@ function comprobarStock() {
     cambiarApariencia(unidadesStock, resultado)
 
     return resultado;
+}
+function evaluarFecha() {
+
+    let fechaDeEntrada = document.getElementById ("fecha");
+	let correcto = fechaDeEntrada.value!="" && Date.parse(fechaDeEntrada.value) > Date.now();
+
+        if(correcto){
+            fechaDeEntrada.parentNode.nextElementSibling.hidden = true;
+        }else{
+            fechaDeEntrada.parentNode.nextElementSibling.hidden = false;
+        }
+
+	cambiarApariencia(fechaDeEntrada, resultado);
+	return resultado;
 }
 
 

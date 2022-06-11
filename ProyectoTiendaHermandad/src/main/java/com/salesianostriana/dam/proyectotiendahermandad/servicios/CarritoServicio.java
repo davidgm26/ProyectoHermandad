@@ -93,9 +93,8 @@ public class CarritoServicio {
 
 			}
 
-			total = calcularDescuento(precioEspecialCorrecion(total));
 			v.setTotal(total);
-			v.setMedia(calcularMediaUnaVenta(total));
+			v.setTotalConDescuento(precioEspecialCorrecion(calcularDescuento(total)));
 			ventaServicio.save(v);
 			productos.clear();
 
@@ -137,16 +136,16 @@ public class CarritoServicio {
 		return total / productos.size();
 	}
 
-	public double precioEspecialCorrecion(double total) {
+	public double precioEspecialCorrecion(double totalVenta) {
 		
 		LocalDate hoy = LocalDate.now();
-		LocalDate fechaDescuento = LocalDate.of(2022, 06, 9);
+		LocalDate fechaDescuento = LocalDate.of(2022, 06, 17);
 		LocalDate fechaFinalDescuento = LocalDate.of(2022, 06, 20);
 
 		if (hoy.compareTo(fechaDescuento) > 0
 				&& hoy.compareTo(fechaFinalDescuento) < 0)
-			total = total - ((total * 10) / 100);
+			totalVenta = totalVenta - ((totalVenta * 10) / 100);
 
-		return total;
+		return totalVenta;
 	}
 }

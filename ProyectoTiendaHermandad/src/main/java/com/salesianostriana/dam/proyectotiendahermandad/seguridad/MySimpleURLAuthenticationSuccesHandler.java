@@ -32,7 +32,7 @@ public class MySimpleURLAuthenticationSuccesHandler implements AuthenticationSuc
 			
 			else
 			
-			targetURL = "/admin";
+			targetURL = "/admin/producto";
 
 		redirectStrategy.sendRedirect(request, response, targetURL);
 

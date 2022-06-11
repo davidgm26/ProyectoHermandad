@@ -20,6 +20,7 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
+@Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
@@ -38,62 +39,6 @@ public class Producto {
 	private LocalDate fechaDeEntrada;
 
 	private int unidadesStock;
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
-
-	public double getPvp() {
-		return pvp;
-	}
-
-	public void setPvp(double pvp) {
-		this.pvp = pvp;
-	}
-
-	public String getNombre() {
-		return nombre;
-	}
-
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
-	}
-
-	public String getDescripcion() {
-		return descripcion;
-	}
-
-	public void setDescripcion(String descripcion) {
-		this.descripcion = descripcion;
-	}
-
-	public String getImagen() {
-		return imagen;
-	}
-
-	public void setImagen(String imagen) {
-		this.imagen = imagen;
-	}
-
-	public LocalDate getFechaDeEntrada() {
-		return fechaDeEntrada;
-	}
-
-	public void setFechaDeEntrada(LocalDate fechaDeEntrada) {
-		this.fechaDeEntrada = fechaDeEntrada;
-	}
-
-	public int getUnidadesStock() {
-		return unidadesStock;
-	}
-
-	public void setUnidadesStock(int unidadesStock) {
-		this.unidadesStock = unidadesStock;
-	}
 
 	@Override
 	public int hashCode() {

@@ -34,29 +34,35 @@ public class CarritoController {
 		this.productoServicio = productoServicio;
 	}
     
-    @GetMapping ("/carrito")
-    public String showCarrito (Model model) {
-    	
-    	if (model.addAttribute("productos",carritoServicio.obtenerProductosCarrito()) == null)
-    		return "redirect:/user/indexUsuario";
-    	return "carrito";
-    }
+        @GetMapping ("/user/borrarTodo")
+        public String borrarCarritoCompleto() {
+        	carritoServicio.borrarCarritoCompleto();
+        	return "redirect:/user/carrito";
+        } 
+        
+        @GetMapping ("/user/carrito")
+        public String showCarrito (Model model) {
+        	
+        	if (model.addAttribute("productos",carritoServicio.obtenerProductosCarrito()) == null)
+        		return "redirect:/user/indexUsuario";
+        	return "carrito";
+        }
 
-    @GetMapping ("/productoACarrito/{id}")
-    public String productoACarrito (@PathVariable("id") Long id, Model model) {
-    	
-    	carritoServicio.aniadirProducto(productoServicio.findById(id));
-    	
-    	    	return "redirect:/user/indexUsuario";
-    }
+        @GetMapping ("/user/productoACarrito/{id}")
+        public String productoACarrito (@PathVariable("id") Long id, Model model) {
+        	
+        	carritoServicio.aniadirProducto(productoServicio.findById(id));
+        	
+        	    	return "redirect:/user/indexUsuario";
+        }
+        
+        @GetMapping("/user/borrarProducto/{id}")
+        public String removeProductFromCart(@PathVariable("id") Long id) {
+        	carritoServicio.borrarProducto(productoServicio.findById(id));
+            return "redirect:/user/carrito";
+        }
     
-    @GetMapping("/borrarProducto/{id}")
-    public String removeProductFromCart(@PathVariable("id") Long id) {
-    	carritoServicio.borrarProducto(productoServicio.findById(id));
-        return "redirect:/carrito";
-    }
-    
-    @ModelAttribute("total_carrito")
+    @ModelAttribute("totalCarrito")
     public Double totalCarrito () {
     	
     	Map <Producto,Integer> carrito=carritoServicio.obtenerProductosCarrito();
@@ -73,9 +79,8 @@ public class CarritoController {
     	return 0.0;
     }
     
-    @ModelAttribute("total_carritodescuento")
+    @ModelAttribute("totalCarritoDescuento")
     public Double totalCarritoDescuento() {
-    	
     return carritoServicio.calcularDescuento(carritoServicio.precioEspecialCorrecion(totalCarrito()));
     }
     
@@ -90,12 +95,7 @@ public class CarritoController {
     return "redirect:/user/indexUsuario";
     }
     
-    @GetMapping ("/borrarTodo")
-    public String borrarCarritoCompleto() {
-    	carritoServicio.borrarCarritoCompleto();
-    	return "redirect:/carrito";
-    }
-    
+
 }
 	
 	
