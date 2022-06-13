@@ -17,7 +17,6 @@ import com.salesianostriana.dam.proyectotiendahermandad.servicios.ProductoServic
 import com.salesianostriana.dam.proyectotiendahermandad.servicios.VentaServicio;
 
 @Controller
-@RequestMapping("/user")
 public class CarritoController {
 	
 

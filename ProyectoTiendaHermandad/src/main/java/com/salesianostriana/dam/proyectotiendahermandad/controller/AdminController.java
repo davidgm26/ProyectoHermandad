@@ -2,6 +2,7 @@ package com.salesianostriana.dam.proyectotiendahermandad.controller;
 
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.salesianostriana.dam.proyectotiendahermandad.modelo.Producto;
+import com.salesianostriana.dam.proyectotiendahermandad.modelo.Venta;
 import com.salesianostriana.dam.proyectotiendahermandad.servicios.ProductoServicio;
 import com.salesianostriana.dam.proyectotiendahermandad.servicios.VentaServicio;
 
@@ -139,4 +141,14 @@ public class AdminController {
 		return "detalleVenta";
 	}
 
+	   @ModelAttribute("mediaVentas")
+	    public Double calcularMediaTotalVentas() {
+			return ventaServicio.calcularMediaTotalVentasSinDescuento(); 
+		}
+	   
+	   @ModelAttribute("mediaVentasDescuento")
+	    public Double calcularMediaTotalVentasConDescuento() {
+			return ventaServicio.calcularMediaTotalVentasConDescuento(); 
+		}
+		   
 }

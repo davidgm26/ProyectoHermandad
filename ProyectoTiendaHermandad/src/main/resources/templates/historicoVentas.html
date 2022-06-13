@@ -21,6 +21,10 @@
 		<nav th:replace="~{fragmentos/navBarAdmin::menuAdmin}">
 		</nav>
 		<main class="col-lg-3 col-md-6 col-12 w-75 bg-white mx-auto rounded h-100 p-3">
+			<div>
+				<h3>Media Ventas: <span th:text="${#numbers.formatCurrency(mediaVentas)}">0.00</span></h3>
+				<h3>Media Ventas con descuento: <span th:text="${#numbers.formatCurrency(mediaVentasDescuento)}">0.00</span></h3>
+			</div>
 			<div class="table-responsive">
 				<table class="table tablaHermanos w-100">
 					<thead>
@@ -55,7 +59,7 @@
 										</div>
 										<!--Modal body-->
 										<div class="modal-body">¿Esta seguro que desea eliminar
-											este producto?</div>
+											esta venta?</div>
 										<!--Modal footer-->
 										<div class="modal-footer">
 											<a class="btn btn-danger"

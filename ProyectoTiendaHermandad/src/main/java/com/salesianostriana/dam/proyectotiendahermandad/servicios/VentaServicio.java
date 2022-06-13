@@ -66,6 +66,26 @@ public class VentaServicio extends BaseService<Venta, Long, VentaRepositorio>{
 		return ventaRepositorio.findById(id).orElse(null);
 	}
 
+    public Double calcularMediaTotalVentasSinDescuento() {
+    	
+	   double sumaTotal = 0;
+	   List<Venta>listadoVentas =findAll();
+	   for (Venta venta : listadoVentas) {
+		sumaTotal+=venta.getTotal();
+	}
+	   return sumaTotal/listadoVentas.size();
+   }
+    public Double calcularMediaTotalVentasConDescuento() {
+    
+	   double sumaTotal = 0;
+	   List<Venta>listadoVentas =findAll();
+	   for (Venta venta : listadoVentas) {
+		sumaTotal+=venta.getTotalConDescuento();
+	}
+	   return sumaTotal/listadoVentas.size();
+   }
+    
 }
+
 
 

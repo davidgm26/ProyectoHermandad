@@ -41,7 +41,7 @@ public class ConfiguracionSeguridad extends WebSecurityConfigurerAdapter{
           .anyRequest().permitAll()//Esto es para poder usar los archivos de css,js, img...
           //En los controladores del public,poner /public/xxxx/ y agregar nuevas lineas aquí          
           .and().exceptionHandling().accessDeniedPage("/")
-          .and().formLogin().loginPage("/inicioSesion").loginProcessingUrl("/login")
+          .and().formLogin().loginPage("/public/inicioSesion").loginProcessingUrl("/login")
           .successHandler(myAuthenticationSuccessHandler())
           
           		//default Succes handler

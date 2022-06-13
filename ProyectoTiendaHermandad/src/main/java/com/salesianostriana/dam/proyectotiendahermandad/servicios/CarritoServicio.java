@@ -35,6 +35,10 @@ public class CarritoServicio {
 		this.productoRepositorio = productoRepositorio;
 	}
 
+	/**
+	 * Metodo que recibe el producto y lo añade al carrito
+	 * @param p
+	 */
 	public void aniadirProducto(Producto p) {
 		if (productos.containsKey(p)) {
 			productos.replace(p, productos.get(p) + 1);
@@ -45,7 +49,7 @@ public class CarritoServicio {
 
 	/**
 	 * Método que elimina un producto del carrito. Si en el carrito la cantidad de
-	 * dicho producto es más de uno baja la cantidad en una unidad y si es uno
+	 * dicho producto es más de uno quita 1 y si es 1
 	 * elimina el producto entero
 	 * 
 	 * @param producto
@@ -61,9 +65,6 @@ public class CarritoServicio {
 		}
 	}
 
-	/**
-	 * @return unmodifiable Copia del carrito no modificable, solo vista
-	 */
 
 	public Map<Producto, Integer> obtenerProductosCarrito() {
 		return Collections.unmodifiableMap(productos);
