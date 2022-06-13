@@ -20,7 +20,10 @@
 		</header>
 		<nav th:replace="~{fragmentos/navBarAdmin::menuAdmin}">
 		</nav>
-		<main  class="w-75 bg-white mx-auto rounded p-4">
+		<main class="w-75 bg-white mx-auto rounded p-4">
+			<div th:if="${errorFecha}" class="alert alert-danger">
+				<strong>¡Error!</strong> No se puede añadir un producto con una fecha de entrada superior a dos semanas.
+			</div>
 			<h2 class="texto">Listado de Productos</h2>
 			<a class="btn btn-primary" href="form.html" th:href="@{/admin/nuevo}">Insertar
 				un nuevo producto</a>
@@ -86,7 +89,7 @@
 		</main>
 	</div>
 	<footer class="w-100" th:replace="~{fragmentos/footer::footer}">
-    </footer>
+	</footer>
 </body>
 
 </html>

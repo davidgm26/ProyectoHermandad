@@ -38,7 +38,7 @@
 					</div>
 					<div class="card-footer">
 						<p class="w-100" th:text="${#numbers.formatCurrency(producto.pvp)}">Nombre</p>
-						<a href="" th:href="@{/productoACarrito/{id}(id=${producto.id})}" class="btn-primary btn rounded ">Comprar</a>
+						<a href="" th:href="@{/user/productoACarrito/{id}(id=${producto.id})}" class="btn-primary btn rounded ">Comprar</a>
 					</div>
 				</div>
 			</div>

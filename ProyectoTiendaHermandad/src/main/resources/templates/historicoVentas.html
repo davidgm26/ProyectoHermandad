@@ -29,7 +29,7 @@
 							<th></th>
 							<th>Fecha Venta</th>
 							<th>Total</th>
-							<th>Media por producto</th>
+							<th>Total con descuento</th>
 							<th></th>
 							<th></th>
 						</tr>
@@ -40,7 +40,7 @@
 							<td></td>
 							<td th:text="${#temporals.format(venta.fechaDeVenta)}">Nombre</td>
 							<td th:text="${#numbers.formatCurrency(venta.total)}">Nombre</td>
-							<td th:text="${#numbers.formatCurrency(venta.media)}">Nombre</td>
+							<td th:text="${#numbers.formatCurrency(venta.totalConDescuento)}">Nombre</td>
 							<td><button type="button" class="btn btn-danger" data-bs-toggle="modal"
 									th:attr="data-bs-target='#myModal2'+${venta.id}">Eliminar</button></td>
 							<!--The Modal-->
@@ -62,7 +62,6 @@
 												th:href="@{/admin/borrarVenta/{id}(id=${venta.id})}">Eliminar</a>
 											<a class="btn btn-secondary" th:href="@{/admin/historicoVenta}">Volver</a>
 										</div>
-
 									</div>
 								</div>
 							</div>

@@ -178,9 +178,11 @@ function cambiarApariencia(campo, estado) {
 			</div>
 			<br>
 			<div class="form-outline">
-				<input type="date" name="fechaDeEntrada" th:field="*{fechaDeEntrada}" />
+				<input type="date" name="fechaDeEntrada" th:field="*{fechaDeEntrada}" id="fecha" required/>
 				<label for="fechaDeEntrada" class="form-label">Indique
 					la fecha de alta del producto</label>
+			</div>
+			<div class="mensajeError text-danger" id="errorPvp">No puede introucir una fecha superior a hoy
 			</div>
 			<!--Enviar-->
 			<button class="btn btn-danger btn-block mb-4" type="submit" name="enviar" value="Enviar">Añadir
