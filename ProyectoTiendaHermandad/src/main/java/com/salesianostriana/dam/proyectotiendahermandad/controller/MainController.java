@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.salesianostriana.dam.proyectotiendahermandad.modelo.Producto;
@@ -17,47 +18,48 @@ import com.salesianostriana.dam.proyectotiendahermandad.servicios.ProductoServic
  * @author garcia.madav20
  *
  */
+@RequestMapping("/public")
 @Controller
 public class MainController {
 
 	@Autowired
 	private ProductoServicio productoServicio;
 	
-	@GetMapping({ "/public/index", "/" })
+	@GetMapping({ "/index", "/" })
 	public String mostrarPagPrincipal() {
 		return "index";
 	}
 
-	@GetMapping("/public/cristo")
+	@GetMapping("/cristo")
 	public String mostrarPagCristo() {
 		return "cristo";
 	}
 
-	@GetMapping("/public/virgen")
+	@GetMapping("/virgen")
 	public String mostrarPagVirgen() {
 		return "virgen";
 	}
 
-	@GetMapping("/public/juntaDeGobierno")
+	@GetMapping("/juntaDeGobierno")
 	public String mostrarPagJuntaGobierno() {
 		return "juntaDeGobierno";
 	}
 
-	@GetMapping("/public/reglas")
+	@GetMapping("/reglas")
 	public String mostrarReglas() {
 		return "reglas";
 	}
 
-	@GetMapping("/public/musica")
+	@GetMapping("/musica")
 	public String mostrarMusica() {
 		return "composicionesMusicales";
 	}
 
-	@GetMapping("/public/recorrido")
+	@GetMapping("/recorrido")
 	public String mostrarRecorrido() {
 		return "recorrido";
 	}
-	@GetMapping("/public/historia")
+	@GetMapping("/historia")
 	public String mostrarHistoria() {
 		return "historia";
 	}

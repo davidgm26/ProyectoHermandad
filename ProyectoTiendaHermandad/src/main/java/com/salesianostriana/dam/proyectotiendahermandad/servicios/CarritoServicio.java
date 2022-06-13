@@ -37,8 +37,7 @@ public class CarritoServicio {
 
 	public void aniadirProducto(Producto p) {
 		if (productos.containsKey(p)) {
-			productos.replace(p, productos.get(p) + 1);// Ya programamos como "mayores" y podemos poner algún número
-														// directamente en el código
+			productos.replace(p, productos.get(p) + 1);
 		} else {
 			productos.put(p, 1);
 		}

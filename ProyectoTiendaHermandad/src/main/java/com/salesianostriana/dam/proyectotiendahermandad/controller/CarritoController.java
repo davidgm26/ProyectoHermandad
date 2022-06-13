@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.salesianostriana.dam.proyectotiendahermandad.modelo.Producto;
 import com.salesianostriana.dam.proyectotiendahermandad.servicios.CarritoServicio;
@@ -16,6 +17,7 @@ import com.salesianostriana.dam.proyectotiendahermandad.servicios.ProductoServic
 import com.salesianostriana.dam.proyectotiendahermandad.servicios.VentaServicio;
 
 @Controller
+@RequestMapping("/user")
 public class CarritoController {
 	
 
