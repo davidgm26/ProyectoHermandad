@@ -34,6 +34,7 @@
                             <th>Cantidad</th>
                             <th>Subtotal</th>
                             <th></th>
+                            <th></th>
                         </tr>
                     </thead>
                     <tbody class="anchoCelda">
@@ -42,6 +43,31 @@
                             <td th:text="${lineaVenta.producto.pvp}">Nombre</td>
                             <td th:text="${lineaVenta.ud}">Nombre</td>
                             <td th:text="${lineaVenta.subTotal}">Nombre</td>
+                            <td></td>
+                            <td><button type="button" class="btn btn-danger" data-bs-toggle="modal"
+                                th:attr="data-bs-target='#myModal5'+${lineaVenta.id}">Eliminar</button></td>
+                        <!--The Modal-->
+                        <div class="modal" id="myModal" th:id="'myModal5'+${lineaVenta.id}">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+
+                                    <!--Modal Header-->
+                                    <div class="modal-header">
+                                        <h4 class="modal-title">Modal Heading</h4>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                                    </div>
+                                    <!--Modal body-->
+                                    <div class="modal-body">¿Esta seguro que desea eliminar
+                                        esta línea?</div>
+                                    <!--Modal footer-->
+                                    <div class="modal-footer">
+                                        <a class="btn btn-danger"
+                                            th:href="@{/admin/borrarLineaVenta/{id}(id=${lineaVenta.id})}">Eliminar</a>
+                                        <a class="btn btn-secondary" th:href="@{/admin/historicoVenta}">Volver</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div></td>
                         </tr>
                         </tr>
                     </tbody>

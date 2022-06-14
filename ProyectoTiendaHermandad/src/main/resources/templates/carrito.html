@@ -105,7 +105,7 @@
 								<h4><strong th:text="${(totalCarrito)}">100€</strong></h4>
 							</td>
 						</tr>
-						<th:block th:if="${totalCarritoDescuento > 50}">
+						<th:block th:if="${(totalCarrito) > 50}">
 							<tr>
 								<td></td>
 								<td></td>

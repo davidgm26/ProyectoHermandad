@@ -78,4 +78,11 @@ public class ProductoServicio extends BaseService <Producto, Long, ProductoRepos
 	public List<Producto> findByNombre(String nombre) {
 		return ProductoRepositorio.findByNombreContainingIgnoreCase(nombre);
 	}
+	
+	public Producto bajarStock(long id , int ud) {
+		Producto p = findById(id);
+		p.setUnidadesStock(p.getUnidadesStock()-ud);
+		return edit(p);
+	}
+	//Crear metodo que reciba el id del producto y un num entero que baje las ud en stock.
 }

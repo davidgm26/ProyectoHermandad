@@ -21,7 +21,7 @@ import com.salesianostriana.dam.proyectotiendahermandad.repositorio.ProductoRepo
 public class CarritoServicio {
 
 	@Autowired
-	private ProductoRepositorio productoRepositorio;
+	private ProductoServicio productoServicio;
 
 	@Autowired
 	private VentaServicio ventaServicio;
@@ -31,9 +31,6 @@ public class CarritoServicio {
 
 	private Map<Producto, Integer> productos = new HashMap<>();
 
-	public CarritoServicio(ProductoRepositorio productoRepositorio) {
-		this.productoRepositorio = productoRepositorio;
-	}
 
 	/**
 	 * Metodo que recibe el producto y lo añade al carrito
@@ -70,6 +67,7 @@ public class CarritoServicio {
 		return Collections.unmodifiableMap(productos);
 	}
 
+	
 	public void checkout() {
 		Venta v = new Venta();
 		v.setFechaDeVenta(LocalDate.now());
@@ -80,22 +78,38 @@ public class CarritoServicio {
 			ventaServicio.save(v);
 			for (Map.Entry<Producto, Integer> lineaVenta : productos.entrySet()) {
 
-				lv = LineaVenta.builder().producto(lineaVenta.getKey()).ud(lineaVenta.getValue())
-						.subTotal(lineaVenta.getKey().getPvp() * lineaVenta.getValue()).build();
+				/*
+				 * En este primer paso del carrito entramos al mapa y sacamos el producto (clave) y la cantidad que nos han comprado del producto
+				 * en cuestión (value), con ello montamos una linea de pedido.
+				 */
+				
+				lv = LineaVenta.builder()
+							   .producto(lineaVenta.getKey())
+							   .ud(lineaVenta.getValue())
+							   .subTotal(lineaVenta.getKey().getPvp() * lineaVenta.getValue())
+							   .build();
 
+				//La linea de venta se añade a la venta gracias al metodo helper que tenemos.
 				lv.aniadirAVenta(v);
 
-				lineaVenta.getKey().setUnidadesStock(lineaVenta.getKey().getUnidadesStock() - 1);
-
+				
+				//Bajamos el Stock segun la cantidad pedida por el usuario en el carrito 
+				productoServicio.bajarStock(lineaVenta.getKey().getId(),lineaVenta.getValue());
+				//Guardamos la linea de venta dentro de la BBDD
 				lineaVentaServicio.save(lv);
-
+				
+				//Se calcula el total de una linea de venta, y gracias al bucle obtendremos el valor final de nuestra venta
 				total += (lineaVenta.getKey().getPvp() * lineaVenta.getValue());
 
 			}
 
+			//Guardamos el valor total de la venta sin descuento.
 			v.setTotal(total);
+			//Guardamos el valor de la venta con el descuento incluido.
 			v.setTotalConDescuento(precioEspecialCorrecion(calcularDescuento(total)));
+			//Se guarda la venta dentro de la base de datos.
 			ventaServicio.save(v);
+			//Se limpia el carrito para la próxima venta
 			productos.clear();
 
 		}

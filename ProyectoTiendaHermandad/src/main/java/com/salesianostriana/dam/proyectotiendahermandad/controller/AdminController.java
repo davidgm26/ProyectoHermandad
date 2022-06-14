@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import com.salesianostriana.dam.proyectotiendahermandad.modelo.Producto;
 import com.salesianostriana.dam.proyectotiendahermandad.modelo.Venta;
+import com.salesianostriana.dam.proyectotiendahermandad.servicios.LineaVentaServicio;
 import com.salesianostriana.dam.proyectotiendahermandad.servicios.ProductoServicio;
 import com.salesianostriana.dam.proyectotiendahermandad.servicios.VentaServicio;
 
@@ -33,6 +34,9 @@ public class AdminController {
 	
 	@Autowired
 	private VentaServicio ventaServicio;
+	
+	@Autowired
+	private LineaVentaServicio lineaVentaServicio;
 	
 
 	public AdminController(ProductoServicio productoServicio) {
@@ -139,6 +143,12 @@ public class AdminController {
 	public String listarLineasUnaVenta(@PathVariable("id") Long id ,Model model) {
 		model.addAttribute("lineasVenta",ventaServicio.findById(id).getLineaVenta());
 		return "detalleVenta";
+	}
+	
+	@GetMapping("/admin/borrarLineaVenta/{id}")
+	public String borrarLineaVenta(@PathVariable("id") Long id, Model model) {
+		lineaVentaServicio.borrarUnProductoDeLineaVenta(id);
+		return "redirect:/admin/historicoVenta";
 	}
 
 	   @ModelAttribute("mediaVentas")

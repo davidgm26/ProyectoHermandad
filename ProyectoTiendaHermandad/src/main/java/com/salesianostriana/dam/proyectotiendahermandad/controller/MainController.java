@@ -68,14 +68,7 @@ public class MainController {
 	public String mostrarLogin() {
 		return "inicioSesion";
 	}
-		
-	/*Método para buscar productos*/
-	@GetMapping("/buscar")
-	public String buscar(Model model, @RequestParam String nombre) {
-		model.addAttribute("productos", productoServicio.findByNombre(nombre));
-		return "indexUser";
-	}
-	
+			
 }		
 
 

@@ -22,7 +22,7 @@
 		<nav th:replace="~{fragmentos/navBarUsuario::menuUsuario}">
 		</nav>
 		<main class="row text-center mx-auto w-75 bg-white rounded p-5">
-			<form method="GET" th:action="@{/buscar}" class="d-flex p-3">
+			<form method="GET" th:action="@{/user/buscar}" class="d-flex p-3">
 				<input type="text" placeholder="Nombre del producto" name="nombre" id="nombre"
 					th:value="${param.nombre}" />
 				<input type="submit" value="Enviar" />
@@ -38,7 +38,7 @@
 					</div>
 					<div class="card-footer">
 						<p class="w-100" th:text="${#numbers.formatCurrency(producto.pvp)}">Nombre</p>
-						<a href="" th:href="@{/user/productoACarrito/{id}(id=${producto.id})}" class="btn-primary btn rounded ">Comprar</a>
+						<a href="" th:href="@{/user/productoACarrito/{id}(id=${producto.id})}" class="btn-primary btn rounded ">Añadir a carrito</a>
 					</div>
 				</div>
 			</div>
