@@ -80,7 +80,7 @@ blockquote {
 	width: 25%;
 }
 
-#tabla1{
+#tabla1 {
 	width: 50%;
 }
 
@@ -89,7 +89,7 @@ blockquote {
 		width: 100%;
 	}
 
-	#tabla1{
+	#tabla1 {
 		width: 100%;
 	}
 }
@@ -97,12 +97,15 @@ blockquote {
 html {
 	min-height: 100%;
 	position: relative;
-  }
-  body {
+}
+
+body {
 	margin: 0;
 	margin-bottom: 40px;
-  }
-  footer {
+}
+
+footer {
+	display: flex;
 	background-color: #283E5B;
 	background-image: url('../img/fondo_charitas.jpg');
 	padding: 20px 10px 0px 20px;
@@ -110,7 +113,7 @@ html {
 	background-position: right top;
 	position: absolute;
 	bottom: 0;
-  }
+}
 
 .titulohdad {
 	color: #ffffff;
@@ -123,27 +126,71 @@ html {
 	text-align: justify;
 	letter-spacing: 1px;
 }
-.bordeFooter{
- border: 1px #2f4053 solid;
+
+.bordeFooter {
+	border: 1px #2f4053 solid;
 }
-.duro{
+
+.duro {
 	font-size: 400;
 	font-weight: bold;
 }
-.duro2{
+
+.duro2 {
 	font-weight: lighter;
 }
 
-.mensajeError{
+.mensajeError {
 	visibility: hidden;
 }
-.error{
+
+.error {
 	border: 3px solid #bb2929;
 }
-.anchoCelda tr td{
+
+.anchoCelda tr td {
 	max-width: 400px;
 	max-height: 200px;
 }
-.gris{
+
+.gris {
 	color: #a1a9b1;
+}
+
+.form-date {
+	padding: 16px;
+	display: flex;
+	flex-direction: column;
+}
+
+.form-date__label {
+	font-family: “Helvetica”, arial, sans-serif;
+	font-size: 18px;
+	line-height: 24px;
+	padding-bottom: 8px;
+}
+
+.form-date__input[type=”date”] {
+	appearance: none;
+	color: #1D1D1D;
+	font-family: “Helvetica”, arial, sans-serif;
+	font-size: 18px;
+	border: 1px solid #47b5ff63;
+	background: #ECF0F1;
+	padding: 4px;
+	display: inline-block;
+	visibility: visible;
+	width: 140px;
+}
+
+.form-date__input[type=”date”]:focus {
+	color: #495057;
+	background-color: #FFFFFF;
+	border-color: #80BDFF;
+	outline: 0;
+	box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, .25);
+}
+
+#cajaInicio{
+	min-width: 400px;
 }

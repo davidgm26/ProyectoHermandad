@@ -1,9 +1,5 @@
 package com.salesianostriana.dam.proyectotiendahermandad.controller;
 
-import java.time.LocalDate;
-import java.time.temporal.ChronoUnit;
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,8 +8,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import com.salesianostriana.dam.proyectotiendahermandad.modelo.LineaVenta;
 import com.salesianostriana.dam.proyectotiendahermandad.modelo.Producto;
-import com.salesianostriana.dam.proyectotiendahermandad.modelo.Venta;
 import com.salesianostriana.dam.proyectotiendahermandad.servicios.LineaVentaServicio;
 import com.salesianostriana.dam.proyectotiendahermandad.servicios.ProductoServicio;
 import com.salesianostriana.dam.proyectotiendahermandad.servicios.VentaServicio;
@@ -147,8 +143,13 @@ public class AdminController {
 	
 	@GetMapping("/admin/borrarLineaVenta/{id}")
 	public String borrarLineaVenta(@PathVariable("id") Long id, Model model) {
-		lineaVentaServicio.borrarUnProductoDeLineaVenta(id);
-		return "redirect:/admin/historicoVenta";
+		LineaVenta lv = lineaVentaServicio.findById(id);
+		long id_venta = lv.getVenta().getId();
+		lineaVentaServicio.borrarUnaUdProductoDeLineaVenta(id);
+		if(lv.getUd()==0){
+			lineaVentaServicio.delete(lv);
+			}
+		return "redirect:/admin/historicoVenta/detallesVenta/" + id_venta;
 	}
 
 	   @ModelAttribute("mediaVentas")

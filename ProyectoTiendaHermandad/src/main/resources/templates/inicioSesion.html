@@ -14,14 +14,12 @@
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css"
 	th:href="@{https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css}">
-<link rel="shortcut icon" href="static/img/escudo.png"
-	th:href="@{img/escudo.png}">
-<link rel="stylesheet" href="/css/estilos.css" type="text/css"
-	th:href="@{/css/estilos.css}">
+	<link rel="shortcut icon" href="../static/img/escudo.png" th:href="@{/img/escudo.png}">
+	<link rel="stylesheet" href="../static/css/estilos.css" type="text/css" th:href="@{/css/estilos.css}">
 </head>
 <body>
 	<header th:replace="~{fragmentos/encabezado::encabezado}"></header>
-	<div class="container bg-white border p-5 rounded w-50 mt-5"
+	<div class="container bg-white border p-5 rounded w-25 mt-5 col-12 col-md-12 col-lg-12"
 		id="cajaInicio">
 		<h1 class="h2 text-center mb-4">Inicio de Sesión</h1>
 		<p th:if="${loginError}" class="error">Error en el nombre de
@@ -34,7 +32,6 @@
 					placeholder="Nombre de usuario" autofocus="autofocus"
 					class="form-control" /> <br /> <label for="username">Nombre
 					de usuario: </label>
-
 			</div>
 			<br>
 			<div class="form-floating">

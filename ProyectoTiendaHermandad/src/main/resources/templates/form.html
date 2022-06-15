@@ -10,7 +10,7 @@
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css"
 		th:href="@{https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css}">
-	<link rel="shortcut icon" href="static/img/escudo.png" th:href="@{static/img/escudo.png}">
+	<link rel="shortcut icon" href="../static/img/escudo.png" th:href="@{/img/escudo.png}">
 	<link rel="stylesheet" href="../static/css/estilos.css" type="text/css" th:href="@{/css/estilos.css}">
 	<script type="text/javascript" src="../static/js/js.js" th:src="@{/js/js.js}" defer></script>
 
@@ -185,11 +185,11 @@ function cambiarApariencia(campo, estado) {
 			<div class="mensajeError text-danger" id="errorPvp">No puede introucir una fecha superior a hoy
 			</div>
 			<!--Enviar-->
-			<button class="btn btn-danger btn-block mb-4" type="submit" name="enviar" value="Enviar">Añadir
+			<button class="btn btn-primary btn-block mb-4" type="submit" name="enviar" value="Enviar">Añadir
 				producto</button>
 		</form>
 
-		<a class="btn btn-primary mx-auto" th:href="@{/admin}">Volver</a>
+		<a class="btn btn-danger mx-auto" th:href="@{/admin}">Volver</a>
 	</div>
 </body>
 
