@@ -49,27 +49,24 @@
           <span class="visually-hidden">Next</span>
         </button>
         <br>
-        <div class="card float-start" style="width:400px">
-          <div class="card-body">
-            <h4 class="card-title">John Doe</h4>
-            <p class="card-text">Some example text.</p>
-            <a href="#" class="btn btn-primary">See Profile</a>
+       <div class="conatiner mx-auto w-100">
+        <div class="row mx-auto">
+          <div class="card float-start" style="width:200px">
+            <div class="card-body">
+              <h4 class="card-title">Arte Sacro</h4>
+              <p class="card-text">Galería fotográfica</p>
+              <a href="http://www.artesacro.org/Noticia.asp?idreg=145035" th:href="@{http://www.artesacro.org/Noticia.asp?idreg=145035}" class="btn btn-primary">Ver</a>
+            </div>
+          </div>
+          <div class="card float-start" style="width:200px">
+            <div class="card-body">
+              <h4 class="card-title">Diario de Sevilla</h4>
+              <p class="card-text">Información de un periodico local</p>
+              <a href="https://www.diariodesevilla.es/especiales/programa-semana-santa-sevilla/la-estrella.php" th:href="@{https://www.diariodesevilla.es/especiales/programa-semana-santa-sevilla/la-estrella.php}" class="btn btn-primary">Ver</a>
+            </div>
           </div>
         </div>
-        <div class="card float-start" style="width:400px">
-          <div class="card-body">
-            <h4 class="card-title">John Doe</h4>
-            <p class="card-text">Some example text.</p>
-            <a href="#" class="btn btn-primary">See Profile</a>
-          </div>
-        </div>
-        <div class="card float-start" style="width:400px">
-          <div class="card-body">
-            <h4 class="card-title">John Doe</h4>
-            <p class="card-text">Some example text.</p>
-            <a href="#" class="btn btn-primary">See Profile</a>
-          </div>
-        </div>
+       </div>
     </main>
   </div>
   <footer class="w-100" th:replace="~{fragmentos/footer::footer}">
