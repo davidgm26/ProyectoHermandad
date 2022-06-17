@@ -7,9 +7,11 @@ El proyecto es una fusión de todo lo aprendido durante el curso en las asignatu
 Para acceder al usuario administrador se debe loguear con la siguiente información:
 
 Nombre de usuario : admin
+
 Contraseña : admin
 
 Para acceder al usuario normal se debe loguear con la sieguiente información:
 
 Nombre de usuario : user
+
 Contraseña : 1234
