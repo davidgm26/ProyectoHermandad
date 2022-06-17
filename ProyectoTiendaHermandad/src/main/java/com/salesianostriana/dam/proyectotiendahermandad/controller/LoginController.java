@@ -11,13 +11,13 @@ public class LoginController {
 
     @GetMapping("/login")
     public String login() {
-        return "index.html";
+        return "inicioSesion";
     }	
 	
     @GetMapping("/login-error")
     public String loginError(Model model) {
         model.addAttribute("loginError", true);
-        return "index.html";
+        return "inicioSesion";
     }
     
 /*	@GetMapping("/inicioSesion")

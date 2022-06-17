@@ -22,8 +22,6 @@ import com.salesianostriana.dam.proyectotiendahermandad.servicios.ProductoServic
 @Controller
 public class MainController {
 
-	@Autowired
-	private ProductoServicio productoServicio;
 	
 	@GetMapping({ "/index", "/" })
 	public String mostrarPagPrincipal() {
@@ -62,6 +60,11 @@ public class MainController {
 	@GetMapping("/historia")
 	public String mostrarHistoria() {
 		return "historia";
+	}
+	
+	@GetMapping("/avisolegal")
+	public String mostrarAvisoLegal() {
+		return "avisoLegal";
 	}
 
 	@GetMapping("/inicioSesion")

@@ -22,111 +22,118 @@
 		</nav>
 		<main class="col-lg-3 col-md-6 col-12 w-75 bg-white mx-auto rounded h-100 p-3">
 			<h2 class="texto">Carrito</h2>
-			<form action="checkout" th:action="@{/checkout}" th:object="${venta}" method="post">
-				<button class="btn btn-success btn-block mb-4" type="submit" name="checkout"
-					value="checkout">Comprar</button>
-				<div class="mx-auto float-end">
-					<a class="btn btn-primary" href="carrito.html" th:href="@{/user/indexUsuario}">Volver</a>
-					<button type="button" class="btn btn-danger" data-bs-toggle="modal"
-						th:attr="data-bs-target='#myModal1'">Borrar todo</button></td>
-					<!-- The Modal -->
-					<div class="modal" id="myModal1" th:id="'myModal1'">
-						<div class="modal-dialog">
-							<div class="modal-content">
-								<!-- Modal Header -->
-								<div class="modal-header">
-									<h4 class="modal-title">Modal Heading</h4>
-									<button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-								</div>
-								<!-- Modal body -->
-								<div class="modal-body">¿Esta seguro que desea limpiar el carrito?</div>
-								<!-- Modal footer -->
-								<div class="modal-footer">
-									<a class="btn btn-danger" href="carrito.html" th:href="@{/user/borrarTodo}">Borrar
-										todo</a>
-									<a class="btn btn-primary" th:href="@{/user/carrito}">Volver</a>
+			<div th:if="${(totalCarrito) != 0}">
+				<form action="checkout" th:action="@{/checkout}" th:object="${venta}" method="post">
+					<button class="btn btn-success btn-block mb-4" type="submit" name="checkout"
+						value="checkout">Comprar</button>
+
+					<div class="mx-auto float-end">
+						<a class="btn btn-primary" href="carrito.html" th:href="@{/user/indexUsuario}">Volver</a>
+						<button type="button" class="btn btn-danger" data-bs-toggle="modal"
+							th:attr="data-bs-target='#myModal1'">Borrar todo</button></td>
+
+						<!-- The Modal -->
+						<div class="modal" id="myModal1" th:id="'myModal1'">
+							<div class="modal-dialog">
+								<div class="modal-content">
+									<!-- Modal Header -->
+									<div class="modal-header">
+										<h4 class="modal-title">Modal Heading</h4>
+										<button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+									</div>
+									<!-- Modal body -->
+									<div class="modal-body">¿Esta seguro que desea limpiar el carrito?</div>
+									<!-- Modal footer -->
+									<div class="modal-footer">
+										<a class="btn btn-danger" href="carrito.html"
+											th:href="@{/user/borrarTodo}">Borrar
+											todo</a>
+										<a class="btn btn-primary" th:href="@{/user/carrito}">Volver</a>
+									</div>
 								</div>
 							</div>
 						</div>
 					</div>
-				</div>
-			</form>
-			<div class="table-responsive">
-				<table class="table tablaHermanos w-100 mx-auto col-lg-3 col-md-6 col-12">
-					<thead>
-						<tr>
-							<th>Nombre</th>
-							<th>Precio Unitario</th>
-							<th>Cantidad</th>
-							<th></th>
-							<th>Subtotal</th>
-						</tr>
-					</thead>
-					<tbody class="anchoCelda">
-						<tr class="tabla" th:each="producto : ${productos}">
-							<td th:text="${producto.key.nombre}">Nombre</td>
-							<td th:text="${producto.key.pvp}">Nombre</td>
-							<td th:text="${producto.value}">Nombre</td>
-							<td></td>
-							<td th:text="${producto.value*producto.key.pvp}">Nombre</td>
-							<td><button type="button" class="btn btn-danger" data-bs-toggle="modal"
-									th:attr="data-bs-target='#myModa2'+${producto.key.id}">Eliminar</button></td>
-							<!-- The Modal -->
-							<div class="modal" id="myModal" th:id="'myModa2'+${producto.key.id}">
-								<div class="modal-dialog">
-									<div class="modal-content">
-										<!-- Modal Header -->
-										<div class="modal-header">
-											<h4 class="modal-title">Modal Heading</h4>
-											<button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-										</div>
-										<!-- Modal body -->
-										<div class="modal-body">¿Esta seguro que desea eliminar
-											este producto?</div>
-										<!-- Modal footer -->
-										<div class="modal-footer">
-											<a class="btn btn-danger"
-												th:href="@{/user/borrarProducto/{id}(id=${producto.key.id})}">Eliminar</a>
-											<a class="btn btn-primary" th:href="@{/user/carrito}">Volver</a>
+				</form>
+				<div class="table-responsive">
+					<table class="table tablaHermanos w-100 mx-auto col-lg-3 col-md-6 col-12">
+						<thead>
+							<tr>
+								<th>Nombre</th>
+								<th>Precio Unitario</th>
+								<th>Cantidad</th>
+								<th></th>
+								<th>Subtotal</th>
+							</tr>
+						</thead>
+						<tbody class="anchoCelda">
+							<tr class="tabla" th:each="producto : ${productos}">
+								<td th:text="${producto.key.nombre}">Nombre</td>
+								<td th:text="${producto.key.pvp}">Nombre</td>
+								<td th:text="${producto.value}">Nombre</td>
+								<td></td>
+								<td th:text="${producto.value*producto.key.pvp}">Nombre</td>
+								<td><button type="button" class="btn btn-danger" data-bs-toggle="modal"
+										th:attr="data-bs-target='#myModa2'+${producto.key.id}">Eliminar</button></td>
+								<!-- The Modal -->
+								<div class="modal" id="myModal" th:id="'myModa2'+${producto.key.id}">
+									<div class="modal-dialog">
+										<div class="modal-content">
+											<!-- Modal Header -->
+											<div class="modal-header">
+												<h4 class="modal-title">Modal Heading</h4>
+												<button type="button" class="btn-close"
+													data-bs-dismiss="modal"></button>
+											</div>
+											<!-- Modal body -->
+											<div class="modal-body">¿Esta seguro que desea eliminar
+												este producto?</div>
+											<!-- Modal footer -->
+											<div class="modal-footer">
+												<a class="btn btn-danger"
+													th:href="@{/user/borrarProducto/{id}(id=${producto.key.id})}">Eliminar</a>
+												<a class="btn btn-primary" th:href="@{/user/carrito}">Volver</a>
+											</div>
 										</div>
 									</div>
 								</div>
-							</div>
-						</tr>
-						<tr>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td>
-								<h4>Total</h4>
-							</td>
-							<td class="text-right">
-								<h4><strong th:text="${(totalCarrito)}">100€</strong></h4>
-							</td>
-						</tr>
-						<th:block th:if="${(totalCarrito) > 50}">
+							</tr>
 							<tr>
 								<td></td>
 								<td></td>
 								<td></td>
 								<td></td>
 								<td>
-									<h4>Total con descuento</h4>
+									<h4>Total</h4>
 								</td>
-								<td>
-									<h4><strong th:text="${(totalCarritoDescuento)}">100€</strong></h4>
+								<td class="text-right">
+									<h4><strong th:text="${(totalCarrito)}">100€</strong></h4>
 								</td>
-						</th:block>
-						</td>
-						</tr>
-					</tbody>
-				</table>
+							</tr>
+							<th:block th:if="${(totalCarrito) > 50}">
+								<tr>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td>
+										<h4>Total con descuento</h4>
+									</td>
+									<td>
+										<h4><strong th:text="${(totalCarritoDescuento)}">100€</strong></h4>
+									</td>
+							</th:block>
+							</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+			<div th:if="${(totalCarrito) == 0}">
+				<p class="text-danger">No hay productos añadidos a su carrito</p>
 			</div>
 		</main>
 	</div>
-	<footer class="w-100" th:replace="~{fragmentos/footer::footer}">
-	</footer>
 </body>
 
 

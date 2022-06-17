@@ -4,6 +4,8 @@ document.getElementById("pvp").addEventListener("blur", comprobarPrecio);
 document.getElementById("descripcion").addEventListener("blur", comprobarDescripcion);
 document.getElementById("unidadesStock").addEventListener("blur", comprobarStock);
 
+AOS.init();
+
 
 function revisarFormulario() {
 
@@ -22,35 +24,25 @@ function revisarFormulario() {
 
 function comprobarNombre() {
 
-    let regex = /^[a-zA-Z0-9\_\-]{4,50}$/; // Letras, numeros, guion y guion_bajo
+
     let nombre = document.getElementById("nombre");
 
     let resultado = nombre.value != "";
 
-    if (resultado) {
-        nombre.nextElementSibling.hidden = true;
-    } else {
-        nombre.nextElementSibling.hidden = false;
-    }
+        nombre.nextElementSibling.hidden = resultado;
 
-    cambiarApariencia(nombre, resultado)
+        cambiarApariencia(nombre, resultado)
 
     return resultado;
 }
 
 function comprobarDescripcion() {
 
-    let regex = /^[a-zA-Z0-9\_\-]{4,50}$/; // Letras, numeros, guion y guion_bajo
-
     let descripcion = formulario.descripcion;
 
     let resultado = descripcion.value != "";
 
-    if (resultado) {
-        descripcion.nextElementSibling.hidden = true;
-    } else {
-        descripcion.nextElementSibling.hidden = false;
-    }
+    descripcion.nextElementSibling.hidden = resultado;
 
     cambiarApariencia(descripcion, resultado)
 
@@ -63,11 +55,9 @@ function comprobarPrecio() {
     let precio = formulario.pvp;
     let resultado = pvp.value != "" && !isNaN(precio.value) && precio.value > 0;
 
-    if (resultado) {
-        pvp.nextElementSibling.hidden = true;
-    } else {
-        pvp.nextElementSibling.hidden = false;
-    }
+
+    pvp.nextElementSibling.hidden = resultado;
+
 
     cambiarApariencia(pvp, resultado)
 
@@ -80,11 +70,7 @@ function comprobarStock() {
     let unidadesStock = formulario.unidadesStock;
     let resultado = unidadesStock.value != "" && !isNaN(unidadesStock.value) && unidadesStock.value > 0;
 
-    if (resultado) {
-        unidadesStock.nextElementSibling.hidden = true;
-    } else {
-        unidadesStock.nextElementSibling.hidden = false;
-    }
+    unidadesStock.parentNode.nextElementSibling.hidden = resultado;
 
     cambiarApariencia(unidadesStock, resultado)
 
@@ -93,14 +79,11 @@ function comprobarStock() {
 function evaluarFecha() {
 
     let fechaDeEntrada = document.getElementById ("fecha");
-	let correcto = fechaDeEntrada.value!="" && Date.parse(fechaDeEntrada.value) > Date.now();
+	let resultado = fechaDeEntrada.value!="" && Date.parse(fechaDeEntrada.value) < Date.now();
 
-        if(correcto){
-            fechaDeEntrada.parentNode.nextElementSibling.hidden = true;
-        }else{
-            fechaDeEntrada.parentNode.nextElementSibling.hidden = false;
-        }
-
+       
+    fechaDeEntrada.parentNode.nextElementSibling.hidden = resultado;
+        
 	cambiarApariencia(fechaDeEntrada, resultado);
 	return resultado;
 }

@@ -1,5 +1,7 @@
 package com.salesianostriana.dam.proyectotiendahermandad.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -27,13 +29,12 @@ public class AdminController {
 
 	@Autowired
 	private ProductoServicio productoServicio;
-	
+
 	@Autowired
 	private VentaServicio ventaServicio;
-	
+
 	@Autowired
 	private LineaVentaServicio lineaVentaServicio;
-	
 
 	public AdminController(ProductoServicio productoServicio) {
 		this.productoServicio = productoServicio;
@@ -50,18 +51,10 @@ public class AdminController {
 	 * Los mappings deben de tener el rol al que pertenecen delante es decir ->
 	 * /admin/lo que sea
 	 */
-	
 
-	@GetMapping({"/admin/producto","/admin"})
+	@GetMapping({ "/admin/producto", "/admin" })
 	public String listarTodos(Model model) {
 		model.addAttribute("productos", productoServicio.findAll());
-		return "indexSesion";
-	}
-	
-	@GetMapping("/admin/producto-error")
-	public String listarTodosErro(Model model) {
-		model.addAttribute("productos", productoServicio.findAll());
-		model.addAttribute("errorFecha", true);
 		return "indexSesion";
 	}
 
@@ -88,18 +81,17 @@ public class AdminController {
 	 */
 	@PostMapping("/admin/nuevo/submit")
 	public String procesaFormulario(@ModelAttribute("producto") Producto producto, Model model) {
-		
-		model.addAttribute("producto", producto);		
+
+		model.addAttribute("producto", producto);
 		productoServicio.save(producto);
 		return "redirect:/admin/producto";
 	}
 
 	/**
 	 * Mapping para borrar un producto de la lista, lo buscamos por id y lo
-	 * borramos.
+	 * borramos, comprobando que no esté en ninguna linea
 	 * 
 	 * @param id
-	 * @param model
 	 * @return Nos redirige a la pagina principal del administrador (tabla con todos
 	 *         los productos)
 	 */
@@ -108,6 +100,7 @@ public class AdminController {
 		productoServicio.deleteById(id);
 		return "redirect:/admin/producto";
 	}
+
 
 	@GetMapping("/admin/editar/{id}")
 	public String editarProducto(@PathVariable("id") Long id, Model model) {
@@ -122,44 +115,54 @@ public class AdminController {
 		}
 
 	}
-	
+
 	@GetMapping("/admin/historicoVenta")
 	public String listarTodas(Model model) {
 		model.addAttribute("ventas", ventaServicio.findAll());
 		return "historicoVentas";
 	}
-	
+
 	@GetMapping("/admin/borrarVenta/{id}")
 	public String borrarVenta(@PathVariable("id") Long id, Model model) {
 		ventaServicio.deleteById(id);
 		return "redirect:/admin/historicoVenta";
 	}
-	
+
 	@GetMapping("/admin/historicoVenta/detallesVenta/{id}")
-	public String listarLineasUnaVenta(@PathVariable("id") Long id ,Model model) {
-		model.addAttribute("lineasVenta",ventaServicio.findById(id).getLineaVenta());
+	public String listarLineasUnaVenta(@PathVariable("id") Long id, Model model) {
+		model.addAttribute("lineasVenta", ventaServicio.findById(id).getLineaVenta());
 		return "detalleVenta";
 	}
-	
+
 	@GetMapping("/admin/borrarLineaVenta/{id}")
 	public String borrarLineaVenta(@PathVariable("id") Long id, Model model) {
 		LineaVenta lv = lineaVentaServicio.findById(id);
 		long id_venta = lv.getVenta().getId();
 		lineaVentaServicio.borrarUnaUdProductoDeLineaVenta(id);
-		if(lv.getUd()==0){
+		if (lv.getUd() == 0) {
 			lineaVentaServicio.delete(lv);
-			}
+		}
 		return "redirect:/admin/historicoVenta/detallesVenta/" + id_venta;
 	}
 
-	   @ModelAttribute("mediaVentas")
-	    public Double calcularMediaTotalVentas() {
-			return ventaServicio.calcularMediaTotalVentasSinDescuento(); 
-		}
-	   
-	   @ModelAttribute("mediaVentasDescuento")
-	    public Double calcularMediaTotalVentasConDescuento() {
-			return ventaServicio.calcularMediaTotalVentasConDescuento(); 
-		}
-		   
+	@ModelAttribute("mediaVentas")
+	public Double calcularMediaTotalVentas() {
+		return ventaServicio.calcularMediaTotalVentasSinDescuento();
+	}
+
+	@ModelAttribute("mediaVentasDescuento")
+	public Double calcularMediaTotalVentasConDescuento() {
+		return ventaServicio.calcularMediaTotalVentasConDescuento();
+	}
+
+	@ModelAttribute("numPedido")
+	public int imprimirNumPedido() {
+		return ventaServicio.generarNumPedido();
+	}
+
+	@ModelAttribute("numDias")
+	public int imprimirNumDias() {
+		return ventaServicio.generarNumDias();
+	}
+
 }

@@ -40,7 +40,7 @@ public class ConfiguracionSeguridad extends WebSecurityConfigurerAdapter{
          //El (/xxx/**) sirve para poder tener acceso a todos los controladores de ese rol
           .anyRequest().permitAll()//Esto es para poder usar los archivos de css,js, img...
           //En los controladores del public,poner /public/xxxx/ y agregar nuevas lineas aquí          
-          .and().exceptionHandling().accessDeniedPage("/")
+          .and().exceptionHandling().accessDeniedPage("/inicioSesionError")
           .and().formLogin().loginPage("/public/inicioSesion").loginProcessingUrl("/login")
           .successHandler(myAuthenticationSuccessHandler())
           

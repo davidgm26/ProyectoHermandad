@@ -13,119 +13,9 @@
 	<link rel="shortcut icon" href="../static/img/escudo.png" th:href="@{/img/escudo.png}">
 	<link rel="stylesheet" href="../static/css/estilos.css" type="text/css" th:href="@{/css/estilos.css}">
 	<script type="text/javascript" src="../static/js/js.js" th:src="@{/js/js.js}" defer></script>
-
-	<!--<script>
-	window.onload= function(){
-		//document.getElementById("formulario").addEventListener("submit",revisarFormulario);
-		document.getElementById("nombre").addEventListener("blur", comprobarNombre);
-		document.getElementById("pvp").addEventListener("blur", comprobarPrecio);
-		document.getElementById("descripcion").addEventListener("blur", comprobarDescripcion);
-		document.getElementById("unidadesStock").addEventListener("blur", comprobarStock);
-	};
-
-
-function revisarFormulario() {
-
-    let resultado = false;
-
-    resultado = comprobarNombre() &&
-        comprobarPrecio() &&
-        comprobarDescripcion() &&
-        comprobarStock();
-
-    formulario.enviar.className = resultado ? "btn btn-success mb-2" : "btn btn-danger mb-2";
-
-    return resultado;
-}
-
-function comprobarNombre() {
-
-    let regex = /^[a-zA-Z0-9\_\-]{4,50}$/; // Letras, numeros, guion y guion_bajo
-    let nombre = document.getElementById("nombre");
-
-    let resultado = nombre.value != "";
-
-    if (resultado) {
-        nombre.nextElementSibling.hidden = true;
-    } else {
-        nombre.nextElementSibling.hidden = false;
-    }
-
-    cambiarApariencia(nombre, resultado)
-
-    return resultado;
-}
-
-function comprobarDescripcion() {
-
-    let regex = /^[a-zA-Z0-9\_\-]{4,50}$/; // Letras, numeros, guion y guion_bajo
-
-    let descripcion = formulario.descripcion;
-
-    let resultado = descripcion.value != "";
-
-    if (resultado) {
-        descripcion.nextElementSibling.hidden = true;
-    } else {
-        descripcion.nextElementSibling.hidden = false;
-    }
-
-    cambiarApariencia(descripcion, resultado)
-
-    return resultado;
-}
-
-
-function comprobarPrecio() {
-
-    let precio = formulario.pvp;
-    let resultado = pvp.value != "" && !isNaN(precio.value) && precio.value >= 0;
-
-    if (resultado) {
-        pvp.nextElementSibling.hidden = true;
-    } else {
-        pvp.nextElementSibling.hidden = false;
-    }
-
-    cambiarApariencia(pvp, resultado)
-
-    return resultado;
-
-}
-
-function comprobarStock() {
-
-    let unidadesStock = formulario.unidadesStock;
-    let resultado = unidadesStock.value != "" && !isNaN(unidadesStock.value) && unidadesStock.value > 0;
-
-    if (resultado) {
-        unidadesStock.nextElementSibling.hidden = true;
-    } else {
-        unidadesStock.nextElementSibling.hidden = false;
-    }
-
-    cambiarApariencia(unidadesStock, resultado)
-
-    return resultado;
-}
-
-
-function cambiarApariencia(campo, estado) {
-    if (estado) {
-        campo.classList.remove("border-danger");
-        campo.classList.add("border-success");
-        campo.parentNode.nextElementSibling.style.visibility = 'hidden';
-    }
-    else {
-        campo.classList.remove("border-success");
-        campo.classList.add("border-danger");
-        campo.parentNode.nextElementSibling.style.visibility = 'visible';
-    }
-
-}
-
-	</script>-->
+	<script src="../static/js/datedropper-javascript.js" th:src="@{/js/datedropper-javascript.js}"></script>
 </head>
+
 <body>
 	<header th:replace="~{fragmentos/encabezado::encabezado}"></header>
 	<div class="container bg-white border p-5 rounded w-50 mt-5" id="registroProductos">
@@ -133,8 +23,8 @@ function cambiarApariencia(campo, estado) {
 		<!--El "onsubmit="return revisarFormulario()"" lo he puesto porque como vimos en clase el formulario no hacía el JavaScript 
 		    a la hora de enviar el formulario entonces Rafa me dijo que lo pusiera así que comentara el script de arriba y que avisara por aquí
 			el script que usa esta en la carpeta resources/static/js-->
-		<form method="POST" action="#" th:action="@{/admin/nuevo/submit}" th:object="${producto}"
-			 id="formulario" name="formulario" onsubmit="return revisarFormulario()">
+		<form method="POST" action="#" th:action="@{/admin/nuevo/submit}" th:object="${producto}" id="formulario"
+			name="formulario" onsubmit="return revisarFormulario()">
 			<!--Primera fila-->
 			<div class="row mb-4">
 				<div class="col">
@@ -160,13 +50,14 @@ function cambiarApariencia(campo, estado) {
 			</div>
 			<!--Unidades Stock-->
 			<div class="form-outline mb-4">
-				<input type="number" step="1" class="form-control" th:field="*{unidadesStock}"/>
+				<input type="number" step="1" class="form-control" th:field="*{unidadesStock}" />
 				<label class="form-label" for="unidadesStock">UnidadesEnStock</label>
 			</div>
 			<div class="mensajeError text-danger" id="errorPvp">Introduzca un valor superior a 0</div>
 			<!--Descripcion-->
 			<div class="form-outline mb-4">
-				<textarea class="form-control" id="descripcion" rows="4" th:field="*{descripcion}" maxlength="150"></textarea>
+				<textarea class="form-control" id="descripcion" rows="4" th:field="*{descripcion}"
+					maxlength="150"></textarea>
 				<label class="form-label" for="descripcion">Descripcion (Máximo 150 caracteres)</label>
 			</div>
 			<div class="mensajeError text-danger" id="errorPvp">Introduzca una pequeña descripción del producto.
@@ -178,12 +69,17 @@ function cambiarApariencia(campo, estado) {
 			</div>
 			<br>
 			<div class="form-outline">
-				<input type="date" name="fechaDeEntrada" th:field="*{fechaDeEntrada}" id="fecha" required/>
+				<input type="date" name="fechaDeEntrada" th:field="*{fechaDeEntrada}" id="fecha" required />
 				<label for="fechaDeEntrada" class="form-label">Indique
 					la fecha de alta del producto</label>
+				<script>
+					new dateDropper({
+						selector: 'input[type="date"]'
+					});
+				</script>
+			</div><div class="mensajeError text-danger" id="errorPvp">No puede introucir una fecha superior a hoy
 			</div>
-			<div class="mensajeError text-danger" id="errorPvp">No puede introucir una fecha superior a hoy
-			</div>
+
 			<!--Enviar-->
 			<button class="btn btn-primary btn-block mb-4" type="submit" name="enviar" value="Enviar">Añadir
 				producto</button>

@@ -104,17 +104,16 @@ body {
 	margin-bottom: 40px;
 }
 
-footer {
-	display: flex;
+footer{
 	background-color: #283E5B;
 	background-image: url('../img/fondo_charitas.jpg');
-	padding: 20px 10px 0px 20px;
 	background-repeat: no-repeat;
 	background-position: right top;
 	position: absolute;
+}
+.abajo{
 	bottom: 0;
 }
-
 .titulohdad {
 	color: #ffffff;
 	font-size: 14px;
@@ -193,4 +192,7 @@ footer {
 
 #cajaInicio{
 	min-width: 400px;
+}
+.tarjeta{
+	width: 200 px;
 }

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="https://www.thymeleaf.org">
+
+<head>
+    <title>Hermandad de la estrella</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        th:href="@{https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css}">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css"
+        th:href="@{https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css}">
+    <link rel="shortcut icon" href="../static/img/escudo.png" th:href="@{/img/escudo.png}">
+    <link rel="stylesheet" href="../static/css/estilos.css" type="text/css" th:href="@{/css/estilos.css}">
+</head>
+
+<body class="lateral">
+    <div class="container-fluid lateral">
+        <header class="w-100" th:replace="~{fragmentos/encabezado::encabezado}">
+        </header>
+        <a href="./index.html" th:href="@{/}" class="btn btn-secondary">Volver</a>
+        <main class="w-75 bg-white mx-auto rounded p-4">
+            <article>
+                Todo el contenido de esta web oficial de la Pontificia, Real, Ilustre y Fervorosa Hermandad
+                Sacramental y Cofradía de Nazarenos de Nuestro Padre Jesús de las Penas, María Santísima de la Estrella, Triunfo del
+                Santo Lignum Crucis, San Francisco de Paula y Santas Justa y Rufina, a partir de ahora HERMANDAD DE LA ESTRELLA, en
+                lo que se refiere a diseño, textos, símbolos, fotografías, videos y músicas, es propiedad intelectual de la
+                Hermandad.
+
+                Al usuario que accede a esta web no le supone permiso de la Hermandad de la Estrella para el uso o
+                derecho de todo o parte del contenido en ella expuesto.
+
+                El contenido de esta web no se considera prestación de servicio alguno, sino que es considerado un medio
+                de información general.
+
+                Está totalmente prohibido; alterar, cambiar o manipular esta web sin permiso expreso Y escrito de la
+                HERMANDAD DE LA ESTRELLA. Eximiéndose la HERMANDAD DE LA ESTRELLA de cualquier daño o perjuicio que de esa circunstancia
+                realizada por terceros pudiera dar lugar.
+
+                El usuario que acceda a esta web de la HERMANDAD DE LA ESTRELLA se obliga a respetar y cumplir con las leyes
+                vigentes que pudieran repercutir en el buen uso de la misma, siendo responsable directo de los daños y perjuicios
+                que pudiera causar, quedando la Hermandad en posesión de su derecho a velar por sus intereses ante la
+                Justicia
+                competente.
+                <br>
+                <a class="letraPag" href="./avisoLegal.html" th:href="@{/public/avisolegal}">Aviso Legal</a>
+            </article>
+        </main>
+    </div>
+    <footer th:replace="~{fragmentos/footer::footer}">
+    </footer>
+    </div>
+</body>
+
+</html>

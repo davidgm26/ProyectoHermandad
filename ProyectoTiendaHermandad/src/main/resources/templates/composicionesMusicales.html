@@ -15,81 +15,83 @@
 </head>
 
 
-<body>
+<body class="lateral">
 	<header th:replace="~{fragmentos/encabezado::encabezado}">
 	</header>
 	<nav th:replace="~{fragmentos/navBar::menu}">
 	</nav>
 	<br>
-	<h2 class="letraPag">Composiciones</h2>
-	<hr>
-	<table class="text-center mx-auto" id="tabla1">
-		<thead>
-			<tr>
-				<th scope="col">Cornetas y tambores</th>
-				<th scope="col">Banda de música</th>
-			</tr>
-		</thead>
-		<tbody class="mt-2">
-			<tr>
-				<td class="p-2" scope="row">Y Tu Estrella<em>(Bienvenido Puelles)</em></td>
-				<td class="p-2">Virgen de la Estrella <em>(Pedro Gámez Laserna)</em></td>
-			</tr>
-			<tr>
-				<td class="p-2" scope="row">Pasa la Estrella<em>(José Ramón Pérez Soto) </em></td>
-				<td class="p-2">Estrella <em>(José Albero Francés)</em></td>
-			</tr>
-			<tr>
-				<td class="p-2" scope="row">Llora María<em>(José Manuel Reina y Rafael Vázquez Mateo)</em></td>
-				<td class="p-2">Jesús de la Penas, una oración<em>(J. Manuel Bernal Montero) </em></td>
-			</tr>
-			<tr>
-				<td class="p-2" scope="row">Penas de Triana<em>(Antonio Velasco)</em></td>
-				<td class="p-2">Corona de Estrellas<em>(Bienvenido Puelles)</em></td>
-			</tr>
-			<tr>
-				<td class="p-2" scope="row">Triana llora tus Penas<em>(Bienvenido Puelles)</em></td>
-				<td class="p-2">Estrella de Triana Coronada <em>(Jesús Jarén)</em></td>
-			</tr>
-			<tr>
-				<td class="p-2" scope="row">Triana te Corona<em>(Jorge Águila y Isaac Gómez) </em></td>
-				<td class="p-2">La Estrella de Triana<em>(Fulgencio Morón Ródenas) </em></td>
-			</tr>
-			<tr>
-				<td class="p-2" scope="row">Estrella y Esperanza<em>(Francisco David Álvarez Barroso)</em></td>
-				<td class="p-2">Virgen Coronada de Estrellas<em>(Manuel Rebollo) </em></td>
-			</tr>
-			<tr>
-				<td class="p-2" scope="row">La Valiente<em>(Isaac Gómez)</em></td>
-				<td class="p-2">Estrella Coronada<em>(Francisco de Asís Manzanero)</em></td>
-			</tr>
-			<tr>
-				<td class="p-2" scope="row">Orando al cielo de Triana<em>(Vicente Moreno Albadalejo)</em></td>
-				<td class="p-2">La Estrella en Sevilla<em>(Jose Manuel Bernal Montero)</em></td>
-			</tr>
-			<tr>
-				<td class="p-2" scope="row">Una Estrella pa tu Corona<em>(Francisco Javier Navarro)</em></td>
-				<td class="p-2">Estrella<em>(Manuel Marvizón Carvallo)</em></td>
-			</tr>
-			<tr>
-				<td class="p-2" scope="row">Sagrada Corona <em>(David López Ramos y Manuel Flores González)</em></td>
-				<td class="p-2">Las Manos de la Estrella<em>(Juan Velazquez)</em></td>
-			</tr>
-			<tr>
-				<td class="p-2" scope="row">A la Triana Costalera<em>(Jorge Águila)</em></td>
-				<td class="p-2">Salve Estrella<em>(María Luisa Palomares)</em></td>
-			</tr>
-			<tr>
-				<td class="p-2" scope="row">Para ti mi Estrella<em>(Victor Ramírez)</em></td>
-				<td class="p-2"></td>
-			</tr>
-			<tr>
-				<td class="p-2" scope="row">En Triana<em>(Joaquín Eligio Cruz)</em></td>
-				<td class="p-2"></td>
-			</tr>
-		</tbody>
-	</table>
-	<footer class="w-100" th:replace="~{fragmentos/footer::footer}">
+	<main class="text-center mx-auto w-75 bg-white rounded p-4">
+		<h2 class="letraPag">Composiciones</h2>
+		<hr>
+		<table class="text-center mx-auto" id="tabla1">
+			<thead>
+				<tr>
+					<th scope="col">Cornetas y tambores</th>
+					<th scope="col">Banda de música</th>
+				</tr>
+			</thead>
+			<tbody class="mt-2">
+				<tr>
+					<td class="p-2" scope="row">Y Tu Estrella<em>(Bienvenido Puelles)</em></td>
+					<td class="p-2">Virgen de la Estrella <em>(Pedro Gámez Laserna)</em></td>
+				</tr>
+				<tr>
+					<td class="p-2" scope="row">Pasa la Estrella<em>(José Ramón Pérez Soto) </em></td>
+					<td class="p-2">Estrella <em>(José Albero Francés)</em></td>
+				</tr>
+				<tr>
+					<td class="p-2" scope="row">Llora María<em>(José Manuel Reina y Rafael Vázquez Mateo)</em></td>
+					<td class="p-2">Jesús de la Penas, una oración<em>(J. Manuel Bernal Montero) </em></td>
+				</tr>
+				<tr>
+					<td class="p-2" scope="row">Penas de Triana<em>(Antonio Velasco)</em></td>
+					<td class="p-2">Corona de Estrellas<em>(Bienvenido Puelles)</em></td>
+				</tr>
+				<tr>
+					<td class="p-2" scope="row">Triana llora tus Penas<em>(Bienvenido Puelles)</em></td>
+					<td class="p-2">Estrella de Triana Coronada <em>(Jesús Jarén)</em></td>
+				</tr>
+				<tr>
+					<td class="p-2" scope="row">Triana te Corona<em>(Jorge Águila y Isaac Gómez) </em></td>
+					<td class="p-2">La Estrella de Triana<em>(Fulgencio Morón Ródenas) </em></td>
+				</tr>
+				<tr>
+					<td class="p-2" scope="row">Estrella y Esperanza<em>(Francisco David Álvarez Barroso)</em></td>
+					<td class="p-2">Virgen Coronada de Estrellas<em>(Manuel Rebollo) </em></td>
+				</tr>
+				<tr>
+					<td class="p-2" scope="row">La Valiente<em>(Isaac Gómez)</em></td>
+					<td class="p-2">Estrella Coronada<em>(Francisco de Asís Manzanero)</em></td>
+				</tr>
+				<tr>
+					<td class="p-2" scope="row">Orando al cielo de Triana<em>(Vicente Moreno Albadalejo)</em></td>
+					<td class="p-2">La Estrella en Sevilla<em>(Jose Manuel Bernal Montero)</em></td>
+				</tr>
+				<tr>
+					<td class="p-2" scope="row">Una Estrella pa tu Corona<em>(Francisco Javier Navarro)</em></td>
+					<td class="p-2">Estrella<em>(Manuel Marvizón Carvallo)</em></td>
+				</tr>
+				<tr>
+					<td class="p-2" scope="row">Sagrada Corona <em>(David López Ramos y Manuel Flores González)</em></td>
+					<td class="p-2">Las Manos de la Estrella<em>(Juan Velazquez)</em></td>
+				</tr>
+				<tr>
+					<td class="p-2" scope="row">A la Triana Costalera<em>(Jorge Águila)</em></td>
+					<td class="p-2">Salve Estrella<em>(María Luisa Palomares)</em></td>
+				</tr>
+				<tr>
+					<td class="p-2" scope="row">Para ti mi Estrella<em>(Victor Ramírez)</em></td>
+					<td class="p-2"></td>
+				</tr>
+				<tr>
+					<td class="p-2" scope="row">En Triana<em>(Joaquín Eligio Cruz)</em></td>
+					<td class="p-2"></td>
+				</tr>
+			</tbody>
+		</table>
+	</main>
+	<footer th:replace="~{fragmentos/footer::footer}">
     </footer>
 </body>
 

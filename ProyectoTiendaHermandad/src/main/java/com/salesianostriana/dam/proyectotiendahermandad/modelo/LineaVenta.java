@@ -5,6 +5,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
+import org.hibernate.annotations.OnDelete;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

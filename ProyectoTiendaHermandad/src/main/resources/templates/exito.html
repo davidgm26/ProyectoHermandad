@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="https://www.thymeleaf.org">
+
+<head>
+  <title>Hermandad de la estrella</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    th:href="@{https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css}">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css"
+    th:href="@{https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css}">
+  <link rel="shortcut icon" href="../static/img/escudo.png" th:href="@{/img/escudo.png}">
+  <link rel="stylesheet" href="../static/css/estilos.css" type="text/css" th:href="@{/css/estilos.css}">
+</head>
+
+<body class="lateral">
+  <div class="container-fluid lateral">
+    <header th:replace="~{fragmentos/encabezado::encabezado}">
+    </header>
+    <nav th:replace="~{fragmentos/navBarUsuario::menuUsuario}">
+    </nav>
+    <main class="container bg-white border p-5 rounded w-25 mt-5 col-12 col-md-12 col-lg-12 mx-auto">
+      <div>
+        <h1 class="h2 text-center mb-4 text-success text-uppercase">Su Pedido ha sido realizado con exito</h1>
+        <p>Su numero de pedido es: <span th:text="${(numPedido)}">0000</span></p>
+        <hr>
+        <p class="letraPag h6">
+          Recibirá su pedido en un plazo de <span th:text="${(numDias)}">0</span> días laborales.
+        </p>
+        <p class="mx-auto">
+          Muchas gracias por confiar en nosotros.
+        </p>
+      </div>
+      <div class="mx-auto float-start">
+        <a href="./indexUser.html" th:href="@{/user/indexUsuario}" class="btn btn-light">Volver al catálogo</a>
+      </div>
+      <div class="mx-auto float-start">
+        <a href="./index.html" th:href="@{/}" class="btn btn-primary">Cerrar sesión</a>
+      </div>
+
+    </main>
+  </div>
+
+</body>
+
+</html>

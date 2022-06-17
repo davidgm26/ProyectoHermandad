@@ -22,6 +22,8 @@
 	<div class="container bg-white border p-5 rounded w-25 mt-5 col-12 col-md-12 col-lg-12"
 		id="cajaInicio">
 		<h1 class="h2 text-center mb-4">Inicio de Sesión</h1>
+		<p th:if="${loginError}" class="error rounded">Error en el nombre de
+			usuario y/o contraseña</p>
 		<form action="" th:action="@{/login}" class="mx-auto" id="formulario"
 			method="post">
 			<div class="form-floating">

@@ -934,9 +934,9 @@
 										"$ref": "AAAAAAGAzt32kiRfUEM="
 									},
 									"font": "Arial;13;0",
-									"left": 433,
+									"left": 427,
 									"top": 176,
-									"width": 7.22998046875,
+									"width": 19.5126953125,
 									"height": 13,
 									"alpha": -0.5235987755982988,
 									"distance": 25,
@@ -944,7 +944,7 @@
 										"$ref": "AAAAAAGAzt32kyRisew="
 									},
 									"edgePosition": 2,
-									"text": "1"
+									"text": "1..*"
 								},
 								{
 									"_type": "EdgeLabelView",
@@ -1376,7 +1376,7 @@
 								"reference": {
 									"$ref": "AAAAAAGAztDwEiNgQ+o="
 								},
-								"multiplicity": "1"
+								"multiplicity": "1..*"
 							},
 							"end2": {
 								"_type": "UMLAssociationEnd",
@@ -1398,7 +1398,8 @@
 							"_parent": {
 								"$ref": "AAAAAAGAztDwEiNgQ+o="
 							},
-							"name": "PVP"
+							"name": "PVP",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -1406,7 +1407,8 @@
 							"_parent": {
 								"$ref": "AAAAAAGAztDwEiNgQ+o="
 							},
-							"name": "nombre"
+							"name": "nombre",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -1414,7 +1416,8 @@
 							"_parent": {
 								"$ref": "AAAAAAGAztDwEiNgQ+o="
 							},
-							"name": "descripcion"
+							"name": "descripcion",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -1422,7 +1425,8 @@
 							"_parent": {
 								"$ref": "AAAAAAGAztDwEiNgQ+o="
 							},
-							"name": "id"
+							"name": "id",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -1430,7 +1434,8 @@
 							"_parent": {
 								"$ref": "AAAAAAGAztDwEiNgQ+o="
 							},
-							"name": "imagen"
+							"name": "imagen",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -1438,7 +1443,8 @@
 							"_parent": {
 								"$ref": "AAAAAAGAztDwEiNgQ+o="
 							},
-							"name": "nombreHermano"
+							"name": "nombreHermano",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -1446,7 +1452,8 @@
 							"_parent": {
 								"$ref": "AAAAAAGAztDwEiNgQ+o="
 							},
-							"name": "fechaEntradaAlmacen"
+							"name": "fechaEntradaAlmacen",
+							"type": ""
 						}
 					]
 				},
@@ -1464,7 +1471,8 @@
 							"_parent": {
 								"$ref": "AAAAAAGAztSGGiO87hk="
 							},
-							"name": "Linea Venta"
+							"name": "Linea Venta",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -1472,7 +1480,8 @@
 							"_parent": {
 								"$ref": "AAAAAAGAztSGGiO87hk="
 							},
-							"name": "Fecha de expedicion"
+							"name": "Fecha de expedicion",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -1480,7 +1489,8 @@
 							"_parent": {
 								"$ref": "AAAAAAGAztSGGiO87hk="
 							},
-							"name": "Subtotal"
+							"name": "Subtotal",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -1488,7 +1498,8 @@
 							"_parent": {
 								"$ref": "AAAAAAGAztSGGiO87hk="
 							},
-							"name": "IVA"
+							"name": "IVA",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -1496,7 +1507,8 @@
 							"_parent": {
 								"$ref": "AAAAAAGAztSGGiO87hk="
 							},
-							"name": "Total"
+							"name": "Total",
+							"type": ""
 						}
 					]
 				},
@@ -1545,7 +1557,8 @@
 							"_parent": {
 								"$ref": "AAAAAAGAztURGiP+kDY="
 							},
-							"name": "Producto"
+							"name": "Producto",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -1553,7 +1566,8 @@
 							"_parent": {
 								"$ref": "AAAAAAGAztURGiP+kDY="
 							},
-							"name": "Unidades"
+							"name": "Unidades",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -1561,7 +1575,8 @@
 							"_parent": {
 								"$ref": "AAAAAAGAztURGiP+kDY="
 							},
-							"name": "Precio total"
+							"name": "Precio total",
+							"type": ""
 						}
 					]
 				}

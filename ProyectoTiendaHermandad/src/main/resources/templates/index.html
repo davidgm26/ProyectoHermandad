@@ -10,7 +10,7 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css"
     th:href="@{https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css}">
-    <link rel="shortcut icon" href="../static/img/escudo.png" th:href="@{/img/escudo.png}">
+  <link rel="shortcut icon" href="../static/img/escudo.png" th:href="@{/img/escudo.png}">
   <link rel="stylesheet" href="../static/css/estilos.css" type="text/css" th:href="@{/css/estilos.css}">
 </head>
 
@@ -49,30 +49,33 @@
           <span class="visually-hidden">Next</span>
         </button>
         <br>
-       <div class="conatiner mx-auto w-100">
-        <div class="row mx-auto">
-          <div class="card float-start" style="width:200px">
-            <div class="card-body">
-              <h4 class="card-title">Arte Sacro</h4>
-              <p class="card-text">Galería fotográfica</p>
-              <a href="http://www.artesacro.org/Noticia.asp?idreg=145035" th:href="@{http://www.artesacro.org/Noticia.asp?idreg=145035}" class="btn btn-primary">Ver</a>
+        <div class="conatiner mx-auto w-100">
+          <div class="row mx-auto">
+            <div class="card float-start tarjeta col-12 col-lg-6">
+              <div class="card-body">
+                <h4 class="card-title">Arte Sacro</h4>
+                <p class="card-text">Galería fotográfica</p>
+                <br>
+                <a href="http://www.artesacro.org/Noticia.asp?idreg=145035"
+                th:href="@{http://www.artesacro.org/Noticia.asp?idreg=145035}"class="btn btn-primary">Ver</a>
+              </div>
             </div>
-          </div>
-          <div class="card float-start" style="width:200px">
-            <div class="card-body">
-              <h4 class="card-title">Diario de Sevilla</h4>
-              <p class="card-text">Información de un periodico local</p>
-              <a href="https://www.diariodesevilla.es/especiales/programa-semana-santa-sevilla/la-estrella.php" th:href="@{https://www.diariodesevilla.es/especiales/programa-semana-santa-sevilla/la-estrella.php}" class="btn btn-primary">Ver</a>
+            <div class="card float-start tarjeta col-12 col-lg-6">
+              <div class="card-body">
+                <h4 class="card-title">Diario de Sevilla</h4>
+                <p class="card-text">Información de un periódico local</p>
+                <a href="https://www.diariodesevilla.es/especiales/programa-semana-santa-sevilla/la-estrella.php"
+                  th:href="@{https://www.diariodesevilla.es/especiales/programa-semana-santa-sevilla/la-estrella.php}"
+                  class="btn btn-primary">Ver</a>
+              </div>
             </div>
           </div>
         </div>
-       </div>
+      </div>
     </main>
   </div>
-  <footer class="w-100" th:replace="~{fragmentos/footer::footer}">
-
+  <footer th:replace="~{fragmentos/footer::footer}">
   </footer>
-  </div>
 </body>
 
 </html>

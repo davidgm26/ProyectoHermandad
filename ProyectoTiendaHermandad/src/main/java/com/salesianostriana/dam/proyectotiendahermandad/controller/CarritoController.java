@@ -93,7 +93,7 @@ public class CarritoController {
     @PostMapping("/checkout")
     public String checkout(){
     	  	carritoServicio.checkout();
-    return "redirect:/user/indexUsuario";
+    return "redirect:/user/exito";
     }
     
 
